@@ -2,8 +2,8 @@
 
 ## [声明](README.md)
 
-* [1](README.md #版权声明)
-* [2](README.md #责任声明)
+* [1](README.md)
+* [2](README.md)
 
 ## 平台概述
 
