@@ -38,9 +38,9 @@
 ||Internet Explorer 10, 11|
 
 ### 数据库版本
-|组件 |数据库  |描述 |
+|组件 |数据库  |描述说明|
 | :--- | :--- | :--- |
-|Ambari |PostgreSQL 9.1.13+,9.3, 9.4***| |
+|Ambari |PostgreSQL 9.1.13+,9.3, 9.4***| 默认使用PostgreSQL|
 ||MariaDB 10*| |
 ||MySQL 5.6****| |
 ||Oracle 11gr2| |
