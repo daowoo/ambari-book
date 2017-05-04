@@ -2,9 +2,6 @@
 
 ## [声明](README.md)
 
-* [1](README.md)
-* [2](README.md)
-
 ## 平台概述
 
 ## 环境准备
