@@ -5,6 +5,67 @@
 
 ## 平台架构
 
-## 组件说明
+## 平台最低需求
+### 操作系统版本
 
-## 硬件配置
+|操作系统    |发行版本|
+| :--- | :--- |
+|CentOS (64-bit)    |CentOS v7.x  |
+||CentOS v6.x  |
+|Debian    |Debian v7.x|  
+|Red Hat (64-bit)    |RHEL 7.0, 7.1, 7.2  |
+||RHEL 6.1, 6.2, 6.3, 6.4, 6.5, 6.6, 6.7, 6.8  |
+|SUSE (64-bit)    |(SLES) Enterprise Linux 12, SP2 for Teradata  |
+||(SLES) Enterprise Linux 12, SP1  |
+||(SLES) Enterprise Linux 11, SP4 (HDP 2.2 and later)  |
+||(SLES) Enterprise Linux 11, SP3 for Teradata (HDP 2.2 and later) | 
+||(SLES) Enterprise Linux 11, SP1 (HDP 2.2) |
+|Ubuntu (64-bit)    |Ubuntu 16.04 (Xenial)  |
+||Ubuntu 14.04 (Trusty)|
+
+### Web浏览器版本
+
+|操作系统	|浏览器类型及版本|
+| :--- | :--- |
+|Linux	|Chrome 56.0.2924.87, 57.0.2987|
+||Firefox 51, 52|
+|Mac OS X	|Chrome 56.0.2924.87, 57.0.2987|
+||Firefox 51, 52|
+||Safari 10.0.1, 10.0.3|
+|Windows	|Chrome 56.0.2924.87, 57.0.2987|
+||Edge 38|
+||Firefox 51.0.1, 52.0|
+||Internet Explorer 10, 11|
+
+### 数据库版本
+|组件 |数据库  |描述 |
+| :--- | :--- | :--- |
+|Ambari |PostgreSQL 9.1.13+,9.3, 9.4***| |
+||MariaDB 10*| |
+||MySQL 5.6****| |
+||Oracle 11gr2| |
+||Oracle 12c**| |
+|Druid	|PostgreSQL 9.1.13+, 9.3, 9.4***| |
+||MariaDB 10*| |
+||MySQL 5.6****| |
+|Hive |PostgreSQL 9.1.13+, 9.3, 9.4***| |
+||MariaDB 10*| |
+||MySQL 5.6****| |
+||Oracle 11gr2| |
+||Oracle 12c**| |
+|Oozie |PostgreSQL 9.1.13+, 9.3, 9.4***| |
+||MariaDB 10*| |
+||MySQL 5.6****| |
+||Oracle 11gr2| |
+||Oracle 12c**| |
+|Ranger	|PostgreSQL 9.1.13+, 9.3, 9.4***| |
+||MariaDB 10*| |
+||MySQL 5.6****| |
+||Oracle 11gr2| |
+||Oracle 12c**| |
+
+### 集群节点数量与存储容量
+
+### 
+
+
