@@ -4,7 +4,7 @@
     * 创建NTP服务
     * 创建DNS服务
     * 创建Yum本地源
-    * 创建Postgresql服务
+    * 创建Postgresql数据库
 * 初始化环境
     * SSH免密登录
     * DNS设置和检查
