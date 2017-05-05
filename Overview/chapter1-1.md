@@ -1,4 +1,4 @@
-## 平台简介
+# 平台简介
 达沃大数据平台是一种基于Web的hadoop分布式集群配置管理工具，支持Apache Hadoop集群的供应、管理和监控，目前已支持绝大多数Hadoop组件，包括HDFS、MapReduce、Hive、Pig、Hbase、Zookeper、Sqoop和Hcatalog等。
 
 在技术实现上，达沃大数据平台广泛地依赖其它已经成熟的工具，运行稳定并且扩展性强。
