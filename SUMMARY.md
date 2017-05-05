@@ -10,6 +10,9 @@
 
 
 * [集群环境准备](Prepare/README.md)
+    * [平台简介](Overview/chapter2-1.md)
+    * [平台简介](Overview/chapter2-1.md)
+    * [平台简介](Overview/chapter2-1.md)
 
 * [管理中心安装](Server/README.md)
 
