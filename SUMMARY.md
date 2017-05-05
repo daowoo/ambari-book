@@ -1,21 +1,15 @@
 # 目录
 
-## [声明](README.md)
-
-* [1](README.md)
-* [2](README.md)
-
-## 平台概述
-
-## 环境准备
-
-## 11
-
-## 数据库安装
-
-## c1
-
-## 管理中心安装
-
-## 集群安装和配置
+* [声明](README.md)
+* [平台概述](Overview/README.md)
+    * [平台简介](Overview/chapter1-1.md)
+    * [基本架构](Overview/chapter1-2.md)
+    * [最低需求](Overview/chapter1-3.md)
+    * [建议硬件配置](Overview/chapter1-4.md)
+* [集群环境准备](Prepare/README.md)
+    * [集群规划](Prepare/chapter2-1.md)
+    * [服务创建](Prepare/chapter2-2.md)
+    * [初始化环境](Prepare/chapter2-3.md)
+* [管理中心安装](Server/README.md)
+* [集群安装和配置](Cluster/README.md)
 
