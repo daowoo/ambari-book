@@ -1,15 +1,15 @@
 # 集群环境准备
 * 主机名规划
 * 服务创建
-    * 创建DNS服务
-    * 创建Yum本地源
-    * 创建NTP服务
-    * 创建Postgresql数据库
+    * [创建DNS服务](chapter2-2-1.md)
+    * [创建Yum本地源](chapter2-2-2.md)
+    * [创建NTP服务](chapter2-2-3.md)
+    * [创建Postgresql数据库](chapter2-2-4.md)
 * 初始化环境
-    * SSH免密登录
-    * DNS设置和检查
-    * NTP集群时间同步
-    * Yum设置本地仓库
-    * 删除版本冲突的包
-    * 优化swap分区设置
-    * 禁用防火墙
+    * [SSH免密登录](chapter2-3-1.md)
+    * [DNS设置和检查](chapter2-3-2.md)
+    * [NTP集群时间同步](chapter2-3-3.md)
+    * [Yum设置本地仓库](chapter2-3-4.md)
+    * [删除版本冲突的包](chapter2-3-5.md)
+    * [优化swap分区设置](chapter2-3-6.md)
+    * [禁用防火墙](chapter2-3-7.md)

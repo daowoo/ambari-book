@@ -7,7 +7,7 @@
     * [最低需求](Overview/chapter1-3.md)
     * [建议硬件配置](Overview/chapter1-4.md)
 * [集群环境准备](Prepare/README.md)
-    * [集群规划](Prepare/chapter2-1.md)
+    * [主机名规划](Prepare/chapter2-1.md)
     * [服务创建](Prepare/chapter2-2.md)
     * [初始化环境](Prepare/chapter2-3.md)
 * [管理中心安装](Server/README.md)
