@@ -22,5 +22,8 @@
         * [优化swap分区设置](Prepare/chapter2-3-6.md)
         * [禁用防火墙](Prepare/chapter2-3-7.md)
 * [管理中心安装](Server/README.md)
+    * [安装JDK](Server/chapter3-1.md)
+    * [安装Server](Server/chapter3-2.md)
+    * [启动Server](Server/chapter3-3.md)
 * [集群安装和配置](Cluster/README.md)
 
