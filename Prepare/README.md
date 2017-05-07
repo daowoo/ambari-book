@@ -8,7 +8,7 @@
 * 初始化环境
     * [SSH免密登录](chapter2-3-1.md)
     * [DNS设置和检查](chapter2-3-2.md)
-    * [NTP集群时间同步](chapter2-3-3.md)
+    * [NTP时间同步](chapter2-3-3.md)
     * [Yum设置本地仓库](chapter2-3-4.md)
     * [删除版本冲突的包](chapter2-3-5.md)
     * [优化swap分区设置](chapter2-3-6.md)
