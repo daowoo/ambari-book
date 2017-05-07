@@ -7,8 +7,14 @@
 * Server: 接收Agent Interface的状态上报请求完成集中式管理和监控逻辑。
 * Agent: 负责所在节点主机的状态采集、维护及利用Agent Interface上报。
 
+另外还需要一些必要的系统及第三方服务来保证平台的正常安装和运行。
 
+* DNS Server: 为集群内的各个主机提供域名解析服务，实现主机域名和IP地址的相互映射。
+* NTP Server: 为集群内的各个主机提供系统时间同步服务，主要是Server及Agent之间的时间同步。
+* Local Repository: 包含了集群安装过程中需必须的所有rpm包，方便离线安装并提高安装速度。
+* Postgresql DB: 为Server和Hadoop组件分别创建数据库实例，集中提供数据库服务，方便后期维护和管理。
 
+> 注意：Postgresql可替换为Oracle、MySql等其他数据库。
 
 ![](/assets/import.png)
 
