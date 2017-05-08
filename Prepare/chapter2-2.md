@@ -146,20 +146,20 @@ cat << eof > /etc/httpd/conf.d/local_repo.conf
 </VirtualHost>
 eof
 ```
+
 > 注意：以上配置的具体含义如下。
-```
-<VirtualHost *:80>                      #虚拟主机工作在80端口
-  DocumentRoot "/home/repo"             #根目录为上面我们解压的自定义源目录
-  <Directory "/home/repo">              #根目录的操作权限设置
-    Options Indexes FollowSymLinks      #Indexes:支持目录访问， FollowSymLinks:允许跟踪符号链接文件
-    AllowOverride None                  #允许所有人访问
-    Require all granted
-  </Directory>
-</VirtualHost>
-```
-
-
-
+>
+> ```
+> <VirtualHost *:80>                      #虚拟主机工作在80端口，监听本机上的所有IP
+>   DocumentRoot "/home/repo"             #根目录为上面我们解压的自定义源目录
+>   <Directory "/home/repo">              #根目录的操作权限设置
+>     Options Indexes FollowSymLinks      #Indexes:在无默认主页面又无欢迎页时，将所有资源以列表形式呈现给用户，
+>                                         #FollowSymLinks:允许跟踪符号链接文件
+>     AllowOverride None                  #允许所有人访问
+>     Require all granted
+>   </Directory>
+> </VirtualHost>
+> ```
 
 
 
