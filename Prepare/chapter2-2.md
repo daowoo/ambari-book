@@ -168,16 +168,67 @@ eof
 
 ```
 [root@repo httpd]# vi conf/httpd.conf 
-.
+
+#
+# ServerName gives the name and port that the server uses to identify itself.
+# This can often be determined automatically, but we recommend you specify
+# it explicitly to prevent problems during startup.
+#
+# If your host doesn't have a registered DNS name, enter its IP address here.
+#
+ServerName repo.bigdata.wh.com                  #设置为当前主机的FQDN
+
 #EnableMMAP off
 EnableSendfile on
 
 # Supplemental configuration
 #
 # Load config files in the "/etc/httpd/conf.d" directory, if any.
-#IncludeOptional conf.d/*.conf
-IncludeOptional conf.d/local_repo.conf
+#IncludeOptional conf.d/*.conf                   #注释掉默认的apache欢迎页面
+IncludeOptional conf.d/local_repo.conf           #在文件末尾包含新增的虚拟主机扩展配置文件
+IncludeOptional conf.d/autoindex.conf            #autoindex.conf中定义了显示文件列表时的系统图标资源
 ```
+
+通过httpd自带的命令来检测httpd当前配置是否有错误。
+
+```
+[root@repo httpd]# httpd -S
+VirtualHost configuration:
+*:80                   repo.bigdata.wh.com (/etc/httpd/conf.d/local_repo.conf:1)
+ServerRoot: "/etc/httpd"
+Main DocumentRoot: "/var/www/html"
+Main ErrorLog: "/etc/httpd/logs/error_log"
+Mutex proxy-balancer-shm: using_defaults
+Mutex rewrite-map: using_defaults
+Mutex authdigest-client: using_defaults
+Mutex proxy: using_defaults
+Mutex authn-socache: using_defaults
+Mutex default: dir="/run/httpd/" mechanism=default 
+Mutex mpm-accept: using_defaults
+Mutex authdigest-opaque: using_defaults
+PidFile: "/run/httpd/httpd.pid"
+Define: DUMP_VHOSTS
+Define: DUMP_RUN_CFG
+User: name="apache" id=48
+Group: name="apache" id=48
+```
+
+启动httpd.service服务，并设置跟随系统自启动。
+
+```
+[root@repo httpd]# systemctl restart httpd.service
+[root@repo httpd]# systemctl enable httpd.service
+ln -s '/usr/lib/systemd/system/httpd.service' '/etc/systemd/system/multi-user.target.wants/httpd.service'
+```
+
+关闭防火墙firewalld.service。
+
+```
+systemctl stop firewalld.service
+systemctl disable firewalld.service
+```
+
+通过http方式访问自定义源目录。
 
 
 
