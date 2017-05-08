@@ -49,7 +49,7 @@ root@proxy:/home/repo# tree -L 2
 mv /etc/yum.repos.d /etc/yum.repos.d.bak
 ```
 
-然后下载对应版本repo文件，放入/etc/yum.repos.d/。
+然后下载对应版本的repo文件，放入/etc/yum.repos.d/。
 
 ```
 mkdir /etc/yum.repos.d
@@ -76,7 +76,6 @@ baseurl=file:///home/repo/common
 gpgcheck=0
 enabled=1
 priority=1
-proxy=_none_
 eof
 ```
 
@@ -230,8 +229,40 @@ systemctl disable firewalld.service
 
 通过http方式访问自定义源目录。
 
-```
+![](/assets/repo_http.png)
 
+创建自定义源的repo文件，并存放在resource目录下，供集群中的其他主机使用。
+
+```
+cat << eof > /home/repo/resource/bigdata.repo
+[ambari-2.5.0.3]
+name=ambari local repository
+baseurl=http://repo.bigdata.wh.com/ambari/centos7/
+gpgcheck=0
+enabled=1
+priority=1
+
+[common]
+name=common local repository
+baseurl=http://repo.bigdata.wh.com/common/
+gpgcheck=0
+enabled=1
+priority=1
+
+[hdp-2.6.0.3]
+name=hdp local repository
+baseurl=http://repo.bigdata.wh.com/hadoop/HDP/centos7/
+gpgcheck=0
+enabled=1
+priority=1
+
+[hdp_util-1.1.0.21]
+name=hdp_util local repository
+baseurl=http://repo.bigdata.wh.com/hadoop/HDP-UTILS-1.1.0.21/
+gpgcheck=0
+enabled=1
+priority=1
+eof
 ```
 
 
