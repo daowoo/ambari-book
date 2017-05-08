@@ -157,11 +157,27 @@ eof
 >                                         #FollowSymLinks:允许跟踪符号链接文件
 >     AllowOverride None                  #支持在每个页面目录下创建.htaccess，来定义对此目录中资源的访问控制，
 >                                         #设置为 None 时表示忽略.htaccess 文件
->     Require all granted                 #允许所有主机访问，all可替换为ip、not ip，表示允许和禁止指定IP访问，
->                                         #
+>     Require all granted                 #允许网络上的所有主机访问，
+>                                         #all可替换为ip、not ip，表示包含或排除指定IP，
+>                                         #granted：表示允许访问，denied：表示拒绝访问
 >   </Directory>
 > </VirtualHost>
 > ```
+
+将新创建虚拟主机local\_repo.conf添加至主配置httpd.conf末尾。
+
+```
+[root@repo httpd]# vi conf/httpd.conf 
+.
+#EnableMMAP off
+EnableSendfile on
+
+# Supplemental configuration
+#
+# Load config files in the "/etc/httpd/conf.d" directory, if any.
+#IncludeOptional conf.d/*.conf
+IncludeOptional conf.d/local_repo.conf
+```
 
 
 
