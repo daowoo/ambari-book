@@ -54,6 +54,8 @@ mv /etc/yum.repos.d /etc/yum.repos.d.bak
 ```
 mkdir /etc/yum.repos.d
 wget -O /etc/yum.repos.d/CentOS7-Base-aliyun.repo http://mirrors.aliyun.com/repo/Centos-7.repo
+or
+wget -O /etc/yum.repos.d/CentOS7-Base-163.repo http://mirrors.163.com/.help/CentOS7-Base-163.repo
 ```
 
 * 没有外网访问权限
@@ -106,9 +108,58 @@ yum install -y httpd
 
 安装完成后进入httpd生成的主配置目录/etc/httpd，它的文件结构及意义如下。
 
-```
+    [root@repo httpd]# tree 
+    .
+    |-- conf                     #主配置目录，通过修改其中的httpd.conf文件来完成配置
+    |   |-- httpd.conf
+    |   `-- magic
+    |-- conf.d                   #扩展配置目录，httpd.conf通过Include conf.d/*的方式来载入该目录中的配置
+    |   |-- autoindex.conf
+    |   |-- README
+    |   |-- userdir.conf
+    |   `-- welcome.conf
+    |-- conf.modules.d           #httpd核心模块目录
+    |   |-- 00-base.conf
+    |   |-- 00-dav.conf
+    |   |-- 00-lua.conf
+    |   |-- 00-mpm.conf
+    |   |-- 00-proxy.conf
+    |   |-- 00-systemd.conf
+    |   `-- 01-cgi.conf
+    |-- logs -> ../../var/log/httpd
+    |-- modules -> ../../usr/lib64/httpd/modules
+    `-- run -> /run/httpd
+
+    6 directories, 13 files
+
+在80端口配置虚拟主机用于通过http方式访问自定义源/home/repo目录，将新建虚拟主机配置文件放在httpd扩展目录conf.d中。
 
 ```
+cat << eof > /etc/httpd/conf.d/local_repo.conf
+<VirtualHost *:80>
+  DocumentRoot "/home/repo"
+  <Directory "/home/repo">
+    Options Indexes FollowSymLinks
+    AllowOverride None
+    Require all granted
+  </Directory>
+</VirtualHost>
+eof
+```
+> 注意：以上配置的具体含义如下。
+```
+<VirtualHost *:80>                      #虚拟主机工作在80端口
+  DocumentRoot "/home/repo"             #根目录为上面我们解压的自定义源目录
+  <Directory "/home/repo">              #根目录的操作权限设置
+    Options Indexes FollowSymLinks      #Indexes:支持目录访问， FollowSymLinks:允许跟踪符号链接文件
+    AllowOverride None                  #允许所有人访问
+    Require all granted
+  </Directory>
+</VirtualHost>
+```
+
+
+
 
 
 
