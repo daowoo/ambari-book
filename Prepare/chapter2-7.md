@@ -326,7 +326,8 @@ proxy=_none_
 ‘/etc/yum.repos.d.bak/CentOS-CR.repo’ -> ‘/etc/yum.repos.d/CentOS-CR.repo’
 ‘/etc/yum.repos.d.bak/CentOS-Debuginfo.repo’ -> ‘/etc/yum.repos.d/CentOS-Debuginfo.repo’
 ‘/etc/yum.repos.d.bak/CentOS-fasttrack.repo’ -> ‘/etc/yum.repos.d/CentOS-fasttrack.repo’
-‘/etc/yum.repos.d.bak/CentOS-Sources.repo’ -> ‘/etc/yum.repos.d/CentOS-Sources.repo’
+‘/etc/yum.repos.d.bak/CentOS-Sources.repo’ -> ‘/etc/yum.repos.d/CentOS-S
+ources.repo’
 ‘/etc/yum.repos.d.bak/CentOS-Vault.repo’ -> ‘/etc/yum.repos.d/CentOS-Vault.repo’
 ```
 
