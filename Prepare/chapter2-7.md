@@ -226,7 +226,30 @@ Remap-centos: file:centos_mirrors /centos ; file:backends_centos # Centos Rpm
 该文件所包含的是Centos官方所定义的若干外部源地址，我们可以通过一个简单的脚本来生成它。
 
 ```
+cat << 'eof' > /usr/lib/apt-cacher-ng/fetch-centos.sh
+#!/bin/bash
 
+URL="http://www.centos.org/download/full-mirrorlist.csv"
+INFILE=$(mktemp -t mirror-list-centos.XXXXXX)
+OUTFILE="centos_mirrors"
+
+wget --no-check-certificate -q -O "${INFILE}" "${URL}"
+
+tail -n+2 "${INFILE}" | awk -F '","' '{print $5}' > ${OUTFILE} 
+tail -n+2 "${INFILE}" | awk -F '","' '{print $6}' >> ${OUTFILE}
+
+sed -i'' '/^\s*$/d' ${OUTFILE}
+
+rm -f ${INFILE}
+eof
+```
+
+为fetch-centos.sh添加执行权限生成centos\_mirrors文件。
+
+```
+chmod +x /usr/lib/apt-cacher-ng/fetch-centos.sh
+source /usr/lib/apt-cacher-ng/fetch-centos.sh
+mv centos_mirrors /usr/lib/apt-cacher-ng/
 ```
 
 * backends\_centos文件
