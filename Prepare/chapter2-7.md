@@ -17,11 +17,42 @@ Centos7环境下目前没有开源的工具能够满足以上的解决方案，�
 
 ## proxy主机初始化
 
-利用Usb的系统安装盘在proxy主机上安装Ubuntu 14.04.5 LTS操作系统，安装完成后首先配置主机名和网络。
+利用Usb的系统安装盘在proxy主机上安装Ubuntu 14.04.5 LTS操作系统，安装完成后首先配置主机名。
 
 ```
 hostnamectl set-hostname proxy.bigdata.wh.com  #设置主机名
+```
 
+然后利用ifconfig查询Ubuntu系统识别的网卡信息，执行结果如下。
+
+```
+root@proxy:/etc/network# ifconfig 
+eth0      Link encap:Ethernet  HWaddr 08:00:27:54:e0:3b         #以太网口eth1
+          inet addr:10.0.2.15  Bcast:10.0.2.255  Mask:255.255.255.0
+          inet6 addr: fe80::a00:27ff:fe54:e03b/64 Scope:Link
+          UP BROADCAST RUNNING MULTICAST  MTU:1500  Metric:1
+          RX packets:22809 errors:0 dropped:0 overruns:0 frame:0
+          TX packets:4259 errors:0 dropped:0 overruns:0 carrier:0
+          collisions:0 txqueuelen:1000 
+          RX bytes:31386840 (31.3 MB)  TX bytes:344498 (344.4 KB)
+
+eth1      Link encap:Ethernet  HWaddr 08:00:27:a0:59:b6          #以太网口eth1
+          inet addr:192.168.36.111  Bcast:192.168.37.255  Mask:255.255.254.0
+          inet6 addr: fe80::a00:27ff:fea0:59b6/64 Scope:Link
+          UP BROADCAST RUNNING MULTICAST  MTU:1500  Metric:1
+          RX packets:76679 errors:0 dropped:0 overruns:0 frame:0
+          TX packets:3088 errors:0 dropped:0 overruns:0 carrier:0
+          collisions:0 txqueuelen:1000 
+          RX bytes:8766387 (8.7 MB)  TX bytes:401980 (401.9 KB)
+
+lo        Link encap:Local Loopback                               #单机环回网卡
+          inet addr:127.0.0.1  Mask:255.0.0.0
+          inet6 addr: ::1/128 Scope:Host
+          UP LOOPBACK RUNNING  MTU:65536  Metric:1
+          RX packets:34 errors:0 dropped:0 overruns:0 frame:0
+          TX packets:34 errors:0 dropped:0 overruns:0 carrier:0
+          collisions:0 txqueuelen:0 
+          RX bytes:4547 (4.5 KB)  TX bytes:4547 (4.5 KB)
 ```
 
 ## apt-cacher-ng安装及配置
