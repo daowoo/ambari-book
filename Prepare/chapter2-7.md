@@ -271,7 +271,7 @@ root@proxy:/etc/apt-cacher-ng# service apt-cacher-ng restart
 
 ## 集群主机代理配置
 
-
+为了达到
 
 ## 查看proxy缓存
 
