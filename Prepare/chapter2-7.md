@@ -20,6 +20,7 @@ Centos7环境下目前没有开源的工具能够满足以上的解决方案，�
 利用Usb的系统安装盘在proxy主机上安装Ubuntu 14.04.5 LTS操作系统，安装完成后首先配置主机名和网络。
 
 ```
+hostnamectl set-hostname proxy.bigdata.wh.com  #设置主机名
 
 ```
 
