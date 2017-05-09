@@ -262,6 +262,13 @@ http://mirrors.cn99.com/centos/
 eof
 ```
 
+重新启动apt-cacher-ng服务。
+
+```
+root@proxy:/etc/apt-cacher-ng# service apt-cacher-ng restart
+ * Restarting apt-cacher-ng apt-cacher-ng 
+```
+
 ## 集群主机代理配置
 
 ## 查看proxy缓存
