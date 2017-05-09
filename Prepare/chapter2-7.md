@@ -140,7 +140,46 @@ nameserver 192.168.30.1
 
 ## apt-cacher-ng安装及配置
 
+Ubuntu 14操作系统默认源修改成国内源，以加快访问和下载速度。
 
+```
+cat << eof > /etc/apt/sources.list
+deb http://mirrors.aliyun.com/ubuntu/ trusty main restricted universe multiverse
+deb http://mirrors.aliyun.com/ubuntu/ trusty-security main restricted universe multiverse
+deb http://mirrors.aliyun.com/ubuntu/ trusty-updates main restricted universe multiverse
+deb http://mirrors.aliyun.com/ubuntu/ trusty-proposed main restricted universe multiverse
+deb http://mirrors.aliyun.com/ubuntu/ trusty-backports main restricted universe multiverse
+deb-src http://mirrors.aliyun.com/ubuntu/ trusty main restricted universe multiverse
+deb-src http://mirrors.aliyun.com/ubuntu/ trusty-security main restricted universe multiverse
+deb-src http://mirrors.aliyun.com/ubuntu/ trusty-updates main restricted universe multiverse
+deb-src http://mirrors.aliyun.com/ubuntu/ trusty-proposed main restricted universe multiverse
+deb-src http://mirrors.aliyun.com/ubuntu/ trusty-backports main restricted universe multiverse
+eof
+```
+
+利用apt-get命令安装apt-cacher-ng和服务管理程序sysv-rc-conf。
+
+```
+apt-get install -y apt-cacher-ng sysv-rc-conf
+```
+
+启动apt-cacher-ng服务并配置跟随系统自启动。
+
+```
+service apt-cacher-ng start
+sysv-rc-conf apt-cacher-ng on
+```
+
+设置防火墙ufw，开放ssh所使用的22端口和apt-cacher-ng所使用的3142端口。
+
+```
+ufw default deny
+ufw enable
+ufw allow ssh
+ufw allow 3142
+```
+
+通过Web浏览器访问apt-cacher-ng主页
 
 ## 集群主机代理配置
 
