@@ -82,29 +82,43 @@ iface eth1 inet dhcp
 #VAGRANT-END
 ```
 
-最后，根据proxy主机的物理网口连接情况和机房内所属网段的路由设置，选择使用哪个网口以及何种网络配置方式。
+然后，根据proxy主机的物理网口连接情况和机房内所属网段的路由设置，选择使用哪个网口以及何种网络配置方式。
 
 * 若路由器支持DHCP方式连接，则按照如下方式配置所选的以太网口。
 
 ```
-root@proxy:/etc/network# cat interfaces.d/eth0.cfg 
+root@proxy:/etc/network# cat interfaces.d/eth1.cfg 
 # The primary network interface
-auto eth0
-iface eth0 inet dhcp
+auto eth1
+iface eth1 inet dhcp
 ```
 
 * 若路由器只允许以指定的静态IP方式连接，则按照如下方式来配置所选的以太网口。
 
 ```
-root@proxy:/etc/network# cat interfaces.d/eth0.cfg 
+root@proxy:/etc/network# cat interfaces.d/eth1.cfg 
 # The primary network interface
-auto eth0
-iface eth0 inet static
+auto eth1
+iface eth1 inet static
 address 192.168.36.100
 gateway 192.168.36.254
 netmask 255.255.254.0
-network 192.168.2.0
-broadcast 192.168.2.255
+```
+
+完成配置后，需要利用ifdown/ifup命令来重启该以太网口。
+
+```
+root@proxy:/etc/network# ifdown eth1
+Internet Systems Consortium DHCP Client 4.2.4
+Copyright 2004-2012 Internet Systems Consortium.
+All rights reserved.
+For info, please visit https://www.isc.org/software/dhcp/
+
+Listening on LPF/eth1/08:00:27:a0:59:b6
+Sending on   LPF/eth1/08:00:27:a0:59:b6
+Sending on   Socket/fallback
+DHCPRELEASE on eth1 to 192.168.30.1 port 67 (xid=0x31a475f5)
+
 ```
 
 ## apt-cacher-ng安装及配置
