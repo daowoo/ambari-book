@@ -213,8 +213,27 @@ Remap-slrep:  file:sl_mirrors # Scientific Linux
 Remap-gentoo: file:gentoo_mirrors.gz /gentoo ; file:backends_gentoo # Gentoo Archives
 ```
 
-* /usr/lib/apt-cacher-ng
-* /etc/apt-cacher-ng
+于是我们来添加一个基于Centos7的rpm资源包的重定向规则。
+
+```
+Remap-centos: file:centos_mirrors /centos ; file:backends_centos # Centos Rpm
+```
+
+然后再创建文件centos\_mirrors和backends\_centos，分别存放到/usr/lib/apt-cacher-ng和/etc/apt-cacher-ng目录中。
+
+* centos\_mirrors文件
+
+
+
+* backends\_centos文件
+
+```
+cat << eof > /etc/apt-cacher-ng/backends_centos
+http://mirrors.163.com/centos/
+http://mirrors.aliyun.com/centos/
+http://mirrors.cn99.com/centos/
+eof
+```
 
 ## 集群主机代理配置
 
