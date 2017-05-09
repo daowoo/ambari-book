@@ -383,6 +383,50 @@ Metadata Cache Created
 完成yum缓存更新后，可以在proxy主机的代理缓存目录/var/cache/apt-cacher-ng内找到repodata信息，如果proxy下载了rpm包，它们也会被存储在这个目录下。
 
 ```
+root@proxy:/var/cache/apt-cacher-ng# tree -L 5 centos/
+centos/
+└── 7
+    ├── extras
+    │   └── x86_64
+    │       └── repodata
+    │           ├── b9ef6cf87b7680ec9aeba7da9fbddd3c0f672850f42042e90a5571f3d22dd2a0-filelists.sqlite.bz2
+    │           ├── b9ef6cf87b7680ec9aeba7da9fbddd3c0f672850f42042e90a5571f3d22dd2a0-filelists.sqlite.bz2.head
+    │           ├── ccd64088c86ba61f69b059b50c00c34a5e756b5cae3a2c671bd47e372a711a85-primary.sqlite.bz2
+    │           ├── ccd64088c86ba61f69b059b50c00c34a5e756b5cae3a2c671bd47e372a711a85-primary.sqlite.bz2.head
+    │           ├── dbcca46a3dcc5a733cd9f02ab4aed05943047f4995e93fdb219213c7e009f62e-other.sqlite.bz2
+    │           ├── dbcca46a3dcc5a733cd9f02ab4aed05943047f4995e93fdb219213c7e009f62e-other.sqlite.bz2.head
+    │           ├── e4659f8012fd7e99c8adccbf4b4eecf0af3d38bc64c51d8bc061c40ffb2d508b-prestodelta.xml.gz
+    │           ├── e4659f8012fd7e99c8adccbf4b4eecf0af3d38bc64c51d8bc061c40ffb2d508b-prestodelta.xml.gz.head
+    │           ├── repomd.xml
+    │           └── repomd.xml.head
+    ├── os
+    │   └── x86_64
+    │       └── repodata
+    │           ├── 3a1b41925bb25892c1003b22979ea0705aa815fed57f992cf0229b76539a9ac4-filelists.sqlite.bz2
+    │           ├── 3a1b41925bb25892c1003b22979ea0705aa815fed57f992cf0229b76539a9ac4-filelists.sqlite.bz2.head
+    │           ├── bd50ff3d861cc21d254a390a963e9f0fd7b7b96ed9d31ece2f2b1997aa3a056f-primary.sqlite.bz2
+    │           ├── bd50ff3d861cc21d254a390a963e9f0fd7b7b96ed9d31ece2f2b1997aa3a056f-primary.sqlite.bz2.head
+    │           ├── c55e5b7bbe933fa8dac2cffca4596c265812b74ed12ef3968d487dd6eb22ad93-c7-x86_64-comps.xml.gz
+    │           ├── c55e5b7bbe933fa8dac2cffca4596c265812b74ed12ef3968d487dd6eb22ad93-c7-x86_64-comps.xml.gz.head
+    │           ├── f7ed48f490360933445293386b7c300d55b31bc639a9bc98d6c5365c702719a9-other.sqlite.bz2
+    │           ├── f7ed48f490360933445293386b7c300d55b31bc639a9bc98d6c5365c702719a9-other.sqlite.bz2.head
+    │           ├── repomd.xml
+    │           └── repomd.xml.head
+    └── updates
+        └── x86_64
+            └── repodata
+                ├── 3ea8c61f1c12741135aba7c0422e4b74fb072be9a43775385c12feda4acb4059-prestodelta.xml.gz
+                ├── 3ea8c61f1c12741135aba7c0422e4b74fb072be9a43775385c12feda4acb4059-prestodelta.xml.gz.head
+                ├── 5515a534747cd7cd585f9c77641a0d7a18125e2910176e132fe8d88d07fbd0bc-other.sqlite.bz2
+                ├── 5515a534747cd7cd585f9c77641a0d7a18125e2910176e132fe8d88d07fbd0bc-other.sqlite.bz2.head
+                ├── 68826be45b4c9e22f7b586290945b0d1cec66297b13a73a81215d1fdf2c7297f-filelists.sqlite.bz2
+                ├── 68826be45b4c9e22f7b586290945b0d1cec66297b13a73a81215d1fdf2c7297f-filelists.sqlite.bz2.head
+                ├── 84362bc7c7e9732f7781d7fdc02ace9c9a3157bc94a2ebe40448a5759c714f22-primary.sqlite.bz2
+                ├── 84362bc7c7e9732f7781d7fdc02ace9c9a3157bc94a2ebe40448a5759c714f22-primary.sqlite.bz2.head
+                ├── repomd.xml
+                └── repomd.xml.head
+
+10 directories, 30 files
 
 ```
 
