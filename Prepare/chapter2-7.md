@@ -271,7 +271,55 @@ root@proxy:/etc/apt-cacher-ng# service apt-cacher-ng restart
 
 ## 集群主机代理配置
 
-为了达到
+为了让集群主机使用我们已经创建好的apt-cacher-ng缓存代理服务，需要修改yum的主配置文件/etc/yum.conf，使其http请求通过`proxy.bigdata.wh.com`来进行代理和重定向。
+
+```
+cat << eof >> /etc/yum.conf
+proxy=http://proxy.bigdata.wh.com:3142/
+#proxy_username=username
+#proxy_password=password
+eof
+```
+
+
+
+但是，修改/etc/yum.conf是全局性的配置，也就是说所有的yum下载请求都会通过proxy主机来进行代理，包括我们所创建本地源中的哪些大数据平台Server、Agent以及各种Hadoop组件。因此还需要对本地源的repo文件进行修改，增加针对本地源不使用代理的相关配置。
+
+```
+[ambari-2.5.0.3]
+name=ambari local repository
+baseurl=http://repo.bigdata.wh.com/ambari/centos7/
+gpgcheck=0
+enabled=1
+priority=1
+proxy=_none_
+
+[common]
+name=common local repository
+baseurl=http://repo.bigdata.wh.com/common/
+gpgcheck=0
+enabled=1
+priority=1
+proxy=_none_
+
+[hdp-2.6.0.3]
+name=hdp local repository
+baseurl=http://repo.bigdata.wh.com/hadoop/HDP/centos7/
+gpgcheck=0
+enabled=1
+priority=1
+proxy=_none_
+
+[hdp_util-1.1.0.21]
+name=hdp_util local repository
+baseurl=http://repo.bigdata.wh.com/hadoop/HDP-UTILS-1.1.0.21/
+gpgcheck=0
+enabled=1
+priority=1
+proxy=_none_
+```
+
+
 
 ## 查看proxy缓存
 
