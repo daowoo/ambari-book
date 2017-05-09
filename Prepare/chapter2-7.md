@@ -55,7 +55,7 @@ lo        Link encap:Local Loopback                               #单机环回�
           RX bytes:4547 (4.5 KB)  TX bytes:4547 (4.5 KB)
 ```
 
-根据proxy主机的物理网口连接情况和机房内所属网段的路由设置，选择使用哪个网口以及何种网络配置方式。其中Ubuntu 14系统的网络主配置文件为/etc/network/interfaces，通常情况下主配置文件只配置loopback本地环回，其他的以每个网口对应于一个eth\*.cfg配置文件的方式存放在/etc/network/interfaces.d目录下，并且通过主配置文件来全部加载。
+Ubuntu 14系统的网络主配置文件为/etc/network/interfaces，通常情况下主配置文件只配置loopback本地环回，其他的以每个网口对应于一个eth\*.cfg配置文件的方式存放在/etc/network/interfaces.d目录下，并且通过主配置文件来全部加载。
 
 ```
 root@proxy:/etc/network# cat interfaces
@@ -82,8 +82,30 @@ iface eth1 inet dhcp
 #VAGRANT-END
 ```
 
-* DHCP方式
-* 静态IP方式
+最后，根据proxy主机的物理网口连接情况和机房内所属网段的路由设置，选择使用哪个网口以及何种网络配置方式。
+
+* 若路由器支持DHCP方式连接，则按照如下方式配置所选的以太网口。
+
+```
+root@proxy:/etc/network# cat interfaces.d/eth0.cfg 
+# The primary network interface
+auto eth0
+iface eth0 inet dhcp
+```
+
+* 若路由器只允许以指定的静态IP方式连接，则按照如下方式来配置所选的以太网口。
+
+```
+root@proxy:/etc/network# cat interfaces.d/eth0.cfg 
+# The primary network interface
+auto eth0
+iface eth0 inet static
+address 192.168.36.100
+gateway 192.168.36.254
+netmask 255.255.254.0
+network 192.168.2.0
+broadcast 192.168.2.255
+```
 
 ## apt-cacher-ng安装及配置
 
