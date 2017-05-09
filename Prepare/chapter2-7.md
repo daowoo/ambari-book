@@ -223,7 +223,7 @@ Remap-centos: file:centos_mirrors /centos ; file:backends_centos # Centos Rpm
 
 * centos\_mirrors文件
 
-
+3213
 
 * backends\_centos文件
 
