@@ -223,7 +223,11 @@ Remap-centos: file:centos_mirrors /centos ; file:backends_centos # Centos Rpm
 
 * centos\_mirrors文件
 
-3213
+该文件所包含的是Centos官方所定义的若干外部源地址，我们可以通过一个简单的脚本来生成它。
+
+```
+
+```
 
 * backends\_centos文件
 
