@@ -179,7 +179,42 @@ ufw allow ssh
 ufw allow 3142
 ```
 
-通过Web浏览器访问apt-cacher-ng主页
+通过Web浏览器访问apt-cacher-ng主页。
+
+![](/assets/apt-cacher-web.png)
+
+apt-cacher-ng的主配置文件路径为/etc/apt-cacher-ng/acng.conf，编辑acng.conf确保以下配置项有效。
+
+```
+CacheDir: /var/cache/apt-cacher-ng     #存储已下载完毕的rpm包的缓存目录
+LogDir: /var/log/apt-cacher-ng         #默认的日志文件存放路径
+SupportDir: /usr/lib/apt-cacher-ng     #存放辅助文件及脚本的默认端口
+Port:3142                              #默认的http访问端口
+ReportPage: acng-report.html           #在默认的web生成统计报告
+VerboseLog: 1                          #记录更详细的Log信息
+```
+
+另外，在acng.conf中有多列以'Remap-‘作为前缀的配置项，这每一行都表示一个资源重定向规则，其语法表示为：`Remap-RepositoryName: MergingURLs ; TargetURLs ; OptionalFlags`
+
+```
+# Repository remapping. See manual for details.
+# In this example, some backends files might be generated during package
+# installation using information collected on the system.
+# Examples:
+Remap-debrep: file:deb_mirror*.gz /debian ; file:backends_debian # Debian Archives
+Remap-uburep: file:ubuntu_mirrors /ubuntu ; file:backends_ubuntu # Ubuntu Archives
+Remap-debvol: file:debvol_mirror*.gz /debian-volatile ; file:backends_debvol # Debian Volatile Archives
+Remap-cygwin: file:cygwin_mirrors /cygwin # ; file:backends_cygwin # incomplete, please create this file or specify preferred mirrors here
+Remap-sfnet:  file:sfnet_mirrors # ; file:backends_sfnet # incomplete, please create this file or specify preferred mirrors here
+Remap-alxrep: file:archlx_mirrors /archlinux # ; file:backend_archlx # Arch Linux
+Remap-fedora: file:fedora_mirrors # Fedora Linux
+Remap-epel:   file:epel_mirrors # Fedora EPEL
+Remap-slrep:  file:sl_mirrors # Scientific Linux
+Remap-gentoo: file:gentoo_mirrors.gz /gentoo ; file:backends_gentoo # Gentoo Archives
+```
+
+* /usr/lib/apt-cacher-ng
+* /etc/apt-cacher-ng
 
 ## 集群主机代理配置
 
