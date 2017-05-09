@@ -266,10 +266,12 @@ eof
 
 ```
 root@proxy:/etc/apt-cacher-ng# service apt-cacher-ng restart
- * Restarting apt-cacher-ng apt-cacher-ng 
+ * Restarting apt-cacher-ng apt-cacher-ng
 ```
 
 ## 集群主机代理配置
+
+
 
 ## 查看proxy缓存
 
