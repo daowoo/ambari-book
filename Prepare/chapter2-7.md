@@ -244,7 +244,7 @@ rm -f ${INFILE}
 eof
 ```
 
-为fetch-centos.sh添加执行权限生成centos\_mirrors文件。
+为fetch-centos.sh添加执行权限并执行脚本生成centos\_mirrors文件。
 
 ```
 chmod +x /usr/lib/apt-cacher-ng/fetch-centos.sh
