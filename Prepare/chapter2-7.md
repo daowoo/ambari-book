@@ -219,7 +219,7 @@ Remap-gentoo: file:gentoo_mirrors.gz /gentoo ; file:backends_gentoo # Gentoo Arc
 Remap-centos: file:centos_mirrors /centos ; file:backends_centos # Centos Rpm
 ```
 
-然后再创建文件centos\_mirrors和backends\_centos，分别存放到/usr/lib/apt-cacher-ng和/etc/apt-cacher-ng目录中。
+然后再创建文件centos\_mirrors和backends\_centos，表示所有来自于centos\_mirrors定义地址的http请求全部被重定向到backends\_centos定义的某个地址。
 
 * centos\_mirrors文件
 
