@@ -317,7 +317,7 @@ priority=1
 proxy=_none_
 ```
 
-恢复之前备份的Centos7系统默认标准源repo文件，并下载本地源repo文件。
+恢复之前备份的Centos7系统默认标准源repo文件。
 
 ```
 [root@dns yum.repos.d]# cp -v /etc/yum.repos.d.bak/* /etc/yum.repos.d/
@@ -327,9 +327,12 @@ proxy=_none_
 ‘/etc/yum.repos.d.bak/CentOS-fasttrack.repo’ -> ‘/etc/yum.repos.d/CentOS-fasttrack.repo’
 ‘/etc/yum.repos.d.bak/CentOS-Sources.repo’ -> ‘/etc/yum.repos.d/CentOS-Sources.repo’
 ‘/etc/yum.repos.d.bak/CentOS-Vault.repo’ -> ‘/etc/yum.repos.d/CentOS-Vault.repo’
+```
 
+下载本地源repo文件。
 
-
+```
+wget -O /etc/yum.repos.d/bigdata.repo http://192.168.36.247/resource/bigdata.repo
 ```
 
 ## 查看proxy缓存
