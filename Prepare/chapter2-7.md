@@ -108,17 +108,24 @@ netmask 255.255.254.0
 完成配置后，需要利用ifdown/ifup命令来重启该以太网口。
 
 ```
-root@proxy:/etc/network# ifdown eth1
+vagrant@proxy:~$ sudo ifdown eth1
 Internet Systems Consortium DHCP Client 4.2.4
-Copyright 2004-2012 Internet Systems Consortium.
-All rights reserved.
-For info, please visit https://www.isc.org/software/dhcp/
-
 Listening on LPF/eth1/08:00:27:a0:59:b6
 Sending on   LPF/eth1/08:00:27:a0:59:b6
 Sending on   Socket/fallback
-DHCPRELEASE on eth1 to 192.168.30.1 port 67 (xid=0x31a475f5)
+DHCPRELEASE on eth1 to 192.168.30.1 port 67 (xid=0x157b26fb)
 
+vagrant@proxy:~$ sudo ifup eth1
+Internet Systems Consortium DHCP Client 4.2.4
+Listening on LPF/eth1/08:00:27:a0:59:b6
+Sending on   LPF/eth1/08:00:27:a0:59:b6
+Sending on   Socket/fallback
+DHCPDISCOVER on eth1 to 255.255.255.255 port 67 interval 3 (xid=0x89fef906)
+DHCPREQUEST of 192.168.36.111 on eth1 to 255.255.255.255 port 67 (xid=0x6f9fe89)
+DHCPOFFER of 192.168.36.111 from 192.168.37.254
+DHCPACK of 192.168.36.111 from 192.168.37.254
+bound to 192.168.36.111 -- renewal in 17083 seconds.
+SIOCDELRT: No such process
 ```
 
 ## apt-cacher-ng安装及配置
