@@ -281,8 +281,6 @@ proxy=http://proxy.bigdata.wh.com:3142/
 eof
 ```
 
-
-
 但是，修改/etc/yum.conf是全局性的配置，也就是说所有的yum下载请求都会通过proxy主机来进行代理，包括我们所创建本地源中的哪些大数据平台Server、Agent以及各种Hadoop组件。因此还需要对本地源的repo文件进行修改，增加针对本地源不使用代理的相关配置。
 
 ```
@@ -319,7 +317,11 @@ priority=1
 proxy=_none_
 ```
 
+将备份的
 
+```
+
+```
 
 ## 查看proxy缓存
 
