@@ -335,6 +335,12 @@ proxy=_none_
 wget -O /etc/yum.repos.d/bigdata.repo http://192.168.36.247/resource/bigdata.repo
 ```
 
+更新yum缓存，检测配置是否成功。
+
+```
+
+```
+
 ## 查看proxy缓存
 
 
