@@ -73,6 +73,60 @@ bind安装完成后，其包含的配置文件和区域文件如下。
 /var/named/slaves                  #从文件夹
 ```
 
+* 修改主配置文件/etc/named.conf
+
+```
+[root@dns named]# cat /etc/named.conf
+options {
+	listen-on port 53 { 127.0.0.1;192.168.36.149; };   #添加本机内网IP
+	listen-on-v6 port 53 { ::1; };
+	directory 	"/var/named";
+	dump-file 	"/var/named/data/cache_dump.db";
+	statistics-file "/var/named/data/named_stats.txt";
+	memstatistics-file "/var/named/data/named_mem_stats.txt";
+	allow-query     { localhost; };
+
+	/* 
+	 - If you are building an AUTHORITATIVE DNS server, do NOT enable recursion.
+	 - If you are building a RECURSIVE (caching) DNS server, you need to enable 
+	   recursion. 
+	 - If your recursive DNS server has a public IP address, you MUST enable access 
+	   control to limit queries to your legitimate users. Failing to do so will
+	   cause your server to become part of large scale DNS amplification 
+	   attacks. Implementing BCP38 within your network would greatly
+	   reduce such attack surface 
+	*/
+	recursion yes;
+
+	dnssec-enable yes;
+	dnssec-validation yes;
+
+	/* Path to ISC DLV key */
+	bindkeys-file "/etc/named.iscdlv.key";
+
+	managed-keys-directory "/var/named/dynamic";
+
+	pid-file "/run/named/named.pid";
+	session-keyfile "/run/named/session.key";
+};
+
+logging {
+        channel default_debug {
+                file "data/named.run";
+                severity dynamic;
+        };
+};
+
+zone "." IN {
+	type hint;
+	file "named.ca";
+};
+
+include "/etc/named.rfc1912.zones";
+include "/etc/named.root.key";
+
+```
+
 * 追加区域bigdata.wh.com的定义。
 
 ```
@@ -105,7 +159,7 @@ admin   IN      CNAME   dns            #admin是dns的别名，admin.bigdata.wh.
 eof
 ```
 
-* 检测配置及启动DNS服务
+* 检测配置及启动DNS服务。
 
 ```
 named-checkconf  #检查主配置文件语法
@@ -113,6 +167,23 @@ named-checkzone "bigdata.wh.com" /var/named/bigdata.wh.com.zone #检查区域所
 
 systemctl enable named.service
 systemctl start named.service
+```
+
+* 修改新增区域文件的所有者和权限。
+
+```
+[root@dns named]# ps aux|grep named
+named     2668  0.0  1.4 165652 15008 ?        Ssl  12:13   0:00 /usr/sbin/named -u named
+root      2680  0.0  0.0 112640   960 pts/0    S+   12:14   0:00 grep --color=auto named
+
+chown :named bigdata.wh.com.zone
+chmod 640 bigdata.wh.com.zone
+```
+
+* 测试域名解析成IP是否正常。
+
+```
+
 ```
 
 
