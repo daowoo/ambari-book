@@ -159,6 +159,20 @@ chmod 640 bigdata.wh.com.zone
 * 测试域名解析成IP是否正常。
 
 ```
+[root@dns named]# host -t NS bigdata.wh.com 192.168.36.149
+Using domain server:
+Name: 192.168.36.149
+Address: 192.168.36.149#53
+Aliases: 
+
+bigdata.wh.com name server dns.bigdata.wh.com.
+[root@dns named]# host -t A dns.bigdata.wh.com 192.168.36.149
+Using domain server:
+Name: 192.168.36.149
+Address: 192.168.36.149#53
+Aliases: 
+
+dns.bigdata.wh.com has address 192.168.36.149
 
 ```
 
