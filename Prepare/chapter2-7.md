@@ -13,6 +13,8 @@
 
 其结构图如下：
 
+![](/assets/2.7.1-proxy.png)
+
 Centos7环境下目前没有开源的工具能够满足以上的解决方案，不过Ubuntu14环境下有一个apt-cacher-ng的工具能满足要求，并且其最新版本增加了对yum所使用的rpm及repodata的支持。接下来描述的就是其实际安装和配置过程。
 
 ## proxy主机初始化
