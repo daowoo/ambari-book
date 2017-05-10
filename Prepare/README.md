@@ -1,6 +1,6 @@
 # 集群环境准备
 
-* [主机名规划](chapter2-1.md)
+* [规划集群主机](chapter2-1.md)
 * [创建Yum本地源](chapter2-2.md)
 * [创建DNS服务](chapter2-3.md)
 * [创建NTP服务](chapter2-4.md)
