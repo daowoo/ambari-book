@@ -78,9 +78,9 @@ bind安装完成后，其包含的配置文件和区域文件如下。
 ```
 cat << eof >> /etc/named.rfc1912.zones
 zone "bigdata.wh.com" IN {
-        type master; #设置类型为master
-        file "bigdata.wh.com.zone; #解析库文件名称为bigdata.wh.com.zone,默认的存储目录为/var/named/
-        allow-update { none; };
+	type master; #设置类型为master
+ 	file "bigdata.wh.com.zone"; #解析库文件名称为bigdata.wh.com.zone,默认的存储目录为/var/named/
+	allow-update { none; };
 };
 eof
 ```
@@ -103,6 +103,12 @@ repo    IN      A       192.168.36.247 #区域内其他主机的A记录
 admin   IN      CNAME   dns            #admin是dns的别名，admin.bigdata.wh.com.将解析到dns.bigdata.wh.com.
 *       IN      A       192.168.30.1   #泛域名解析，以上都不是的解析到192.168.30.1
 eof
+```
+
+* 检测配置及修改新增文件的权限
+
+```
+
 ```
 
 
