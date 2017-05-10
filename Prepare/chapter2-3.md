@@ -84,7 +84,10 @@ options {
     dump-file     "/var/named/data/cache_dump.db";
     statistics-file "/var/named/data/named_stats.txt";
     memstatistics-file "/var/named/data/named_mem_stats.txt";
-    allow-query     { localhost; };
+    allow-query     { localhost; any; };   #添加允许查询的主机地址，以分号分隔
+                                           #可以是某个主机:192.168.36.x
+                                           #或某个网段:192.168.36.0/255
+                                           #或所有主机:any
 };
 
 logging {
@@ -173,8 +176,8 @@ Address: 192.168.36.149#53
 Aliases: 
 
 dns.bigdata.wh.com has address 192.168.36.149
-
 ```
 
+* 
 
 
