@@ -105,13 +105,14 @@ admin   IN      CNAME   dns            #admin是dns的别名，admin.bigdata.wh.
 eof
 ```
 
-* 检测配置及修改新增文件的权限
+* 检测配置及启动DNS服务
 
 ```
 named-checkconf  #检查主配置文件语法
 named-checkzone "bigdata.wh.com" /var/named/bigdata.wh.com.zone #检查区域所对应的解析库文件
 
-
+systemctl enable named.service
+systemctl start named.service
 ```
 
 
