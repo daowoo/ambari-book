@@ -73,7 +73,7 @@ bind安装完成后，其包含的配置文件和区域文件如下。
 /var/named/slaves                  #从文件夹
 ```
 
-* 定义区域bigdata.wh.com。
+* 追加区域bigdata.wh.com的定义。
 
 ```
 cat << eof >> /etc/named.rfc1912.zones
