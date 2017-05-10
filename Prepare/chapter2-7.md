@@ -172,13 +172,10 @@ service apt-cacher-ng start
 sysv-rc-conf apt-cacher-ng on
 ```
 
-设置防火墙ufw，开放ssh所使用的22端口和apt-cacher-ng所使用的3142端口。
+关闭防火墙ufw。
 
 ```
-ufw default deny
-ufw enable
-ufw allow ssh
-ufw allow 3142
+ufw disable
 ```
 
 通过Web浏览器访问apt-cacher-ng主页。
@@ -196,7 +193,7 @@ ReportPage: acng-report.html           #在默认的web生成统计报告
 VerboseLog: 1                          #记录更详细的Log信息
 ```
 
-另外，在acng.conf中有多列以'Remap-‘作为前缀的配置项，这每一行都表示一个资源重定向规则，其语法表示为：`Remap-RepositoryName: MergingURLs ; TargetURLs ; OptionalFlags`。不过需要注意的是`MergingURLs`默认的根路径是`$SupportDir`，而`TargetURLs`默认的根路径是/etc/apt-cacher-ng。
+另外，在acng.conf中有多列以'Remap-‘作为前缀的配置项，这每一行都表示一个资源重定向规则，其语法表示为：`Remap-RepositoryName: MergingURLs ; TargetURLs ; OptionalFlags`。不过需要注意的是`MergingURLs`默认的根路径是`SupportDir`，而`TargetURLs`默认的根路径是/etc/apt-cacher-ng。
 
 ```
 # Repository remapping. See manual for details.
