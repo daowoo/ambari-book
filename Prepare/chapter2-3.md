@@ -78,14 +78,11 @@ bind安装完成后，其包含的配置文件和区域文件如下。
 ```
 cat << eof >> /etc/named.rfc1912.zones
 zone "bigdata.wh.com" IN {
-        type master;
-        file "bigdata.wh.com.zone;
+        type master; #设置类型为master
+        file "bigdata.wh.com.zone; #解析库文件名称为bigdata.wh.com.zone,默认的存储目录为/var/named/
         allow-update { none; };
 };
 eof
-
-type master;              #设置类型为master
-file "bigdata.wh.com.zone #解析库文件名称为bigdata.wh.com.zone,默认的存储目录为/var/named/
 ```
 
 * 创建区域bigdata.wh.com的解析库文件。
