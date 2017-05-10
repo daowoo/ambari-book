@@ -88,7 +88,7 @@ eof
 * 创建区域bigdata.wh.com的解析库文件。
 
 ```
-cat << eof >> /var/named/bigdata.wh.com.zone
+cat << 'eof' > /var/named/bigdata.wh.com.zone
 $TTL 600 #定义全局默认超时时间
 $ORIGIN bigdata.wh.com. #定义域名后缀
 @   IN  SOA    dns.bigdata.wh.com. admin.bigdata.wh.com. (
