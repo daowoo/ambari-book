@@ -85,13 +85,27 @@ zone "bigdata.wh.com" IN {
 eof
 
 type master;              #设置类型为master
-file "bigdata.wh.com.zone #解析库文件名称为anyisalin.com.zone
+file "bigdata.wh.com.zone #解析库文件名称为bigdata.wh.com.zone,默认的存储目录为/var/named/
 ```
 
 * 创建区域bigdata.wh.com的解析库文件。
 
 ```
-
+cat << eof >> /var/named/bigdata.wh.com.zone
+$TTL 600
+$ORIGIN bigdata.wh.com.
+@   IN  SOA    dns.bigdata.wh.com. admin.bigdata.wh.com. (
+                20170510
+                1H
+                5M
+                1W
+                10M )
+        IN      NS      dns
+dns     IN      A       192.168.36.149
+repo    IN      A       192.168.36.247
+admin   IN      CNAME   dns
+*       IN      A       192.168.30.1
+eof
 ```
 
 
