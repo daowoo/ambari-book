@@ -108,6 +108,9 @@ eof
 * 检测配置及修改新增文件的权限
 
 ```
+named-checkconf  #检查主配置文件语法
+named-checkzone "bigdata.wh.com" /var/named/bigdata.wh.com.zone #检查区域所对应的解析库文件
+
 
 ```
 
