@@ -136,6 +136,8 @@ $ORIGIN bigdata.wh.com. #定义域名后缀
         IN      NS      dns            #定义区域内的一台nameserver
 dns     IN      A       192.168.36.149 #dns这台nameserver所对应的IP
 repo    IN      A       192.168.36.247 #区域内其他主机的A记录
+proxy   IN      A       192.168.36.111
+db      IN      A       192.168.36.101
 admin   IN      CNAME   dns            #admin是dns的别名，admin.bigdata.wh.com.将解析到dns.bigdata.wh.com.
 *       IN      A       192.168.30.1   #泛域名解析，以上都不是的解析到192.168.30.1
 eof
