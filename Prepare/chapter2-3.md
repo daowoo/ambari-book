@@ -88,6 +88,9 @@ options {
                                            #可以是某个主机:192.168.36.x
                                            #或某个网段:192.168.36.0/255
                                            #或所有主机:any
+   allow-transfer {};  #允许区域传送主机, 白名单
+   allow-recursion {}; #允许递归的主机
+   allow-update {};    #允许更新区域数据库中的内容
 };
 
 logging {
@@ -178,7 +181,7 @@ Aliases:
 dns.bigdata.wh.com has address 192.168.36.149
 ```
 
-* 添加集群其他主机的A记录
+* * 添加集群其他主机的A记录
 
 
 
