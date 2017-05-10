@@ -202,11 +202,13 @@ $ORIGIN 36.168.192.in-addr.arpa.
 eof
 ```
 
-* 添加集群其他主机的A记录
+* 测试IP反向解析成域名是否正常
 
 ```
 test
 ```
+
+* 在bigdata.wh.com区域内为集群内的其他主机添加A记录和PTR记录
 
 
 
