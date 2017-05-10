@@ -24,10 +24,42 @@ hostnamectl set-hostname proxy.bigdata.wh.com  #设置主机名
 * 下载本地源repo文件，更新yum缓存
 
 ```
-
+wget -O /etc/yum.repos.d/bigdata.repo http://repo.bigdata.wh.com/resource/bigdata.repo
+yum clean all
+yum makecache
 ```
 
 * 安装bind及相关工具
+
+```
+yum install -y bind                #提供DNS服务,程序名named
+yum install -y bind-utils          #测试域名的周边工具,如dig、host、nslookup
+```
+
+bind安装完成后，其包含的配置文件和区域文件如下：
+
+    [root@dns etc]# tree /etc/ |grep named
+    |   |-- named
+    |-- named
+    |-- named.conf               #主配置文件
+    |-- named.iscdlv.key
+    |-- named.rfc1912.zones      #区域配置文件
+    |-- named.root.key
+    |   `-- named
+    |   |-- named
+
+    [root@dns etc]# tree /var/named/
+    /var/named/
+    |-- data
+    |-- dynamic
+    |-- named.ca                #根区域文件
+    |-- named.empty
+    |-- named.localhost         #默认的解析库文件
+    |-- named.loopback          #添加区域后新建一个该区域的解析库文件
+    `-- slaves
+
+    3 directories, 4 files
+
 
 
 
