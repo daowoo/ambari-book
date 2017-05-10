@@ -322,6 +322,7 @@ proxy=_none_
 ```
 [root@dns yum.repos.d]# cp -v /etc/yum.repos.d.bak/* /etc/yum.repos.d
 ‘/etc/yum.repos.d.bak/CentOS7-Base-163.repo’ -> ‘/etc/yum.repos.d/CentOS7-Base-163.repo’
+‘/etc/yum.repos.d.bak/CentOS7-Base-aliyun’ -> ‘/etc/yum.repos.d/CentOS7-Base-aliyun’
 ‘/etc/yum.repos.d.bak/CentOS-Base.repo.bak’ -> ‘/etc/yum.repos.d/CentOS-Base.repo.bak’
 ‘/etc/yum.repos.d.bak/CentOS-CR.repo’ -> ‘/etc/yum.repos.d/CentOS-CR.repo’
 ‘/etc/yum.repos.d.bak/CentOS-Debuginfo.repo’ -> ‘/etc/yum.repos.d/CentOS-Debuginfo.repo’
