@@ -203,8 +203,8 @@ VerboseLog: 1                          #记录更详细的Log信息
 Remap-debrep: file:deb_mirror*.gz /debian ; file:backends_debian # Debian Archives
 Remap-uburep: file:ubuntu_mirrors /ubuntu ; file:backends_ubuntu # Ubuntu Archives
 Remap-debvol: file:debvol_mirror*.gz /debian-volatile ; file:backends_debvol # Debian Volatile Archives
-Remap-cygwin: file:cygwin_mirrors /cygwin # ; file:backends_cygwin # incomplete, please create this file or specify preferred mirrors here
-Remap-sfnet:  file:sfnet_mirrors # ; file:backends_sfnet # incomplete, please create this file or specify preferred mirrors here
+Remap-cygwin: file:cygwin_mirrors /cygwin # ; file:backends_cygwin # incomplete
+Remap-sfnet:  file:sfnet_mirrors # ; file:backends_sfnet # incomplete
 Remap-alxrep: file:archlx_mirrors /archlinux # ; file:backend_archlx # Arch Linux
 Remap-fedora: file:fedora_mirrors # Fedora Linux
 Remap-epel:   file:epel_mirrors # Fedora EPEL
