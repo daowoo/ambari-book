@@ -36,7 +36,7 @@ yum install -y bind                #提供DNS服务,程序名named
 yum install -y bind-utils          #测试域名的周边工具,如dig、host、nslookup
 ```
 
-bind安装完成后，其包含的配置文件和区域文件如下：
+bind安装完成后，其包含的配置文件和区域文件如下。
 
     [root@dns etc]# tree /etc/ |grep named
     |   |-- named
@@ -59,7 +59,6 @@ bind安装完成后，其包含的配置文件和区域文件如下：
     `-- slaves
 
     3 directories, 4 files
-
 
 
 
