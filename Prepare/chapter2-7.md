@@ -337,7 +337,7 @@ ources.repo’
 下载本地源repo文件。
 
 ```
-wget -O /etc/yum.repos.d/bigdata.repo http://192.168.36.247/resource/bigdata.repo
+wget -O /etc/yum.repos.d/bigdata.repo http://repo.bigdata.wh.com/resource/bigdata.repo
 ```
 
 更新yum缓存，检测配置是否成功。
