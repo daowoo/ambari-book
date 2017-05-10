@@ -7,7 +7,7 @@
     * [最低需求](Overview/chapter1-3.md)
     * [建议硬件配置](Overview/chapter1-4.md)
 * [集群环境准备](Prepare/README.md)
-    * [主机名规划](Prepare/chapter2-1.md)
+    * [规划集群主机](Prepare/chapter2-1.md)
     * [创建Yum本地源](Prepare/chapter2-2.md)
     * [创建DNS服务](Prepare/chapter2-3.md)
     * [创建NTP服务](Prepare/chapter2-4.md)
