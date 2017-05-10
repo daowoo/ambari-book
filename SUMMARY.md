@@ -13,7 +13,7 @@
     * [创建NTP服务](Prepare/chapter2-4.md)
     * [创建Postgresql数据库](Prepare/chapter2-5.md)
     * [环境初始化](Prepare/chapter2-6.md)
-    * [创建Yum缓存代理](chapter2-7.md)
+    * [创建Yum缓存代理](Prepare/chapter2-7.md)
 * [管理中心安装](Server/README.md)
     * [安装JDK](Server/chapter3-1.md)
     * [安装Server](Server/chapter3-2.md)
