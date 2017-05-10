@@ -82,6 +82,7 @@ zone "bigdata.wh.com" IN {              #定义区域bigdata.wh.com
     file "bigdata.wh.com.zone           #解析库文件名称为anyisalin.com.zone
     allow-update { none; };
 };
+eof
 ```
 
 
