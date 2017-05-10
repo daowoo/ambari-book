@@ -55,22 +55,22 @@ bind安装完成后，其包含的配置文件和区域文件如下。
 /usr/lib/systemd/system/named.service
 /usr/sbin/ddns-confgen             #生成rndc密钥
 /usr/sbin/named
-/usr/sbin/named-checkconf      #检测/etc/named.conf文件语法
-/usr/sbin/named-checkzone      #检测zone和对应zone文件的语法
+/usr/sbin/named-checkconf          #检测/etc/named.conf文件语法
+/usr/sbin/named-checkzone          #检测zone和对应zone文件的语法
 /usr/sbin/named-compilezone
 /usr/sbin/named-journalprint
 /usr/sbin/nsec3hash
-/usr/sbin/rndc                  #远程dns管理工具
-/usr/sbin/rndc-confgen          #生成rndc密钥
+/usr/sbin/rndc                     #远程dns管理工具
+/usr/sbin/rndc-confgen             #生成rndc密钥
 /var/log/named.log
 /var/named
 /var/named/data
 /var/named/dynamic
-/var/named/named.ca              #根区域文件
+/var/named/named.ca                #根区域文件
 /var/named/named.empty
-/var/named/named.localhost       #默认的本地主机解析库
-/var/named/named.loopback        #添加区域后新建一个该区域的解析库文件
-/var/named/slaves                #从文件夹
+/var/named/named.localhost         #默认的本地主机解析库
+/var/named/named.loopback          #添加区域后新建一个该区域的解析库文件
+/var/named/slaves                  #从文件夹
 ```
 
 
