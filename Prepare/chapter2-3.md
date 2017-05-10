@@ -178,6 +178,7 @@ Aliases:
 dns.bigdata.wh.com has address 192.168.36.149
 ```
 
-* 
+* 添加集群其他主机的A记录
+
 
 
