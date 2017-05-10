@@ -73,19 +73,22 @@ bind安装完成后，其包含的配置文件和区域文件如下。
 /var/named/slaves                  #从文件夹
 ```
 
-定义区域bigdata.wh.com。
+* 定义区域bigdata.wh.com。
 
 ```
 cat << eof >> /etc/named.rfc1912.zones
-zone "bigdata.wh.com" IN {                  #定义区域bigdata.wh.com
-        type master;                        #设置类型为master
-        file "bigdata.wh.com.zone           #解析库文件名称为anyisalin.com.zone
+zone "bigdata.wh.com" IN {
+        type master;
+        file "bigdata.wh.com.zone;
         allow-update { none; };
 };
 eof
+
+type master;              #设置类型为master
+file "bigdata.wh.com.zone #解析库文件名称为anyisalin.com.zone
 ```
 
-创建区域bigdata.wh.com的解析库文件。
+* 创建区域bigdata.wh.com的解析库文件。
 
 ```
 
