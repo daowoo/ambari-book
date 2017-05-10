@@ -121,7 +121,7 @@ zone "bigdata.wh.com" IN {
 eof
 ```
 
-* 创建区域bigdata.wh.com的解析库文件。
+* 创建区域bigdata.wh.com的正向解析库文件。
 
 ```
 cat << 'eof' > /var/named/bigdata.wh.com.zone
@@ -162,7 +162,7 @@ chown :named bigdata.wh.com.zone
 chmod 640 bigdata.wh.com.zone
 ```
 
-* 测试域名解析成IP是否正常。
+* 测试域名解析成IP是否正常，如果遇到错误，可以观察日志文件/var/log/message的内容来分析问题。
 
 ```
 [root@dns named]# host -t NS bigdata.wh.com 192.168.36.149
@@ -181,7 +181,32 @@ Aliases:
 dns.bigdata.wh.com has address 192.168.36.149
 ```
 
-* * 添加集群其他主机的A记录
+* 创建区域bigdata.wh.com的反向解析库文件。
+
+```
+cat << 'eof' > /var/named/36.168.192.in-addr.arpa.zone
+$TTL 600
+$ORIGIN 36.168.192.in-addr.arpa.
+@   IN  SOA    dns.bigdata.wh.com. admin.bigdata.wh.com. (
+                20170510
+                1H
+                5M
+                1W
+                10M )
+        IN      NS      dns.bigdata.wh.com.
+149     IN      PTR     dns.bigdata.wh.com.
+247     IN      PTR     repo.bigdata.wh.com.
+111     IN      PTR     proxy.bigdata.wh.com.
+101     IN      PTR     db.bigdata.wh.com.
+*       IN      PTR     192.168.30.1
+eof
+```
+
+* 添加集群其他主机的A记录
+
+```
+
+```
 
 
 
