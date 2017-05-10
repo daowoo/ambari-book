@@ -6,8 +6,7 @@
 * [创建NTP服务](chapter2-4.md)
 * [创建Postgresql数据库](chapter2-5.md)
 * [环境初始化](chapter2-6.md)
-* [创建Yum缓存代理服务](chapter2-7.md)
-
+* [创建Yum缓存代理](chapter2-7.md)
 
 
 

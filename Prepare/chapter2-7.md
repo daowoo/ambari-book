@@ -1,4 +1,4 @@
-# 创建Yum缓存代理服务
+# 创建Yum缓存代理
 
 通常情况下，我们提供的自定义yum本地源压缩包中包含了大数据平台部署、运行和维护过程中的所有软件rpm包。除非是有特殊需要，比如开发人员试验某些新软件包的功能，或是运维人员安装自己熟悉的某些工具软件等，才需要从外部导入rpm包。因此，绝大多数场景下这个步骤都是可选的，运维人员要根据自己的实际需求来决定是否执行该步骤。
 
@@ -387,31 +387,31 @@ root@proxy:/var/cache/apt-cacher-ng# tree -L 5 centos/
 centos/
 └── 7
     ├── extras
-    │   └── x86_64
-    │       └── repodata
-    │           ├── b9ef6cf87b7680ec9aeba7da9fbddd3c0f672850f42042e90a5571f3d22dd2a0-filelists.sqlite.bz2
-    │           ├── b9ef6cf87b7680ec9aeba7da9fbddd3c0f672850f42042e90a5571f3d22dd2a0-filelists.sqlite.bz2.head
-    │           ├── ccd64088c86ba61f69b059b50c00c34a5e756b5cae3a2c671bd47e372a711a85-primary.sqlite.bz2
-    │           ├── ccd64088c86ba61f69b059b50c00c34a5e756b5cae3a2c671bd47e372a711a85-primary.sqlite.bz2.head
-    │           ├── dbcca46a3dcc5a733cd9f02ab4aed05943047f4995e93fdb219213c7e009f62e-other.sqlite.bz2
-    │           ├── dbcca46a3dcc5a733cd9f02ab4aed05943047f4995e93fdb219213c7e009f62e-other.sqlite.bz2.head
-    │           ├── e4659f8012fd7e99c8adccbf4b4eecf0af3d38bc64c51d8bc061c40ffb2d508b-prestodelta.xml.gz
-    │           ├── e4659f8012fd7e99c8adccbf4b4eecf0af3d38bc64c51d8bc061c40ffb2d508b-prestodelta.xml.gz.head
-    │           ├── repomd.xml
-    │           └── repomd.xml.head
+    │   └── x86_64
+    │       └── repodata
+    │           ├── b9ef6cf87b7680ec9aeba7da9fbddd3c0f672850f42042e90a5571f3d22dd2a0-filelists.sqlite.bz2
+    │           ├── b9ef6cf87b7680ec9aeba7da9fbddd3c0f672850f42042e90a5571f3d22dd2a0-filelists.sqlite.bz2.head
+    │           ├── ccd64088c86ba61f69b059b50c00c34a5e756b5cae3a2c671bd47e372a711a85-primary.sqlite.bz2
+    │           ├── ccd64088c86ba61f69b059b50c00c34a5e756b5cae3a2c671bd47e372a711a85-primary.sqlite.bz2.head
+    │           ├── dbcca46a3dcc5a733cd9f02ab4aed05943047f4995e93fdb219213c7e009f62e-other.sqlite.bz2
+    │           ├── dbcca46a3dcc5a733cd9f02ab4aed05943047f4995e93fdb219213c7e009f62e-other.sqlite.bz2.head
+    │           ├── e4659f8012fd7e99c8adccbf4b4eecf0af3d38bc64c51d8bc061c40ffb2d508b-prestodelta.xml.gz
+    │           ├── e4659f8012fd7e99c8adccbf4b4eecf0af3d38bc64c51d8bc061c40ffb2d508b-prestodelta.xml.gz.head
+    │           ├── repomd.xml
+    │           └── repomd.xml.head
     ├── os
-    │   └── x86_64
-    │       └── repodata
-    │           ├── 3a1b41925bb25892c1003b22979ea0705aa815fed57f992cf0229b76539a9ac4-filelists.sqlite.bz2
-    │           ├── 3a1b41925bb25892c1003b22979ea0705aa815fed57f992cf0229b76539a9ac4-filelists.sqlite.bz2.head
-    │           ├── bd50ff3d861cc21d254a390a963e9f0fd7b7b96ed9d31ece2f2b1997aa3a056f-primary.sqlite.bz2
-    │           ├── bd50ff3d861cc21d254a390a963e9f0fd7b7b96ed9d31ece2f2b1997aa3a056f-primary.sqlite.bz2.head
-    │           ├── c55e5b7bbe933fa8dac2cffca4596c265812b74ed12ef3968d487dd6eb22ad93-c7-x86_64-comps.xml.gz
-    │           ├── c55e5b7bbe933fa8dac2cffca4596c265812b74ed12ef3968d487dd6eb22ad93-c7-x86_64-comps.xml.gz.head
-    │           ├── f7ed48f490360933445293386b7c300d55b31bc639a9bc98d6c5365c702719a9-other.sqlite.bz2
-    │           ├── f7ed48f490360933445293386b7c300d55b31bc639a9bc98d6c5365c702719a9-other.sqlite.bz2.head
-    │           ├── repomd.xml
-    │           └── repomd.xml.head
+    │   └── x86_64
+    │       └── repodata
+    │           ├── 3a1b41925bb25892c1003b22979ea0705aa815fed57f992cf0229b76539a9ac4-filelists.sqlite.bz2
+    │           ├── 3a1b41925bb25892c1003b22979ea0705aa815fed57f992cf0229b76539a9ac4-filelists.sqlite.bz2.head
+    │           ├── bd50ff3d861cc21d254a390a963e9f0fd7b7b96ed9d31ece2f2b1997aa3a056f-primary.sqlite.bz2
+    │           ├── bd50ff3d861cc21d254a390a963e9f0fd7b7b96ed9d31ece2f2b1997aa3a056f-primary.sqlite.bz2.head
+    │           ├── c55e5b7bbe933fa8dac2cffca4596c265812b74ed12ef3968d487dd6eb22ad93-c7-x86_64-comps.xml.gz
+    │           ├── c55e5b7bbe933fa8dac2cffca4596c265812b74ed12ef3968d487dd6eb22ad93-c7-x86_64-comps.xml.gz.head
+    │           ├── f7ed48f490360933445293386b7c300d55b31bc639a9bc98d6c5365c702719a9-other.sqlite.bz2
+    │           ├── f7ed48f490360933445293386b7c300d55b31bc639a9bc98d6c5365c702719a9-other.sqlite.bz2.head
+    │           ├── repomd.xml
+    │           └── repomd.xml.head
     └── updates
         └── x86_64
             └── repodata
@@ -427,7 +427,6 @@ centos/
                 └── repomd.xml.head
 
 10 directories, 30 files
-
 ```
 
 
