@@ -83,12 +83,11 @@ zone "bigdata.wh.com" IN {              #定义区域bigdata.wh.com
         allow-update { none; };
 };
 eof
+```
 
-zone "bigdata.wh.com" IN {
-        type master;
-        file "bigdata.wh.com.zone
-        allow-update { none; };
-};
+创建区域bigdata.wh.com的解析库文件。
+
+```
 
 ```
 
