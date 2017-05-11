@@ -1,6 +1,6 @@
 # 创建DNS服务
 
-大数据平台严重依赖于DNS，在正常的操作期间会执行许多次DNS查找，我们必须为集群内的所有主机配置正向和方向DNS，完成主机名（Fully Qualified Domain Name）到IP地址的映射。要达到这个目的，可以通过编辑集群中所有主机上的/etc/hosts文件或者创建一个DNS服务器来解决，这里我们来详细描述利用bind9来创建DNS服务器，配置集群内的bigdata.wh.com子域，以及采用迭代查询的过程。
+大数据平台严重依赖于DNS，在正常的操作期间会执行许多次DNS查找，我们必须为集群内的所有主机配置正向和方向DNS，完成主机名（Fully Qualified Domain Name）到IP地址的映射。要达到这个目的，可以通过编辑集群中所有主机上的/etc/hosts文件或者创建一个DNS服务器来解决，这里我们来详细描述利用bind9来创建DNS服务器，配置集群内的bigdata.wh.com子域，以及结果测试的过程。
 
 * 系统安装后配置hostname
 
