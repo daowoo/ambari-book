@@ -43,7 +43,7 @@ root@proxy:/home/repo# tree -L 2
 
 * 有永久或临时外网访问权限
 
-为了取得更快的安装速度，将默认的国外源更新为国内的aliyun源或163源。首先备份备份默认源。
+为了取得更快的安装速度，将默认的国外源更新为国内的aliyun源。首先备份备份默认源。
 
 ```
 mv /etc/yum.repos.d /etc/yum.repos.d.bak
@@ -54,8 +54,6 @@ mv /etc/yum.repos.d /etc/yum.repos.d.bak
 ```
 mkdir /etc/yum.repos.d
 wget -O /etc/yum.repos.d/CentOS7-Base-aliyun.repo http://mirrors.aliyun.com/repo/Centos-7.repo
-or
-wget -O /etc/yum.repos.d/CentOS7-Base-163.repo http://mirrors.163.com/.help/CentOS7-Base-163.repo
 ```
 
 * 没有外网访问权限
