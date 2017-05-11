@@ -11,14 +11,21 @@ systemctl start ntpd.service
 systemctl enable ntpd.service
 ```
 
-* 设置语言区域、时区，并更新当前时间
+* 设置语言区域、时区
 
 ```
 localectl set-locale LANG=en_US.utf8     #设备系统语言及区域
 timedatectl set-timezone Asia/Shanghai   #设置时区
+```
 
-timedatectl set-time 2017-05-11          #设置当前日期
-timedatectl set-time 16:47:00            #设置当前时间
+* 同步网络时间或手动设置当前时间
+
+```
+ntpdate time.ntp.org               #有外网条件下，直接更新互联网标准时间
+timedatectl set-ntp yes            #启用NTP同步
+
+timedatectl set-time 2017-05-11    #无外网条件下，手动设置当前日期
+timedatectl set-time 16:47:00      #设置当前时间
 ```
 
 
