@@ -48,14 +48,19 @@ scp /root/.ssh/id_rsa.pub root@192.168.70.101:/root/.ssh/
 在目标主机上将ssh公钥添加到authorized\_keys文件中。
 
 ```
-
+cat id_rsa.pub >> authorized_keys
 ```
 
+然后验证从Server中利用ssh登录目标主机，确保无需输入密码而能够正常登录。
 
-
-
+```
+ssh root@192.168.70.101
+Are you sure you want to continue connecting (yes/no)? #第一登录会询问是否继续
+```
 
 * DNS设置和检查
+
+
 
 * NTP时间同步
 
