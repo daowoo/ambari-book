@@ -225,32 +225,13 @@ systemctl restart named.service
 * 测试IP反向解析成域名是否正常
 
 ```
-[root@dns named]# dig -x 192.168.36.247
+[root@dns named]# host -t PTR 192.168.36.149 192.168.36.149
+Using domain server:
+Name: 192.168.36.149
+Address: 192.168.36.149#53
+Aliases: 
 
-; <<>> DiG 9.9.4-RedHat-9.9.4-38.el7_3.3 <<>> -x 192.168.36.247
-;; global options: +cmd
-;; Got answer:
-;; ->>HEADER<<- opcode: QUERY, status: NOERROR, id: 63601
-;; flags: qr aa rd ra; QUERY: 1, ANSWER: 1, AUTHORITY: 1, ADDITIONAL: 2
-
-;; OPT PSEUDOSECTION:
-; EDNS: version: 0, flags:; udp: 4096
-;; QUESTION SECTION:
-;247.36.168.192.in-addr.arpa.    IN    PTR
-
-;; ANSWER SECTION:
-247.36.168.192.in-addr.arpa. 600 IN    PTR    repo.bigdata.wh.com.
-
-;; AUTHORITY SECTION:
-36.168.192.in-addr.arpa. 600    IN    NS    dns.bigdata.wh.com.
-
-;; ADDITIONAL SECTION:
-dns.bigdata.wh.com.    600    IN    A    192.168.36.149
-
-;; Query time: 0 msec
-;; SERVER: 192.168.36.149#53(192.168.36.149)
-;; WHEN: Thu May 11 09:55:57 CEST 2017
-;; MSG SIZE  rcvd: 123
+149.36.168.192.in-addr.arpa domain name pointer dns.bigdata.wh.com.
 ```
 
 * 在bigdata.wh.com区域内为集群其他主机添加A记录和PTR记录
