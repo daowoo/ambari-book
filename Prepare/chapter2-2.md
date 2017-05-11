@@ -97,7 +97,9 @@ yum install -y yum-plugin-priorities     #yum插件，安装后可根据priority
 
 ## Apache httpd服务
 
-通过配置httpd虚拟主机的方式实现一个简单的web文件服务器，来作为集群局域网内的yum本地源。首先安装Apache httpd服务。
+通过配置httpd虚拟主机的方式实现一个简单的web文件服务器，来作为集群局域网内的yum本地源。
+
+* 首先安装Apache httpd服务。
 
 ```
 yum install -y httpd
@@ -129,7 +131,7 @@ yum install -y httpd
 
     6 directories, 13 files
 
-在80端口配置虚拟主机用于通过http方式访问自定义源/home/repo目录，将新建虚拟主机配置文件放在httpd扩展目录conf.d中。
+* 在80端口配置虚拟主机用于通过http方式访问自定义源/home/repo目录，将新建虚拟主机配置文件放在httpd扩展目录conf.d中。
 
 ```
 cat << eof > /etc/httpd/conf.d/local_repo.conf
