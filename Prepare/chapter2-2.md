@@ -135,12 +135,18 @@ yum install -y httpd
 
 ```
 cat << eof > /etc/httpd/conf.d/local_repo.conf
-<VirtualHost *:80>
-  DocumentRoot "/home/repo"
-  <Directory "/home/repo">
-    Options Indexes FollowSymLinks
-    AllowOverride None
-    Require all granted
+<VirtualHost *:80>                  #虚拟主机工作在80端口，监听本机上的所有IP
+  DocumentRoot "/home/repo"         #根目录为上面我们解压的自定义源目录
+  <Directory "/home/repo">          #基于来源地址的访问控制
+    Options Indexes FollowSymLinks  #Indexes:在无默认主页面又无欢迎页时，将所有资源以列表形式呈现给用户，
+                                    #FollowSymLinks:允许跟踪符号链接文件
+                                    
+    AllowOverride None              #支持在每个页面目录下创建.htaccess，来定义对此目录中资源的访问控制，
+                                    #设置为 None 时表示忽略.htaccess 文件
+
+    Require all granted             #允许网络上的所有主机访问，
+                                    #all可替换为ip、not ip，表示包含或排除指定IP，
+                                    #granted：表示允许访问，denied：表示拒绝访问
   </Directory>
 </VirtualHost>
 eof
@@ -163,7 +169,7 @@ eof
 > </VirtualHost>
 > ```
 
-将新创建虚拟主机local\_repo.conf添加至主配置httpd.conf末尾。
+* 将新创建虚拟主机local\_repo.conf添加至主配置httpd.conf末尾。
 
 ```
 [root@repo httpd]# vi conf/httpd.conf 
