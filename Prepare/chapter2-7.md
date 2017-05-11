@@ -209,7 +209,6 @@ Remap-alxrep: file:archlx_mirrors /archlinux # ; file:backend_archlx # Arch Linu
 Remap-fedora: file:fedora_mirrors # Fedora Linux
 Remap-epel:   file:epel_mirrors # Fedora EPEL
 Remap-slrep:  file:sl_mirrors # Scientific Linux
-Remap-gentoo: file:gentoo_mirrors.gz /gentoo ; file:backends_gentoo # Gentoo Archives
 ```
 
 于是我们来添加一个基于Centos7的rpm资源包的重定向规则。
@@ -255,7 +254,6 @@ mv centos_mirrors /usr/lib/apt-cacher-ng/
 
 ```
 cat << eof > /etc/apt-cacher-ng/backends_centos
-http://mirrors.163.com/centos/
 http://mirrors.aliyun.com/centos/
 http://mirrors.cn99.com/centos/
 eof
@@ -289,7 +287,7 @@ baseurl=http://repo.bigdata.wh.com/ambari/centos7/
 gpgcheck=0
 enabled=1
 priority=1
-proxy=_none_
+proxy=_none_           #不使用代理
 
 [common]
 name=common local repository
