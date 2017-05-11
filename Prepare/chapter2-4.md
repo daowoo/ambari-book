@@ -51,8 +51,28 @@ restrict 192.168.0.0 mask 255.255.0.0 nomodify notrap  #配置客户端访问NTP
 #manycastserver 239.255.254.254        # manycast server
 #manycastclient 239.255.254.254 autokey # manycast client
 
-server  127.127.1.0
+server  127.127.1.0   #将localhost的本地时钟作为时间供给源，这样，即便该机器失去网络连接，也可以继续为网络提供服务
 fudge   127.127.1.0 stratum 10
+```
+
+* 重启ntp服务，并查询ntp服务状态。
+
+```
+[root@repo yum.repos.d]# systemctl restart ntpd.service
+
+[root@repo yum.repos.d]# ntpstat       #查询ntp服务同步状态
+synchronised to NTP server (115.28.122.198) at stratum 3 
+   time correct to within 1804 ms
+   polling server every 64 s
+
+[root@repo yum.repos.d]# ntpq -p       #查看连接上的ntp远程服务器
+     remote           refid      st t when poll reach   delay   offset  jitter
+==============================================================================
+ 79.98.105.18    .INIT.          16 u    -   64    0    0.000    0.000   0.000
++52.187.51.163   202.83.101.70    2 u   43   64    1   60.413  -1586.1   3.586
+*time6.aliyun.co 10.137.38.86     2 u   45   64    1   47.904  -1582.3   2.975
+ 61.216.153.107  211.22.103.158   3 u   48   64    1   50.326  -1583.0   0.106
+ LOCAL(0)        .LOCL.          10 l   67   64    2    0.000    0.000   0.000
 ```
 
 
