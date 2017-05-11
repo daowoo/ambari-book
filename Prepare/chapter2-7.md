@@ -322,7 +322,7 @@ priority=1
 proxy=_none_
 ```
 
-下载阿里云源的repo文件。
+下载阿里云的repo文件。
 
 ```
 wget -O /etc/yum.repos.d/CentOS7-Base-aliyun.repo http://repo.bigdata.wh.com/resource/CentOS7-Base-aliyun.repo
