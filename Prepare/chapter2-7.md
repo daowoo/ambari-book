@@ -314,7 +314,7 @@ priority=1
 proxy=_none_
 ```
 
-下载国内阿里云源的repo文件。
+更新默认源。
 
 ```
 wget -O /etc/yum.repos.d/CentOS7-Base-aliyun.repo http://mirrors.aliyun.com/repo/Centos-7.repo
