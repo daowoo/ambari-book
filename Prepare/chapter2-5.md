@@ -25,9 +25,35 @@ UMASK值设置了用户在系统中创建新文件或文件夹时被授予的默
 
 * SSH免密登录
 
+在大数据平台部署过程中，为了让Server自动地在所有集群主机上安装Agent，必须在Server主机和其他所有主机之间设置无密码的ssh连接。这样Server主机就能够使用ssh公钥通过身份验证来访问和安装Agent。
+
+在Server主机上生成ssh公钥和私钥。
+
+```
+ssh-keygen
+
+[root@server ~]# ls -l ~/.ssh
+total 12
+-rw-------. 1 root root  409 May  3 02:56 authorized_keys
+-rw-------. 1 root root 1679 May 11 08:54 id_rsa       #私钥
+-rw-r--r--. 1 root root  408 May 11 08:54 id_rsa.pub   #公钥
+```
+
+将生成的ssh公钥复制到其他主机的/root/.ssh目录。
+
+```
+scp /root/.ssh/id_rsa.pub root@192.168.70.101:/root/.ssh/
+```
+
+在目标主机上将ssh公钥添加到authorized\_keys文件中。
+
 ```
 
 ```
+
+
+
+
 
 * DNS设置和检查
 
