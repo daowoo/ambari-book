@@ -276,7 +276,7 @@ root@proxy:/etc/apt-cacher-ng# service apt-cacher-ng restart
 
 ## 集群主机代理配置
 
-为了让集群主机使用我们已经创建好的apt-cacher-ng缓存代理服务，需要修改yum的主配置文件/etc/yum.conf，使其http请求通过`proxy.bigdata.wh.com`来进行代理和重定向。
+为了让集群主机使用我们已经创建好的apt-cacher-ng缓存代理服务，需要修改所有主机的yum配置文件/etc/yum.conf，使其http请求通过`proxy.bigdata.wh.com`来进行代理和重定向。
 
 ```
 cat << eof >> /etc/yum.conf
