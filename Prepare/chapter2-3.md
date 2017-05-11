@@ -204,6 +204,18 @@ $ORIGIN 36.168.192.in-addr.arpa.
 eof
 ```
 
+* 追加bigdata.wh.com反向解析区域的定义。
+
+```
+cat << eof >> /etc/named.rfc1912.zones
+zone "36.168.192.in-addr.arpa." IN {
+    type master;
+    file "36.168.192.in-addr.arpa.zone;
+    allow-update { none; };
+};
+eof
+```
+
 * 测试IP反向解析成域名是否正常
 
 ```
