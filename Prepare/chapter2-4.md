@@ -41,7 +41,7 @@ restrict ::1
 # Hosts on local network are less restricted.
 #restrict 192.168.1.0 mask 255.255.255.0 nomodify notrap
 restrict 192.168.0.0 mask 255.255.0.0 nomodify notrap  #配置客户端访问NTP Server的权限，
-                                                       #授权192.168.0.0~192.168.255.255网段的
+                                                       #授权192.168.0.0~192.168.255.255网段
                                                        #客户机可以从这台机器上查询和同步时间
 
 #broadcast 192.168.1.255 autokey    # broadcast server
