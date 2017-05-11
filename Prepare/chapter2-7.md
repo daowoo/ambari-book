@@ -138,7 +138,7 @@ proxy   IN      A       192.168.36.111  #bigdata.wh.com.zone
 111 IN PTR proxy.bigdata.wh.com.        #36.168.192.in-addr.arpa.zone
 ```
 
-最后，手动修改/etc/resolv.conf文件添加本地DNS服务器地和ISP提供的DNS服务器地址。
+最后，手动修改/etc/resolv.conf文件添加ISP提供的DNS服务器地址，以便能够访问外网。
 
 ```
 root@proxy:~# cat /etc/resolv.conf 
