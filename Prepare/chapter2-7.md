@@ -329,42 +329,8 @@ wget -O /etc/yum.repos.d/bigdata.repo http://repo.bigdata.wh.com/resource/bigdat
 更新yum缓存，检测配置是否成功。
 
 ```
-[root@dns yum.repos.d]# yum clean all
-[root@dns yum.repos.d]# yum makecache 
-Loaded plugins: fastestmirror, priorities
-ambari-2.5.0.3                                                            | 2.9 kB  00:00:00     
-base                                                                      | 3.6 kB  00:00:00     
-common                                                                    | 2.9 kB  00:00:00     
-extras                                                                    | 3.4 kB  00:00:00     
-hdp-2.6.0.3                                                               | 2.9 kB  00:00:00     
-hdp_util-1.1.0.21                                                         | 2.9 kB  00:00:00     
-updates                                                                   | 3.4 kB  00:00:00     
-(1/24): ambari-2.5.0.3/primary_db                                         | 8.5 kB  00:00:00     
-(2/24): ambari-2.5.0.3/other_db                                           | 1.3 kB  00:00:00     
-(3/24): ambari-2.5.0.3/filelists_db                                       | 147 kB  00:00:00     
-(4/24): base/7/x86_64/group_gz                                            | 155 kB  00:00:01     
-(5/24): base/7/x86_64/primary_db                                          | 5.6 MB  00:00:00     
-(6/24): common/filelists_db                                               |  586 B  00:00:00     
-(7/24): common/other_db                                                   |  575 B  00:00:00     
-(8/24): common/primary_db                                                 | 1.1 kB  00:00:00     
-(9/24): extras/7/x86_64/prestodelta                                       |  99 kB  00:00:01     
-(10/24): extras/7/x86_64/primary_db                                       | 151 kB  00:00:01     
-(11/24): hdp-2.6.0.3/filelists_db                                         | 466 kB  00:00:00     
-(12/24): hdp-2.6.0.3/primary_db                                           |  77 kB  00:00:00     
-(13/24): hdp-2.6.0.3/other_db                                             |  15 kB  00:00:00     
-(14/24): hdp_util-1.1.0.21/filelists_db                                   |  95 kB  00:00:00     
-(15/24): hdp_util-1.1.0.21/primary_db                                     |  38 kB  00:00:00     
-(16/24): hdp_util-1.1.0.21/other_db                                       |  20 kB  00:00:00     
-(17/24): extras/7/x86_64/filelists_db                                     | 770 kB  00:00:03     
-(18/24): base/7/x86_64/other_db                                           | 2.4 MB  00:00:04     
-(19/24): extras/7/x86_64/other_db                                         | 640 kB  00:00:03     
-(20/24): updates/7/x86_64/prestodelta                                     | 631 kB  00:00:02     
-(21/24): base/7/x86_64/filelists_db                                       | 6.6 MB  00:00:08     
-(22/24): updates/7/x86_64/primary_db                                      | 4.8 MB  00:00:00     
-(23/24): updates/7/x86_64/filelists_db                                    | 2.9 MB  00:00:04     
-(24/24): updates/7/x86_64/other_db                                        |  55 MB  00:00:55     
-Determining fastest mirrors
-Metadata Cache Created
+yum clean all
+yum makecache 
 ```
 
 ## 查看proxy缓存
