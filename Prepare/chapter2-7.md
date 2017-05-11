@@ -314,23 +314,18 @@ priority=1
 proxy=_none_
 ```
 
-更新默认源。
-
-```
-wget -O /etc/yum.repos.d/CentOS7-Base-aliyun.repo http://mirrors.aliyun.com/repo/Centos-7.repo
-```
-
 下载本地源的repo文件。
 
 ```
 wget -O /etc/yum.repos.d/bigdata.repo http://repo.bigdata.wh.com/resource/bigdata.repo
+wget -O /etc/yum.repos.d/CentOS7-Base-aliyun.repo http://repo.bigdata.wh.com/resource/CentOS7-Base-aliyun.repo
 ```
 
 更新yum缓存，检测配置是否成功。
 
 ```
 yum clean all
-yum makecache 
+yum makecache
 ```
 
 ## 查看proxy缓存
