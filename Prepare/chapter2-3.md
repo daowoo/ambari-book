@@ -206,6 +206,7 @@ eof
 ```
 
 * 修改新增区域文件的所有者和权限。
+
   ```
   [root@dns named]# ps aux|grep named
   named     2668  0.0  1.4 165652 15008 ?        Ssl  12:13   0:00 /usr/sbin/named -u named
@@ -217,6 +218,7 @@ eof
   chown :named 36.168.192.in-addr.arpa.zone
   chmod 640 36.168.192.in-addr.arpa.zone
   ```
+
 * 检测新增配置并重启DNS服务。
 
 ```

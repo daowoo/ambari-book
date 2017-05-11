@@ -133,7 +133,9 @@ SIOCDELRT: No such process
 为了让集群中的其他主机能够通过主机名来访问proxy缓存，需要在本地DNS服务器的bigdata.wh.com区域正向和方向解析库文件中分列添加A记录和PTR记录。
 
 ```
+proxy   IN      A       192.168.36.111
 
+111 IN PTR proxy.bigdata.wh.com.
 ```
 
 最后，手动修改/etc/resolv.conf文件设置ISP提供的DNS服务器地址。
