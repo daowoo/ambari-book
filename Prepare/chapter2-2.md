@@ -79,7 +79,7 @@ priority=1
 eof
 ```
 
-运行以下命更新yum缓存的数据。
+* 运行以下命更新yum缓存的数据。
 
 ```
 yum clean all
