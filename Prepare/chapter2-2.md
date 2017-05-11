@@ -216,6 +216,13 @@ systemctl stop firewalld.service
 systemctl disable firewalld.service
 ```
 
+* 关闭
+
+```
+setenforce 0  #临时关闭Selinux
+sed -i 's/SELINUX=.*/SELINUX=disabled/' /etc/selinux/config  #开机不启动Selinux
+```
+
 通过Web浏览器访问自定义源目录。
 
 ![](/assets/repo_http.png)
