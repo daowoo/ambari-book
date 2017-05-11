@@ -5,7 +5,7 @@
 * 系统安装后配置hostname
 
 ```
-hostnamectl set-hostname proxy.bigdata.wh.com  #设置主机名
+hostnamectl set-hostname dns.bigdata.wh.com  #设置主机名
 ```
 
 * 编辑/etc/hosts文件
