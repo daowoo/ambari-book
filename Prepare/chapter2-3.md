@@ -153,17 +153,6 @@ systemctl enable named.service
 systemctl start named.service
 ```
 
-* 修改新增区域文件的所有者和权限。
-
-```
-[root@dns named]# ps aux|grep named
-named     2668  0.0  1.4 165652 15008 ?        Ssl  12:13   0:00 /usr/sbin/named -u named
-root      2680  0.0  0.0 112640   960 pts/0    S+   12:14   0:00 grep --color=auto named
-
-chown :named bigdata.wh.com.zone
-chmod 640 bigdata.wh.com.zone
-```
-
 * 测试域名解析成IP是否正常，如果遇到错误，可以观察日志文件/var/log/message的内容来分析问题。
 
 ```
@@ -214,6 +203,27 @@ zone "36.168.192.in-addr.arpa" IN {
     allow-update { none; };
 };
 eof
+```
+
+* 修改新增区域文件的所有者和权限。
+  ```
+  [root@dns named]# ps aux|grep named
+  named     2668  0.0  1.4 165652 15008 ?        Ssl  12:13   0:00 /usr/sbin/named -u named
+  root      2680  0.0  0.0 112640   960 pts/0    S+   12:14   0:00 grep --color=auto named
+
+  chown :named bigdata.wh.com.zone
+  chmod 640 bigdata.wh.com.zone
+
+  chown :named 36.168.192.in-addr.arpa.zone
+  chmod 640 36.168.192.in-addr.arpa.zone
+  ```
+* 检测新增配置并重启DNS服务。
+
+```
+named-checkconf
+named-checkzone "36.168.192.in-addr.arpa" /var/named/36.168.192.in-addr.arpa.zone
+
+systemctl restart named.service
 ```
 
 * 测试IP反向解析成域名是否正常
