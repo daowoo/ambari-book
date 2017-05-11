@@ -135,9 +135,6 @@ $ORIGIN bigdata.wh.com. #定义域名后缀
                 10M )    #否定答案缓存TTL值
         IN      NS      dns            #定义区域内的一台nameserver
 dns     IN      A       192.168.36.149 #dns这台nameserver所对应的IP
-repo    IN      A       192.168.36.247 #区域内其他主机的A记录
-proxy   IN      A       192.168.36.111
-db      IN      A       192.168.36.101
 admin   IN      CNAME   dns            #admin是dns的别名，admin.bigdata.wh.com.将解析到dns.bigdata.wh.com.
 *       IN      A       192.168.30.1   #泛域名解析，以上都不是的解析到192.168.30.1
 eof
@@ -186,9 +183,6 @@ $ORIGIN 36.168.192.in-addr.arpa.
                 10M )
         IN      NS      dns.bigdata.wh.com.
 149     IN      PTR     dns.bigdata.wh.com.
-247     IN      PTR     repo.bigdata.wh.com.
-111     IN      PTR     proxy.bigdata.wh.com.
-101     IN      PTR     db.bigdata.wh.com.
 *       IN      PTR     192.168.30.1
 eof
 ```
@@ -231,12 +225,67 @@ systemctl restart named.service
 * 测试IP反向解析成域名是否正常
 
 ```
-test
+[root@dns named]# dig -x 192.168.36.247
+
+; <<>> DiG 9.9.4-RedHat-9.9.4-38.el7_3.3 <<>> -x 192.168.36.247
+;; global options: +cmd
+;; Got answer:
+;; ->>HEADER<<- opcode: QUERY, status: NOERROR, id: 63601
+;; flags: qr aa rd ra; QUERY: 1, ANSWER: 1, AUTHORITY: 1, ADDITIONAL: 2
+
+;; OPT PSEUDOSECTION:
+; EDNS: version: 0, flags:; udp: 4096
+;; QUESTION SECTION:
+;247.36.168.192.in-addr.arpa.	IN	PTR
+
+;; ANSWER SECTION:
+247.36.168.192.in-addr.arpa. 600 IN	PTR	repo.bigdata.wh.com.
+
+;; AUTHORITY SECTION:
+36.168.192.in-addr.arpa. 600	IN	NS	dns.bigdata.wh.com.
+
+;; ADDITIONAL SECTION:
+dns.bigdata.wh.com.	600	IN	A	192.168.36.149
+
+;; Query time: 0 msec
+;; SERVER: 192.168.36.149#53(192.168.36.149)
+;; WHEN: Thu May 11 09:55:57 CEST 2017
+;; MSG SIZE  rcvd: 123
 ```
 
-* 在bigdata.wh.com区域内为集群内的其他主机添加A记录和PTR记录
+* 在bigdata.wh.com区域内为集群其他主机添加A记录和PTR记录
 
 ```
+[root@dns named]# cat bigdata.wh.com.zone 
+$TTL 600
+$ORIGIN bigdata.wh.com.
+@   IN  SOA    dns.bigdata.wh.com. admin.bigdata.wh.com. (
+                20170510
+                1H
+                5M
+                1W
+                10M )
+        IN      NS      dns
+dns     IN      A       192.168.36.149
+repo    IN      A       192.168.36.247    #新添加的
+db      IN      A       192.168.36.101
+admin   IN      CNAME   dns
+*       IN      A       192.168.30.1
+
+[root@dns named]# cat 36.168.192.in-addr.arpa.zone 
+$TTL 600
+$ORIGIN 36.168.192.in-addr.arpa.
+@ IN SOA dns.bigdata.wh.com. admin.bigdata.wh.com. (
+20170510
+1H
+5M
+1W
+10M )
+    IN NS  dns.bigdata.wh.com.
+149 IN PTR dns.bigdata.wh.com.
+247 IN PTR repo.bigdata.wh.com.
+101 IN PTR db.bigdata.wh.com.
+*   IN PTR 192.168.30.1
 
 ```
 
