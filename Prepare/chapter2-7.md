@@ -314,22 +314,13 @@ priority=1
 proxy=_none_
 ```
 
-恢复之前备份的Centos7系统默认标准源repo文件。
+下载国内阿里云源的repo文件。
 
 ```
-[root@dns yum.repos.d]# cp -v /etc/yum.repos.d.bak/* /etc/yum.repos.d
-‘/etc/yum.repos.d.bak/CentOS7-Base-163.repo’ -> ‘/etc/yum.repos.d/CentOS7-Base-163.repo’
-‘/etc/yum.repos.d.bak/CentOS7-Base-aliyun’ -> ‘/etc/yum.repos.d/CentOS7-Base-aliyun’
-‘/etc/yum.repos.d.bak/CentOS-Base.repo.bak’ -> ‘/etc/yum.repos.d/CentOS-Base.repo.bak’
-‘/etc/yum.repos.d.bak/CentOS-CR.repo’ -> ‘/etc/yum.repos.d/CentOS-CR.repo’
-‘/etc/yum.repos.d.bak/CentOS-Debuginfo.repo’ -> ‘/etc/yum.repos.d/CentOS-Debuginfo.repo’
-‘/etc/yum.repos.d.bak/CentOS-fasttrack.repo’ -> ‘/etc/yum.repos.d/CentOS-fasttrack.repo’
-‘/etc/yum.repos.d.bak/CentOS-Sources.repo’ -> ‘/etc/yum.repos.d/CentOS-S
-ources.repo’
-‘/etc/yum.repos.d.bak/CentOS-Vault.repo’ -> ‘/etc/yum.repos.d/CentOS-Vault.repo’
+wget -O /etc/yum.repos.d/CentOS7-Base-aliyun.repo http://mirrors.aliyun.com/repo/Centos-7.repo
 ```
 
-下载本地源repo文件。
+下载本地源的repo文件。
 
 ```
 wget -O /etc/yum.repos.d/bigdata.repo http://repo.bigdata.wh.com/resource/bigdata.repo
