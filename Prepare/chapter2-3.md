@@ -236,16 +236,16 @@ systemctl restart named.service
 ;; OPT PSEUDOSECTION:
 ; EDNS: version: 0, flags:; udp: 4096
 ;; QUESTION SECTION:
-;247.36.168.192.in-addr.arpa.	IN	PTR
+;247.36.168.192.in-addr.arpa.    IN    PTR
 
 ;; ANSWER SECTION:
-247.36.168.192.in-addr.arpa. 600 IN	PTR	repo.bigdata.wh.com.
+247.36.168.192.in-addr.arpa. 600 IN    PTR    repo.bigdata.wh.com.
 
 ;; AUTHORITY SECTION:
-36.168.192.in-addr.arpa. 600	IN	NS	dns.bigdata.wh.com.
+36.168.192.in-addr.arpa. 600    IN    NS    dns.bigdata.wh.com.
 
 ;; ADDITIONAL SECTION:
-dns.bigdata.wh.com.	600	IN	A	192.168.36.149
+dns.bigdata.wh.com.    600    IN    A    192.168.36.149
 
 ;; Query time: 0 msec
 ;; SERVER: 192.168.36.149#53(192.168.36.149)
@@ -267,7 +267,7 @@ $ORIGIN bigdata.wh.com.
                 10M )
         IN      NS      dns
 dns     IN      A       192.168.36.149
-repo    IN      A       192.168.36.247    #新添加的
+repo    IN      A       192.168.36.247  #区域内其他主机的A记录
 db      IN      A       192.168.36.101
 admin   IN      CNAME   dns
 *       IN      A       192.168.30.1
@@ -283,10 +283,9 @@ $ORIGIN 36.168.192.in-addr.arpa.
 10M )
     IN NS  dns.bigdata.wh.com.
 149 IN PTR dns.bigdata.wh.com.
-247 IN PTR repo.bigdata.wh.com.
+247 IN PTR repo.bigdata.wh.com.    #区域内其他主机的PTR记录
 101 IN PTR db.bigdata.wh.com.
 *   IN PTR 192.168.30.1
-
 ```
 
 
