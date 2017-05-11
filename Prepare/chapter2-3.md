@@ -210,7 +210,7 @@ eof
 cat << eof >> /etc/named.rfc1912.zones
 zone "36.168.192.in-addr.arpa." IN {
     type master;
-    file "36.168.192.in-addr.arpa.zone;
+    file "36.168.192.in-addr.arpa.zone";
     allow-update { none; };
 };
 eof
