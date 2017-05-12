@@ -114,11 +114,12 @@ server starting
 bash-4.2$ ss -tpnl |grep 5432
 LISTEN     0      128                       *:5432                     *:*      users:(("postgres",10297,3))
 LISTEN     0      128                      :::5432                    :::*      users:(("postgres",10297,4))
-bash-4.2$ psql -U postgres
+
+bash-4.2$ psql -U postgres   #psql客户端采用postgres用户登陆数据库（当前登陆的是默认的全局数据库postgres）
 psql (9.2.18)
 Type "help" for help.
 
-postgres=# \l           #执行psql客户端环境下提供的命令，该命令是列出该数据库实例中的所有数据库
+postgres=# \l           #执行psql客户端环境下提供的命令，该命令是列出该数据库实例中的所有数据库及模板
                                  List of databases
    Name    |  Owner   | Encoding |  Collate   |   Ctype    |   Access privileges   
 -----------+----------+----------+------------+------------+-----------------------
