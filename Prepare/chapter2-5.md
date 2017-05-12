@@ -119,12 +119,6 @@ server repo.bigdata.wh.com           #设置ntp server地址，修改为内网nt
 #server 1.centos.pool.ntp.org iburst
 #server 2.centos.pool.ntp.org iburst
 #server 3.centos.pool.ntp.org iburst
-#broadcast 192.168.1.255 autokey    # broadcast server
-#broadcastclient            # broadcast client
-#broadcast 224.0.1.1 autokey        # multicast server
-#multicastclient 224.0.1.1        # multicast client
-#manycastserver 239.255.254.254        # manycast server
-#manycastclient 239.255.254.254 autokey # manycast client
 ```
 
 * 优化swap分区设置
