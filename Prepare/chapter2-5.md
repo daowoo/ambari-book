@@ -101,7 +101,7 @@ yum makecache
 
 * NTP时间同步
 
-安装ntp，更新ntp client配置文件，与之前创建的NTP服务器保持时钟同步。
+安装ntp，更新ntp client配置文件。
 
 ```
 yum install -y ntp
@@ -121,9 +121,33 @@ server repo.bigdata.wh.com           #设置ntp server地址，修改为内网nt
 #server 3.centos.pool.ntp.org iburst
 ```
 
+与之前创建的NTP服务器保持时钟同步。
+
+```
+[root@server yum.repos.d]# systemctl restart ntpd.service 
+[root@server yum.repos.d]# ntpdate  -u repo.bigdata.wh.com
+12 May 05:50:47 ntpdate[4136]: step time server 192.168.36.247 offset -3.068888 sec
+[root@server yum.repos.d]# ntpq -p
+     remote           refid      st t when poll reach   delay   offset  jitter
+==============================================================================
+ repo.bigdata.wh 115.28.122.198   3 u   34   64    3    5.780  -3068.4  29.757
+```
+
 * 优化swap分区设置
 
+```
+[root@centos7 ~]# sysctl -w vm.swappiness=0      #优先使用内存，减少与磁盘交互
+vm.swappiness = 0
+[root@centos7 ~]# echo "vm.swappiness = 0" >> /etc/sysctl.conf
+```
+
 * 删除版本冲突的包
+
+Centos7镜像中默认安装了高版本的snappy，hdp-util中使用的低版本的snappy，这会导致安装datanode client的时候出现版本冲突，我们先把高版本的snappy卸载掉，后续安装过程中再从本地源中下载并安装低版本。
+
+```
+yum erase -y snappy.x86_64
+```
 
 
 
