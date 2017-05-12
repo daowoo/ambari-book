@@ -143,15 +143,37 @@ bash-4.2$ exit           #退出postgres用户
 exit
 ```
 
-* 修改Postgresql数据库超级管理员密码
+* 利用GUI工具连接并操作数据库
+
+postgresql数据库的GUI工具有很多，与PG配合比较好用的主要是Navicat Premium和pgAdmin 3/4了。其中pgAdmin 4采用QT开发，支持跨平台，GUI非常赞，还添加了性能实时监视图表，不过目前多语言和流畅性都还有点问题。
+
+![](/assets/2.6-pgadmin4-2.png)![](/assets/2.6-pgadmin4-3.png)
+
+* 配置PG跟随系统自启动
+
+二进制安装时会自动把postgresql.service配置文件拷贝到/usr/lib/systemd/system/目录下，如果需要对自启动服务进行自定义配置，建议不要直接修改/usr/lib/systemd/system/postgresql.service文件，而是将该文件拷贝至‘/etc/systemd/system/’目录，然后再修改目标文件，并在目标文件内通过‘.include’指令包含源文件。
 
 ```
-bash-4.2$ psql -U postgres
-psql (9.2.18)
-Type "help" for help.
+systemctl enable postgresql.service
+systemctl start postgresql.service
 
-postgres=# ALTER USER postgres WITH PASSWORD '1';      #利用SQL语句修改管理员密码
-ALTER ROLE
+[root@localhost system]# vi /etc/systemd/system/postgresql-9.5.service 
+# It's not recommended to modify this file in-place, because it will be
+# overwritten during package upgrades.  If you want to customize, the
+# best way is to create a file "/etc/systemd/system/postgresql-9.5.service",
+# containing
+#       .include /lib/systemd/system/postgresql-9.5.service
+#       ...make your changes here...
+# For more info about custom unit files, see
+# http://fedoraproject.org/wiki/Systemd#How_do_I_customize_a_unit_file.2F_add_a_custom_unit_file.3F
+# Note: changing PGDATA will typically require adjusting SELinux
+# configuration as well.
+# Note: do not use a PGDATA pathname containing spaces, or you will
+# break postgresql-setup.
+.include /lib/systemd/system/postgresql-9.5.service       #通过‘.include’指令包含源文件中的配置项
+
+[Service]
+Environment=PGDATA=/home/pgsql/data/                      #然后对指定配置项目进行修改
 ```
 
 
