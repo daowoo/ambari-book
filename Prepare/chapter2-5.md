@@ -82,11 +82,50 @@ nameserver 192.168.36.149
 eof
 ```
 
+* Yum设置本地仓库
+
+备份系统默认源。
+
+```
+mv /etc/yum.repos.d /etc/yum.repos.d.bak
+mkdir /etc/yum.repos.d
+```
+
+下载之前创建的本地源repo文件，更新yum缓存
+
+```
+wget -O /etc/yum.repos.d/bigdata.repo http://repo.bigdata.wh.com/resource/bigdata.repo
+yum clean all
+yum makecache
+```
+
 * NTP时间同步
 
+安装ntp，更新ntp client配置文件，与之前创建的NTP服务器保持时钟同步。
 
+```
+yum install -y ntp
 
-* Yum设置本地仓库
+[root@centos7 ~]# cat /etc/ntp.conf
+restrict 127.0.0.1 
+restrict ::1
+
+# Hosts on local network are less restricted.
+#restrict 192.168.1.0 mask 255.255.255.0 nomodify notrap
+# Use public servers from the pool.ntp.org project.
+# Please consider joining the pool (http://www.pool.ntp.org/join.html).
+server repo.bigdata.wh.com           #设置ntp server地址，修改为内网ntp服务器
+#server 0.centos.pool.ntp.org iburst
+#server 1.centos.pool.ntp.org iburst
+#server 2.centos.pool.ntp.org iburst
+#server 3.centos.pool.ntp.org iburst
+#broadcast 192.168.1.255 autokey    # broadcast server
+#broadcastclient            # broadcast client
+#broadcast 224.0.1.1 autokey        # multicast server
+#multicastclient 224.0.1.1        # multicast client
+#manycastserver 239.255.254.254        # manycast server
+#manycastclient 239.255.254.254 autokey # manycast client
+```
 
 * 优化swap分区设置
 
