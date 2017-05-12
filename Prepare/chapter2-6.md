@@ -106,5 +106,35 @@ host    all             all             0.0.0.0/0               md5   #添加行
 host    all             all             ::1/128                 trust
 ```
 
+* 启动数据库
+
+```
+bash-4.2$ pg_ctl start -D data/
+server starting
+bash-4.2$ ss -tpnl |grep 5432
+LISTEN     0      128                       *:5432                     *:*      users:(("postgres",10297,3))
+LISTEN     0      128                      :::5432                    :::*      users:(("postgres",10297,4))
+bash-4.2$ psql -U postgres
+psql (9.2.18)
+Type "help" for help.
+
+postgres=# \l           #执行psql客户端环境下提供的命令，该命令是列出该数据库实例中的所有数据库
+                                 List of databases
+   Name    |  Owner   | Encoding |  Collate   |   Ctype    |   Access privileges   
+-----------+----------+----------+------------+------------+-----------------------
+ postgres  | postgres | UTF8     | en_US.utf8 | en_US.utf8 | 
+ template0 | postgres | UTF8     | en_US.utf8 | en_US.utf8 | =c/postgres          +
+           |          |          |            |            | postgres=CTc/postgres
+ template1 | postgres | UTF8     | en_US.utf8 | en_US.utf8 | =c/postgres          +
+           |          |          |            |            | postgres=CTc/postgres
+(3 rows)
+
+postgres=# \t
+Showing only tuples.
+postgres=# \q            #退出psql客户端
+bash-4.2$ exit           #退出postgres用户
+exit
+```
+
 
 
