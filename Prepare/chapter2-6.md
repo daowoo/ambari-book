@@ -95,7 +95,15 @@ port = 5432                    #这个不开也行，默认就是5432端口
 * 配置访问权限
 
 ```
-
+bash-4.2$ vim pg_hba.conf
+# TYPE  DATABASE        USER            ADDRESS                 METHOD
+# "local" is for Unix domain socket connections only
+local   all             all                                     trust
+# IPv4 local connections:
+host    all             all             127.0.0.1/32            trust
+host    all             all             0.0.0.0/0               md5   #添加行，所有IP和用户，密码对都可以连接
+# IPv6 local connections:
+host    all             all             ::1/128                 trust
 ```
 
 
