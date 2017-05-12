@@ -173,7 +173,7 @@ systemctl start postgresql.service
 .include /lib/systemd/system/postgresql-9.5.service       #通过‘.include’指令包含源文件中的配置项
 
 [Service]
-Environment=PGDATA=/home/pgsql/data/                      #然后对指定配置项目进行修改
+Environment=PGDATA=/home/pgsql/data/                      #然对指定配置项目进行修改
 ```
 
 
