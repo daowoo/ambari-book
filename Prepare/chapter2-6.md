@@ -109,9 +109,9 @@ host    all             all             ::1/128                 trust
 * 启动数据库
 
 ```
-bash-4.2$ pg_ctl start -D data/
+bash-4.2$ pg_ctl start -D data/  #利用pg_ctl启动指定数据库实例
 server starting
-bash-4.2$ ss -tpnl |grep 5432
+bash-4.2$ ss -tpnl |grep 5432  #查看数据库服务监听的端口是否正常
 LISTEN     0      128                       *:5432                     *:*      users:(("postgres",10297,3))
 LISTEN     0      128                      :::5432                    :::*      users:(("postgres",10297,4))
 
@@ -135,6 +135,17 @@ Showing only tuples.
 postgres=# \q            #退出psql客户端
 bash-4.2$ exit           #退出postgres用户
 exit
+```
+
+* 修改Postgresql数据库超级管理员密码
+
+```
+bash-4.2$ psql -U postgres
+psql (9.2.18)
+Type "help" for help.
+
+postgres=# ALTER USER postgres WITH PASSWORD '1';      #利用SQL语句修改管理员密码
+ALTER ROLE
 ```
 
 
