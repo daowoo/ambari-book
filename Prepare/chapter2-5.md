@@ -71,6 +71,8 @@ dns=none               #禁止更新dns
 [logging]
 #level=DEBUG
 #domains=ALL
+
+[root@server ~]# systemctl restart NetworkManager.service #重启NetworkManager服务
 ```
 
 ```
