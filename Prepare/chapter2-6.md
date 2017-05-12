@@ -114,7 +114,11 @@ server starting
 bash-4.2$ ss -tpnl |grep 5432  #查看数据库服务监听的端口是否正常
 LISTEN     0      128                       *:5432                     *:*      users:(("postgres",10297,3))
 LISTEN     0      128                      :::5432                    :::*      users:(("postgres",10297,4))
+```
 
+* 利用psql客户端连接并操作数据库
+
+```
 bash-4.2$ psql -U postgres   #psql客户端采用postgres用户登陆数据库（当前登陆的是默认的全局数据库postgres）
 psql (9.2.18)
 Type "help" for help.
@@ -132,6 +136,8 @@ postgres=# \l           #执行psql客户端环境下提供的命令，该命令
 
 postgres=# \t
 Showing only tuples.
+postgres=# ALTER USER postgres WITH PASSWORD '1';      #利用SQL语句修改管理员密码
+ALTER ROLE
 postgres=# \q            #退出psql客户端
 bash-4.2$ exit           #退出postgres用户
 exit
