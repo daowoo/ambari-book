@@ -60,7 +60,18 @@ Are you sure you want to continue connecting (yes/no)? #第一登录会询问是
 
 * DNS设置和检查
 
+Centos7新增了NetworkManager来提供默认的网络服务，它是一个动态的网络控制和配置守护进程，在/etc/resolv.conf中修改nameserver后，NetworkManager会定期的恢复成初始值。所以，要么使用NetworkManager提供支持的nmcli命令来配置dns，要么就关闭NetworkManager定期恢复dns的功能。
 
+```
+[root@server ~]# cat /etc/NetworkManager/NetworkManager.conf
+[main]
+plugins=ifcfg-rh
+dns=none               #禁止更新dns
+
+[logging]
+#level=DEBUG
+#domains=ALL
+```
 
 * NTP时间同步
 
