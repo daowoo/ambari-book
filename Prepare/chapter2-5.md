@@ -84,6 +84,53 @@ nameserver 192.168.36.149
 eof
 ```
 
+* 在DNS服务器中为集群其他主机添加A记录和PTR记录
+
+```
+[root@dns named]# cat bigdata.wh.com.zone 
+$TTL 600
+$ORIGIN bigdata.wh.com.
+@   IN  SOA    dns.bigdata.wh.com. admin.bigdata.wh.com. (
+                20170510
+                1H
+                5M
+                1W
+                10M )
+        IN      NS      dns
+dns     IN      A       192.168.36.149
+repo    IN      A       192.168.36.247  #区域内其他主机的A记录
+db      IN      A       192.168.36.101
+server  IN      A       192.168.70.100
+gw      IN      A       192.168.70.101
+nn      IN      A       192.168.70.102
+sn      IN      A       192.168.70.103
+dn001   IN      A       192.168.70.104
+dn002   IN      A       192.168.70.105
+admin   IN      CNAME   dns
+*       IN      A       192.168.30.1
+
+[root@dns named]# cat 36.168.192.in-addr.arpa.zone 
+$TTL 600
+$ORIGIN 36.168.192.in-addr.arpa.
+@ IN SOA dns.bigdata.wh.com. admin.bigdata.wh.com. (
+20170510
+1H
+5M
+1W
+10M )
+    IN NS  dns.bigdata.wh.com.
+149 IN PTR dns.bigdata.wh.com.
+247 IN PTR repo.bigdata.wh.com.    #区域内其他主机的PTR记录
+101 IN PTR db.bigdata.wh.com.
+100 IN PTR server.bigdata.wh.com.
+101 IN PTR gw.bigdata.wh.com.
+102 IN PTR nn.bigdata.wh.com.
+103 IN PTR sn.bigdata.wh.com.
+104 IN PTR dn001.bigdata.wh.com.
+105 IN PTR dn002.bigdata.wh.com.
+*   IN PTR 192.168.30.1
+```
+
 * Yum设置本地仓库
 
 备份系统默认源。
