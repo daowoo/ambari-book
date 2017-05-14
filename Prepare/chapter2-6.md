@@ -59,30 +59,29 @@ copying template1 to template0 ... ok
 copying template1 to postgres ... ok
 ```
 
-* 数据库初始化后，在数据库目录data中会生成一系列的文件夹和文件。
+* 数据库初始化后，在数据库目录data中会生成一系列的文件夹和文件，它们的具体含义如下。
 
-  bash-4.2$ tree -L 1 data/  
-    data/  
-    \|-- base           \#默认表空间的目录，与每个数据库对应的子目录存储在该目录中  
-    \|-- global         \#集群范围的表存储在该目录中，比如‘pg\_database’  
-    \|-- pg\_clog        \#包含事务提交状态数据的子目录  
-    \|-- pg\_hba.conf    \#访问认证配置文件，包括允许哪些IP的主机访问，采用的认证方法是什么等信息  
-    \|-- pg\_ident.conf  \#‘ident’认证方式的用户映射文件  
-    \|-- pg\_multixact   \#包含多重事务状态数据的子目录\(使用共享的行锁\)  
-    \|-- pg\_notify      \#包含LISTEN/NOTIFY状态数据的子目录  
-    \|-- pg\_serial      \#包含已提交可串行化事务信息的子目录  
-    \|-- pg\_snapshots   \#包含输出快照的子目录  
-    \|-- pg\_stat\_tmp    \#用于统计子系统的临时文件存储在该目录中  
-    \|-- pg\_subtrans    \#包含子事务状态数据的子目录  
-    \|-- pg\_tblspc      \#包含指向表空间的符号链接的子目录  
-    \|-- pg\_twophase    \#包含用于预备事务的状态文件的子目录  
-    \|-- PG\_VERSION     \#一个包含PostgreSQL主版本号的文件  
-    \|-- pg\_xlog        \#包含WAL\(预写日志\)文件的子目录  
-    \`-- postgresql.conf   \#数据库实例的主配置文件，基本上所有的配置参数均在此文件中
+    bash-4.2$ tree -L 1 data/
+      data/
+      |-- base           #默认表空间的目录，与每个数据库对应的子目录存储在该目录中
+      |-- global         #集群范围的表存储在该目录中，比如‘pg_database’
+      |-- pg_clog        #包含事务提交状态数据的子目录
+      |-- pg_hba.conf    #访问认证配置文件，包括允许哪些IP的主机访问，采用的认证方法是什么等信息
+      |-- pg_ident.conf  #‘ident’认证方式的用户映射文件
+      |-- pg_multixact   #包含多重事务状态数据的子目录(使用共享的行锁)
+      |-- pg_notify      #包含LISTEN/NOTIFY状态数据的子目录
+      |-- pg_serial      #包含已提交可串行化事务信息的子目录
+      |-- pg_snapshots   #包含输出快照的子目录
+      |-- pg_stat_tmp    #用于统计子系统的临时文件存储在该目录中
+      |-- pg_subtrans    #包含子事务状态数据的子目录
+      |-- pg_tblspc      #包含指向表空间的符号链接的子目录
+      |-- pg_twophase    #包含用于预备事务的状态文件的子目录
+      |-- PG_VERSION     #一个包含PostgreSQL主版本号的文件
+      |-- pg_xlog        #包含WAL(预写日志)文件的子目录
+      `-- postgresql.conf   #数据库实例的主配置文件，基本上所有的配置参数均在此文件中
+    12 directories, 4 files
 
-  12 directories, 4 files
-
-* 配置PG监听的IP和端口
+* 配置PG监听的IP和端口，对于拥有多个IP的主机，可根据实际需要选择监听哪几个IP。
 
 ```
 bash-4.2$ cd data/
@@ -92,7 +91,7 @@ listen_addresses = '*'         #监听所有ip的连接，默认是本机
 port = 5432                    #这个不开也行，默认就是5432端口
 ```
 
-* 配置访问权限
+* 配置访问权限，为了提高安全性，可以配置成只允许特定的几台主机访问。
 
 ```
 bash-4.2$ vim pg_hba.conf
@@ -106,7 +105,7 @@ host    all             all             0.0.0.0/0               md5   #添加行
 host    all             all             ::1/128                 trust
 ```
 
-* 启动数据库
+* 利用PG默认提供的管理工具pg\_ctrl来启动数据库，然后再查看5432端口是否正常开放。
 
 ```
 bash-4.2$ pg_ctl start -D data/  #利用pg_ctl启动指定数据库实例
@@ -116,7 +115,7 @@ LISTEN     0      128                       *:5432                     *:*      
 LISTEN     0      128                      :::5432                    :::*      users:(("postgres",10297,4))
 ```
 
-* 利用psql客户端连接并操作数据库
+* 利用PG默认提供的客户端工具psql来连接并操作数据库，psql的操作命令本文不作详细描述，请参考psql --help。
 
 ```
 bash-4.2$ psql -U postgres   #psql客户端采用postgres用户登陆数据库（当前登陆的是默认的全局数据库postgres）
