@@ -14,22 +14,22 @@ Welcome to your Vagrant-built virtual machine.
 * 利用psql登录默认数据库。
 
 ```
-[root@db ~]# sudo -u postgres psql           #以postgres用户登录
+[root@db ~]# sudo -u postgres psql                              #以postgres用户登录
 could not change directory to "/root"
 psql (9.2.18)
 Type "help" for help.
 
-postgres=# CREATE DATABASE ambari;           #创建数据库ambari
+postgres=# CREATE DATABASE ambari;                               #创建数据库ambari
 CREATE DATABASE
-postgres=# CREATE USER ambari WITH PASSWORD '123';  #创建用户ambari并设置密码
+postgres=# CREATE USER ambari WITH PASSWORD '123';               #创建用户ambari并设置密码
 CREATE ROLE
-postgres=# GRANT ALL PRIVILEGES ON DATABASE ambari TO ambari; #给用户ambari添加操作数据库ambari的授权
+postgres=# GRANT ALL PRIVILEGES ON DATABASE ambari TO ambari;    #给用户ambari添加操作数据库ambari的授权
 GRANT
-postgres=# \c ambari     #切换登录到ambari数据库
+postgres=# \c ambari                                             #切换登录到ambari数据库
 You are now connected to database "ambari" as user "postgres".
-ambari=# CREATE SCHEMA ambari AUTHORIZATION ambari;  #创建从属于用户ambari的模式ambari
+ambari=# CREATE SCHEMA ambari AUTHORIZATION ambari;              #创建从属于用户ambari的模式ambari
 CREATE SCHEMA
-ambari=# ALTER SCHEMA ambari OWNER TO ambari;  #修改模式ambari的拥有者为用户ambari
+ambari=# ALTER SCHEMA ambari OWNER TO ambari;                    #修改模式ambari的拥有者为用户ambari
 ALTER SCHEMA
 ambari=# ALTER ROLE ambari SET search_path to 'ambari', 'public';
 ALTER ROLE
@@ -48,7 +48,6 @@ vagrant@server.bigdata.wh.com's password:
 Ambari-DDL-Postgres-CREATE.sql                                                       100%   77KB  77.3KB/s   00:00    
 [root@db ~]# ls
 Ambari-DDL-Postgres-CREATE.sql  anaconda-ks.cfg  ec2-keypair
-
 ```
 
 * 利用DDL脚本初始化ambari数据库
@@ -79,8 +78,11 @@ ambari=> \d
  ambari | alert_group_target            | table | ambari
  ambari | alert_grouping                | table | ambari
  ambari | alert_history                 | table | ambari
-
 ```
+
+至此自定义的数据库就成功创建了，当在server主机上启动server端时，我们就使用ambari用户来登录db.bigdata.wh.com主机上的ambari数据库。
+
+
 
 
 
