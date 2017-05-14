@@ -108,30 +108,9 @@ dn001   IN      A       192.168.70.104
 dn002   IN      A       192.168.70.105
 admin   IN      CNAME   dns
 *       IN      A       192.168.30.1
-
-[root@dns named]# cat 36.168.192.in-addr.arpa.zone 
-$TTL 600
-$ORIGIN 36.168.192.in-addr.arpa.
-@ IN SOA dns.bigdata.wh.com. admin.bigdata.wh.com. (
-20170510
-1H
-5M
-1W
-10M )
-    IN NS  dns.bigdata.wh.com.
-149 IN PTR dns.bigdata.wh.com.
-247 IN PTR repo.bigdata.wh.com.    #区域内其他主机的PTR记录
-101 IN PTR db.bigdata.wh.com.
-100 IN PTR server.bigdata.wh.com.
-101 IN PTR gw.bigdata.wh.com.
-102 IN PTR nn.bigdata.wh.com.
-103 IN PTR sn.bigdata.wh.com.
-104 IN PTR dn001.bigdata.wh.com.
-105 IN PTR dn002.bigdata.wh.com.
-*   IN PTR 192.168.30.1
 ```
 
-* Yum设置本地仓库
+* 为集群其他主机设置Yum本地源
 
 备份系统默认源。
 
@@ -145,7 +124,7 @@ mkdir /etc/yum.repos.d
 ```
 wget -O /etc/yum.repos.d/bigdata.repo http://repo.bigdata.wh.com/resource/bigdata.repo
 yum clean all
-yum makecache
+yum repolist
 ```
 
 * NTP时间同步
