@@ -61,25 +61,27 @@ copying template1 to postgres ... ok
 
 * 数据库初始化后，在数据库目录data中会生成一系列的文件夹和文件，它们的具体含义如下。
 
-    bash-4.2$ tree -L 1 data/
-      data/
-      |-- base           #默认表空间的目录，与每个数据库对应的子目录存储在该目录中
-      |-- global         #集群范围的表存储在该目录中，比如‘pg_database’
-      |-- pg_clog        #包含事务提交状态数据的子目录
-      |-- pg_hba.conf    #访问认证配置文件，包括允许哪些IP的主机访问，采用的认证方法是什么等信息
-      |-- pg_ident.conf  #‘ident’认证方式的用户映射文件
-      |-- pg_multixact   #包含多重事务状态数据的子目录(使用共享的行锁)
-      |-- pg_notify      #包含LISTEN/NOTIFY状态数据的子目录
-      |-- pg_serial      #包含已提交可串行化事务信息的子目录
-      |-- pg_snapshots   #包含输出快照的子目录
-      |-- pg_stat_tmp    #用于统计子系统的临时文件存储在该目录中
-      |-- pg_subtrans    #包含子事务状态数据的子目录
-      |-- pg_tblspc      #包含指向表空间的符号链接的子目录
-      |-- pg_twophase    #包含用于预备事务的状态文件的子目录
-      |-- PG_VERSION     #一个包含PostgreSQL主版本号的文件
-      |-- pg_xlog        #包含WAL(预写日志)文件的子目录
-      `-- postgresql.conf   #数据库实例的主配置文件，基本上所有的配置参数均在此文件中
-    12 directories, 4 files
+```
+bash-4.2$ tree -L 1 data/
+    data/
+    |-- base           #默认表空间的目录，与每个数据库对应的子目录存储在该目录中
+    |-- global         #集群范围的表存储在该目录中，比如‘pg_database’
+    |-- pg_clog        #包含事务提交状态数据的子目录
+    |-- pg_hba.conf    #访问认证配置文件，包括允许哪些IP的主机访问，采用的认证方法是什么等信息
+    |-- pg_ident.conf  #‘ident’认证方式的用户映射文件
+    |-- pg_multixact   #包含多重事务状态数据的子目录(使用共享的行锁)
+    |-- pg_notify      #包含LISTEN/NOTIFY状态数据的子目录
+    |-- pg_serial      #包含已提交可串行化事务信息的子目录
+    |-- pg_snapshots   #包含输出快照的子目录
+    |-- pg_stat_tmp    #用于统计子系统的临时文件存储在该目录中
+    |-- pg_subtrans    #包含子事务状态数据的子目录
+    |-- pg_tblspc      #包含指向表空间的符号链接的子目录
+    |-- pg_twophase    #包含用于预备事务的状态文件的子目录
+    |-- PG_VERSION     #一个包含PostgreSQL主版本号的文件
+    |-- pg_xlog        #包含WAL(预写日志)文件的子目录
+    `-- postgresql.conf   #数据库实例的主配置文件，基本上所有的配置参数均在此文件中
+  12 directories, 4 files
+```
 
 * 配置PG监听的IP和端口，对于拥有多个IP的主机，可根据实际需要选择监听哪几个IP。
 
