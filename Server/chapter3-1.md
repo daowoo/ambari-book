@@ -10,7 +10,7 @@ To escape to local shell, press 'Ctrl+Alt+]'.
 WARNING! The remote SSH server rejected X11 forwarding request.
 Last login: Sun May 14 18:34:36 2017 from 192.168.70.1
 Welcome to your Vagrant-built virtual machine.
-[root@server ~]# 
+[root@server ~]#
 ```
 
 * 确认本地源及配置repo列表
@@ -41,6 +41,10 @@ Dependency Installed:
 
 Complete!
 ```
+
+
+
+
 
 
 
