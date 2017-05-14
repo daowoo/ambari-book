@@ -8,7 +8,7 @@
   * [建议硬件配置](Overview/chapter1-4.md)
 * [集群环境准备](Prepare/README.md)
   * [规划集群主机](Prepare/chapter2-1.md)
-  * [创建Yum本地源服务](Prepare/chapter2-2.md)
+  * [创建Yum本地源](Prepare/chapter2-2.md)
   * [创建DNS域名解析服务](Prepare/chapter2-3.md)
   * [创建NTP时钟同步服务](Prepare/chapter2-4.md)
   * [初始化集群部署环境](Prepare/chapter2-5.md)
