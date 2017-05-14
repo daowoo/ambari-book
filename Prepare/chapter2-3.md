@@ -169,71 +169,6 @@ Aliases:
 dns.bigdata.wh.com has address 192.168.36.149
 ```
 
-* 创建区域bigdata.wh.com的反向解析库文件。
-
-```
-cat << 'eof' > /var/named/36.168.192.in-addr.arpa.zone
-$TTL 600
-$ORIGIN 36.168.192.in-addr.arpa.
-@   IN  SOA    dns.bigdata.wh.com. admin.bigdata.wh.com. (
-                20170510
-                1H
-                5M
-                1W
-                10M )
-        IN      NS      dns.bigdata.wh.com.
-149     IN      PTR     dns.bigdata.wh.com.
-*       IN      PTR     192.168.30.1
-eof
-```
-
-* 追加bigdata.wh.com反向解析区域的定义。
-
-```
-cat << eof >> /etc/named.rfc1912.zones
-zone "36.168.192.in-addr.arpa" IN {
-    type master;
-    file "36.168.192.in-addr.arpa.zone";
-    allow-update { none; };
-};
-eof
-```
-
-* 修改新增区域文件的所有者和权限。
-
-  ```
-  [root@dns named]# ps aux|grep named
-  named     2668  0.0  1.4 165652 15008 ?        Ssl  12:13   0:00 /usr/sbin/named -u named
-  root      2680  0.0  0.0 112640   960 pts/0    S+   12:14   0:00 grep --color=auto named
-
-  chown :named bigdata.wh.com.zone
-  chmod 640 bigdata.wh.com.zone
-
-  chown :named 36.168.192.in-addr.arpa.zone
-  chmod 640 36.168.192.in-addr.arpa.zone
-  ```
-
-* 检测新增配置并重启DNS服务。
-
-```
-named-checkconf
-named-checkzone "36.168.192.in-addr.arpa" /var/named/36.168.192.in-addr.arpa.zone
-
-systemctl restart named.service
-```
-
-* 测试IP反向解析成域名是否正常
-
-```
-[root@dns named]# host -t PTR 192.168.36.149 192.168.36.149
-Using domain server:
-Name: 192.168.36.149
-Address: 192.168.36.149#53
-Aliases: 
-
-149.36.168.192.in-addr.arpa domain name pointer dns.bigdata.wh.com.
-```
-
 * 在bigdata.wh.com区域内为集群其他主机添加A记录和PTR记录
 
 ```
@@ -252,21 +187,6 @@ repo    IN      A       192.168.36.247  #区域内其他主机的A记录
 db      IN      A       192.168.36.101
 admin   IN      CNAME   dns
 *       IN      A       192.168.30.1
-
-[root@dns named]# cat 36.168.192.in-addr.arpa.zone 
-$TTL 600
-$ORIGIN 36.168.192.in-addr.arpa.
-@ IN SOA dns.bigdata.wh.com. admin.bigdata.wh.com. (
-20170510
-1H
-5M
-1W
-10M )
-    IN NS  dns.bigdata.wh.com.
-149 IN PTR dns.bigdata.wh.com.
-247 IN PTR repo.bigdata.wh.com.    #区域内其他主机的PTR记录
-101 IN PTR db.bigdata.wh.com.
-*   IN PTR 192.168.30.1
 ```
 
 
