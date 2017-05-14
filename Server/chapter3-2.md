@@ -80,5 +80,5 @@ ambari=> \d
  ambari | alert_history                 | table | ambari
 ```
 
-至此自定义的数据库就成功创建了，当在server主机上启动server端时，我们就使用ambari用户来登录db.bigdata.wh.com主机上的ambari数据库。
+至此自定义的数据库就成功创建了，当在server主机上启动Server时，我们就使用ambari用户来登录db.bigdata.wh.com主机上的ambari数据库。
 
