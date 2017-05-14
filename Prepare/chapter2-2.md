@@ -228,7 +228,7 @@ sed -i 's/SELINUX=.*/SELINUX=disabled/' /etc/selinux/config  #开机不启动Sel
 * 创建自定义源的repo文件，并存放在resource目录下，供集群中的其他主机使用。
 
 ```
-cat << eof > /home/repo/resource/bigdata.repo
+cat << eof > /home/repo/resource/ambari.repo
 [ambari-2.5.0.3]
 name=ambari local repository
 baseurl=http://repo.bigdata.wh.com/ambari/centos7/

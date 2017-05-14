@@ -24,7 +24,7 @@ hostnamectl set-hostname dns.bigdata.wh.com  #设置主机名
 * 下载本地源repo文件，更新yum缓存
 
 ```
-wget -O /etc/yum.repos.d/bigdata.repo http://repo.bigdata.wh.com/resource/bigdata.repo
+wget -O /etc/yum.repos.d/bigdata.repo http://repo.bigdata.wh.com/resource/ambari.repo
 yum clean all
 yum makecache
 ```
