@@ -185,10 +185,10 @@ server repo.bigdata.wh.com           #设置ntp server地址，修改为内网nt
 ```
 [root@dns named]# systemctl enable ntpd.service 
 ln -s '/usr/lib/systemd/system/ntpd.service' '/etc/systemd/system/multi-user.target.wants/ntpd.service'
-[root@server yum.repos.d]# systemctl start ntpd.service 
+[root@server yum.repos.d]# systemctl start ntpd.service
 ```
 
-与之前创建的NTP服务器保持时钟同步。
+与本地的NTP服务器保持时钟同步。
 
 ```
 [root@server yum.repos.d]# ntpdate  -u repo.bigdata.wh.com
