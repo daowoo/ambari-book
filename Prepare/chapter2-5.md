@@ -29,6 +29,7 @@ PEERDNS=no
 ```
 localectl set-locale LANG=en_US.utf8     #设备系统语言及区域
 timedatectl set-timezone Asia/Shanghai   #设置时区
+timedatectl set-ntp yes
 ```
 
 * 禁用防火墙。
@@ -201,7 +202,7 @@ sed -i 's/server [0-3].centos.*/server repo.bigdata.wh.com/' /etc/ntp.conf
 配置ntpd.service服务自启动。
 
 ```
-[root@dns named]# systemctl enable ntpd.service 
+[root@dns named]# systemctl enable ntpd.service
 ln -s '/usr/lib/systemd/system/ntpd.service' '/etc/systemd/system/multi-user.target.wants/ntpd.service'
 [root@server yum.repos.d]# systemctl restart ntpd.service
 ```
