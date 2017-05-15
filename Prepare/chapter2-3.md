@@ -109,7 +109,7 @@ include "/etc/named.rfc1912.zones";
 include "/etc/named.root.key";
 ```
 
-* 追加区域bigdata.wh.com的定义。
+* 追加区域bigdata.wh.com的正向解析定义。
 
 ```
 cat << eof >> /etc/named.rfc1912.zones
@@ -169,6 +169,18 @@ Aliases:
 dns.bigdata.wh.com has address 192.168.36.149
 ```
 
+* 追加区域bigdata.wh.com的反向解析定义。
+
+```
+cat << eof >> /etc/named.rfc1912.zones
+zone "168.192.in-addr.arpa" IN {
+type master;
+file "168.192.in-addr.arpa.zone";
+allow-update { none; };
+};
+eof
+```
+
 * 创建区域bigdata.wh.com的反向解析库文件。
 
 ```
@@ -183,18 +195,6 @@ $ORIGIN 168.192.in-addr.arpa.
 10M )
 IN NS dns.bigdata.wh.com.
 149.36  IN PTR dns.bigdata.wh.com.  #ip到hostname的反向记录
-eof
-```
-
-* 追加反向解析区域168.192.in-addr.arpa的定义。
-
-```
-cat << eof >> /etc/named.rfc1912.zones
-zone "168.192.in-addr.arpa" IN {
-type master;
-file "36.168.192.in-addr.arpa.zone";
-allow-update { none; };
-};
 eof
 ```
 
