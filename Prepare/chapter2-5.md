@@ -113,6 +113,30 @@ dn003   IN      A       192.168.70.107
 
 admin   IN      CNAME   dns
 *       IN      A       192.168.30.1
+
+[root@dns named]# cat 168.192.in-addr.arpa.zone 
+$TTL 600
+$ORIGIN 168.192.in-addr.arpa.
+@ IN SOA dns.bigdata.wh.com. admin.bigdata.wh.com. (
+20170510
+1H
+5M
+1W
+10M )
+    IN NS  dns.bigdata.wh.com.
+149.36  IN PTR dns.bigdata.wh.com.
+247.36  IN PTR repo.bigdata.wh.com.  #区域内其他主机的PTR记录
+132.36  IN PTR proxy.bigdata.wh.com.
+101.36  IN PTR db.bigdata.wh.com.
+
+100.70 IN PTR server.bigdata.wh.com.
+101.70 IN PTR gw.bigdata.wh.com.
+102.70 IN PTR nn.bigdata.wh.com.
+103.70 IN PTR snn.bigdata.wh.com.
+104.70 IN PTR hive.bigdata.wh.com.
+105.70 IN PTR dn001.bigdata.wh.com.
+106.70 IN PTR dn002.bigdata.wh.com.
+107.70 IN PTR dn003.bigdata.wh.com.
 ```
 
 * 为集群其他主机设置Yum本地源
