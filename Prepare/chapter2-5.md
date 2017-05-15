@@ -160,7 +160,7 @@ yum repolist
 
 * NTP时间同步
 
-安装ntp，更新ntp client配置文件。
+安装ntp，在ntp client客户端配置本地ntp服务地址。
 
 ```
 yum install -y ntp
@@ -185,7 +185,7 @@ server repo.bigdata.wh.com           #设置ntp server地址，修改为内网nt
 ```
 [root@dns named]# systemctl enable ntpd.service 
 ln -s '/usr/lib/systemd/system/ntpd.service' '/etc/systemd/system/multi-user.target.wants/ntpd.service'
-[root@server yum.repos.d]# systemctl start ntpd.service
+[root@server yum.repos.d]# systemctl restart ntpd.service
 ```
 
 与本地的NTP服务器保持时钟同步。
