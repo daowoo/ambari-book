@@ -31,7 +31,7 @@ Checking JDK...
 Enter choice (1):
 ```
 
-* 拷贝repo主机/home/repo/resource目录中的JDK安装包至Server的资源目录。
+* 拷贝repo主机/home/repo/resource目录中的jdk-8u112安装包至Server的资源目录。
 
 ```
 scp vagrant@repo.bigdata.wh.com:/home/repo/resource/jdk-8u112-linux-x64.tar.gz /var/lib/ambari-server/resources/  
@@ -89,8 +89,6 @@ ambari-admin-2.5.0.3.7.jar
 Adjusting ambari-server permissions and ownership...
 Ambari Server 'setup' completed successfully.
 ```
-
-* 31231
 
 
 

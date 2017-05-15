@@ -56,16 +56,13 @@ Server启动时，会运行数据库一致性检查来查找问题，如果发�
 2017-05-14 21:30:37,371  INFO - Getting services which has mapped configs which are not selected in clusterconfigmapping
 2017-05-14 21:30:37,384  INFO - Checking Topology tables
 2017-05-14 21:30:37,406  INFO - ******************************* Check database completed *******************************
-
 ```
 
-* 通过浏览器访问Server在8080端口开启的Web主页。
+* 通过浏览器访问Server在默认端口8080开启的Web主页。
 
 ```
 http://server.bigdata.wh.com:8080/
 ```
-
-
 
 
 
