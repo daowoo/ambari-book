@@ -265,7 +265,7 @@ $ORIGIN 168.192.in-addr.arpa.
 10M )
     IN NS  dns.bigdata.wh.com.
 149.36  IN PTR dns.bigdata.wh.com.
-247.36  IN PTR repo.bigdata.wh.com.
+247.36  IN PTR repo.bigdata.wh.com.  #区域内其他主机的PTR记录
 132.36  IN PTR proxy.bigdata.wh.com.
 101.36  IN PTR db.bigdata.wh.com.
 ```
