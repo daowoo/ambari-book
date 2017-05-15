@@ -267,7 +267,7 @@ http://mirrors.cn99.com/centos/
 eof
 ```
 
-解决外部源开启GPG-KEY验证时，安装部分软件出现“"403 Forbidden”错误。这是由于在apt-cacher-ng的默认配置中未包含RPM-GPG-KEY类型的文件，yum通过其代理下载相应KEY文件时被自动屏蔽了，解决该文件需要配置VfilePatternEx参数来添加RPM-GPG-KEY类型的文件。
+但是外部源开启GPG-KEY验证时，安装部分软件会出现“"403 Forbidden”错误。这是由于在apt-cacher-ng的默认配置中未包含RPM-GPG-KEY类型的文件，yum通过其代理下载相应KEY文件时被自动屏蔽了，解决该文件需要配置VfilePatternEx参数来添加RPM-GPG-KEY类型的文件。
 
 ```
 VfilePatternEx: ^(/\?release=[0-9]+&arch=.*|.*/RPM-GPG-KEY-.*|/metalink\?repo=epel\-[0-9]+&arch=.*)$
