@@ -235,8 +235,6 @@ Aliases:
 
 * 在bigdata.wh.com区域内为集群其他主机添加A记录和PTR记录
 
-* 在bigdata.wh.com区域内为集群其他主机添加A记录和PTR记录
-
 ```
 [root@dns named]# cat bigdata.wh.com.zone 
 $TTL 600
