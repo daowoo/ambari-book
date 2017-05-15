@@ -63,16 +63,18 @@ Are you sure you want to continue connecting (yes/no)? #第一登录会询问是
 Centos7新增了NetworkManager来提供默认的网络服务，它是一个动态的网络控制和配置守护进程，在/etc/resolv.conf中修改nameserver后，它会定期的恢复成初始值。所以，我们需要禁止NetworkManager定期恢复dns。
 
 ```
-[root@server ~]# cat /etc/NetworkManager/NetworkManager.conf
+cat << eof > /etc/NetworkManager/NetworkManager.conf
 [main]
 plugins=ifcfg-rh
-dns=none               #禁止更新dns
+dns=none       #禁止更新dns
 
 [logging]
 #level=DEBUG
 #domains=ALL
+eof
 
-[root@server ~]# systemctl restart NetworkManager.service #重启NetworkManager服务
+#重启NetworkManager服务
+[root@server ~]# systemctl restart NetworkManager.service
 ```
 
 ```
