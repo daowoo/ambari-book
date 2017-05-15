@@ -180,10 +180,17 @@ server repo.bigdata.wh.com           #设置ntp server地址，修改为内网nt
 #server 3.centos.pool.ntp.org iburst
 ```
 
+配置ntpd.service服务自启动。
+
+```
+[root@dns named]# systemctl enable ntpd.service 
+ln -s '/usr/lib/systemd/system/ntpd.service' '/etc/systemd/system/multi-user.target.wants/ntpd.service'
+[root@server yum.repos.d]# systemctl start ntpd.service 
+```
+
 与之前创建的NTP服务器保持时钟同步。
 
 ```
-[root@server yum.repos.d]# systemctl restart ntpd.service 
 [root@server yum.repos.d]# ntpdate  -u repo.bigdata.wh.com
 12 May 05:50:47 ntpdate[4136]: step time server 192.168.36.247 offset -3.068888 sec
 [root@server yum.repos.d]# ntpq -p
