@@ -58,14 +58,12 @@ psql (9.2.18)
 Type "help" for help.
 
 ambari=> \i /root/Ambari-DDL-Postgres-CREATE.sql
-
-CREATE TABLE
 ```
 
 * 列出ambari数据库中的所有数据表
 
 ```
-ambari=> \d
+ambari=> \dt
  ambari | adminpermission               | table | ambari
  ambari | adminprincipal                | table | ambari
  ambari | adminprincipaltype            | table | ambari
@@ -78,6 +76,7 @@ ambari=> \d
  ambari | alert_group_target            | table | ambari
  ambari | alert_grouping                | table | ambari
  ambari | alert_history                 | table | ambari
+ --More--
 ```
 
 至此自定义的数据库就成功创建了，当在server主机上启动Server时，我们就使用ambari用户来登录db.bigdata.wh.com主机上的ambari数据库。
