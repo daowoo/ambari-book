@@ -99,8 +99,8 @@ $ORIGIN bigdata.wh.com.
         IN      NS      dns
 dns     IN      A       192.168.36.149
 repo    IN      A       192.168.36.247  #区域内其他主机的A记录
+proxy   IN      A       192.168.36.132
 db      IN      A       192.168.36.101
-server  IN      A       192.168.70.100
 
 server  IN      A       192.168.70.100
 gw      IN      A       192.168.70.101
