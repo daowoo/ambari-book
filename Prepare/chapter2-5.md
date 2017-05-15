@@ -2,7 +2,14 @@
 
 前面几章我们分别完成了yum本地源服务，dns服务以及ntp服务的创建和配置，接下来我们要为集群中的所有主机配置这些基础服务，进一步还要进行安装部署前的环境初始化和检查。
 
-* 禁用防火墙
+* 设置系统语言区域和时区。
+
+```
+localectl set-locale LANG=en_US.utf8     #设备系统语言及区域
+timedatectl set-timezone Asia/Shanghai   #设置时区
+```
+
+* 禁用防火墙。
 
 ```
 systemctl stop firewalld.service
@@ -12,7 +19,7 @@ setenforce 0  #临时关闭Selinux
 sed -i 's/SELINUX=.*/SELINUX=disabled/' /etc/selinux/config  #开机不启动Selinux
 ```
 
-* 检查UMASK值
+* 检查UMASK值。
 
 UMASK值设置了用户在系统中创建新文件或文件夹时被授予的默权限或基本权限，大数据平台支持的umask值为022/0022和027/0027。集群中的所有主机均要利用umask命令检查或修改umask值。
 
@@ -23,7 +30,7 @@ UMASK值设置了用户在系统中创建新文件或文件夹时被授予的默
 [root@gw ~]# umask 022   #设置umask值为022
 ```
 
-* SSH免密登录
+* SSH免密登录。
 
 在大数据平台部署过程中，为了让Server自动地在所有集群主机上安装Agent，必须在Server主机和其他所有主机之间设置无密码的ssh连接。这样Server主机就能够使用ssh公钥通过身份验证来访问和安装Agent。
 
@@ -58,7 +65,7 @@ ssh root@192.168.70.101
 Are you sure you want to continue connecting (yes/no)? #第一登录会询问是否继续
 ```
 
-* DNS设置和检查
+* 系统DNS设置。
 
 Centos7新增了NetworkManager来提供默认的网络服务，它是一个动态的网络控制和配置守护进程，在/etc/resolv.conf中修改nameserver后，它会定期的恢复成初始值。所以，我们需要禁止NetworkManager定期恢复dns。
 
@@ -86,7 +93,7 @@ nameserver 192.168.36.149
 eof
 ```
 
-* 在DNS服务器中为集群其他主机添加A记录和PTR记录
+* 在DNS服务器中为集群其他主机添加A记录和PTR记录。
 
 ```
 [root@dns named]# cat bigdata.wh.com.zone 
@@ -141,7 +148,7 @@ $ORIGIN 168.192.in-addr.arpa.
 107.70 IN PTR dn003.bigdata.wh.com.
 ```
 
-* 为集群其他主机设置Yum本地源
+* 为集群其他主机设置Yum本地源。
 
 备份系统默认源。
 
@@ -158,7 +165,7 @@ yum clean all
 yum repolist
 ```
 
-* NTP时间同步
+* NTP时间同步。
 
 安装ntp，在ntp client客户端配置本地ntp服务地址。
 
@@ -167,20 +174,6 @@ yum install -y ntp  #安装ntpd服务
 
 #设置ntp server地址，修改为内网ntp服务器
 sed -i 's/server [0-3].centos.*/server repo.bigdata.wh.com/' /etc/ntp.conf
-
-[root@centos7 ~]# cat /etc/ntp.conf
-restrict 127.0.0.1 
-restrict ::1
-
-# Hosts on local network are less restricted.
-#restrict 192.168.1.0 mask 255.255.255.0 nomodify notrap
-# Use public servers from the pool.ntp.org project.
-# Please consider joining the pool (http://www.pool.ntp.org/join.html).
-server repo.bigdata.wh.com           #设置ntp server地址，修改为内网ntp服务器
-#server 0.centos.pool.ntp.org iburst
-#server 1.centos.pool.ntp.org iburst
-#server 2.centos.pool.ntp.org iburst
-#server 3.centos.pool.ntp.org iburst
 ```
 
 配置ntpd.service服务自启动。
@@ -202,7 +195,7 @@ ln -s '/usr/lib/systemd/system/ntpd.service' '/etc/systemd/system/multi-user.tar
  repo.bigdata.wh 115.28.122.198   3 u   34   64    3    5.780  -3068.4  29.757
 ```
 
-* 优化swap分区设置
+* 优化swap分区设置。
 
 ```
 [root@centos7 ~]# sysctl -w vm.swappiness=0      #优先使用内存，减少与磁盘交互
@@ -210,7 +203,7 @@ vm.swappiness = 0
 [root@centos7 ~]# echo "vm.swappiness = 0" >> /etc/sysctl.conf
 ```
 
-* 删除版本冲突的包
+* 删除版本冲突的包。
 
 Centos7镜像中默认安装了高版本的snappy，hdp-util中使用的低版本的snappy，这会导致安装datanode client的时候出现版本冲突，我们先把高版本的snappy卸载掉，后续安装过程中再从本地源中下载并安装低版本。
 
