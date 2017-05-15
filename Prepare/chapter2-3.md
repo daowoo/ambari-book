@@ -121,7 +121,7 @@ zone "bigdata.wh.com" IN {
 eof
 ```
 
-* 创建区域bigdata.wh.com的正向解析库文件。
+* 创建区域的正向解析库文件。
 
 ```
 cat << 'eof' > /var/named/bigdata.wh.com.zone
