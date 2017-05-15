@@ -151,7 +151,7 @@ mkdir /etc/yum.repos.d
 下载之前创建的本地源repo文件，更新yum缓存
 
 ```
-wget -O /etc/yum.repos.d/bigdata.repo http://repo.bigdata.wh.com/resource/ambari.repo
+wget -O /etc/yum.repos.d/ambari.repo http://repo.bigdata.wh.com/resource/ambari.repo
 yum clean all
 yum repolist
 ```
