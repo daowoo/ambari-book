@@ -24,7 +24,7 @@ hostnamectl set-hostname dns.bigdata.wh.com  #设置主机名
 * 下载本地源repo文件，更新yum缓存
 
 ```
-wget -O /etc/yum.repos.d/bigdata.repo http://repo.bigdata.wh.com/resource/ambari.repo
+wget -O /etc/yum.repos.d/ambari.repo http://repo.bigdata.wh.com/resource/ambari.repo
 yum clean all
 yum makecache
 ```
@@ -186,11 +186,11 @@ IN NS dns.bigdata.wh.com.
 eof
 ```
 
-* 追加bigdata.wh.com反向解析区域的定义。
+* 追加反向解析区域168.192.in-addr.arpa的定义。
 
 ```
 cat << eof >> /etc/named.rfc1912.zones
-zone "36.168.192.in-addr.arpa" IN {
+zone "168.192.in-addr.arpa" IN {
 type master;
 file "36.168.192.in-addr.arpa.zone";
 allow-update { none; };
