@@ -163,7 +163,10 @@ yum repolist
 安装ntp，在ntp client客户端配置本地ntp服务地址。
 
 ```
-yum install -y ntp
+yum install -y ntp  #安装ntpd服务
+
+#设置ntp server地址，修改为内网ntp服务器
+sed -i 's/server [0-3].centos.*/server repo.bigdata.wh.com/' /etc/ntp.conf
 
 [root@centos7 ~]# cat /etc/ntp.conf
 restrict 127.0.0.1 
