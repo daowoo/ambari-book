@@ -181,7 +181,7 @@ allow-update { none; };
 eof
 ```
 
-* 创建区域bigdata.wh.com的反向解析库文件。
+* 创建区域的反向解析库文件。
 
 ```
 cat << 'eof' > /var/named/168.192.in-addr.arpa.zone
@@ -208,8 +208,8 @@ root 2680 0.0 0.0 112640 960 pts/0 S+ 12:14 0:00 grep --color=auto named
 chown :named bigdata.wh.com.zone
 chmod 640 bigdata.wh.com.zone
 
-chown :named 36.168.192.in-addr.arpa.zone
-chmod 640 36.168.192.in-addr.arpa.zone
+chown :named 68.192.in-addr.arpa.zone
+chmod 640 168.192.in-addr.arpa.zone
 ```
 
 * 检测新增配置并重启DNS服务。
