@@ -28,7 +28,11 @@ Found Ambari Server PID: 17791 at: /var/run/ambari-server/ambari-server.pid
 * 通过stop命令可以关闭Server。
 
 ```
-
+[root@server yum.repos.d]# ambari-server stop
+Using python  /usr/bin/python
+Stopping ambari-server
+Waiting for server stop...
+Ambari Server stopped
 ```
 
 * 数据库一致性检查。 
