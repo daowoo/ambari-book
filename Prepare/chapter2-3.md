@@ -248,9 +248,26 @@ $ORIGIN bigdata.wh.com.
         IN      NS      dns
 dns     IN      A       192.168.36.149
 repo    IN      A       192.168.36.247  #区域内其他主机的A记录
+proxy   IN      A       192.168.36.132
 db      IN      A       192.168.36.101
 admin   IN      CNAME   dns
 *       IN      A       192.168.30.1
+
+
+[root@dns named]# cat 168.192.in-addr.arpa.zone 
+$TTL 600
+$ORIGIN 168.192.in-addr.arpa.
+@ IN SOA dns.bigdata.wh.com. admin.bigdata.wh.com. (
+20170510
+1H
+5M
+1W
+10M )
+    IN NS  dns.bigdata.wh.com.
+149.36  IN PTR dns.bigdata.wh.com.
+247.36  IN PTR repo.bigdata.wh.com.
+132.36  IN PTR proxy.bigdata.wh.com.
+101.36  IN PTR db.bigdata.wh.com.
 ```
 
 
