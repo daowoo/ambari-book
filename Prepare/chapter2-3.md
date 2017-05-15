@@ -182,8 +182,7 @@ $ORIGIN 168.192.in-addr.arpa.
 1W
 10M )
 IN NS dns.bigdata.wh.com.
-149 IN PTR dns.bigdata.wh.com.
-* IN PTR 192.168.30.1
+149.36  IN PTR dns.bigdata.wh.com.  #ip到hostname的反向记录
 eof
 ```
 
