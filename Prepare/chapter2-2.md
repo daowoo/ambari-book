@@ -223,7 +223,7 @@ sed -i 's/SELINUX=.*/SELINUX=disabled/' /etc/selinux/config  #开机不启动Sel
 
 * 通过Web浏览器访问自定义源目录。
 
-![](/assets/2.2.1-web.png)
+![](/assets/2.2-repo-web.png)
 
 * 创建自定义源的repo文件，并存放在resource目录下，供集群中的其他主机使用。
 
