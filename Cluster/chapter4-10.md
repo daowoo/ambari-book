@@ -1,6 +1,6 @@
 # 调整服务参数
 
-在初始的安装过程中，建议优先采用默认的参数来完成组件的安装，待平台中所有的组件都正常启动后再根据自己的需求调整各项配置参数来提高性能。
+在初始的安装过程中，建议优先采用默认的参数来完成组件的安装，待平台中所有的组件都正常启动后再根据自己的需求调整各项配置参数来提高性能。  
 ![](/assets/4.10-top-title.png)
 
 ## Hive组件所必须的数据库连接设置。
@@ -94,10 +94,11 @@ Ambari Server 'setup' completed successfully.
 
 ## Ambari Metrics组件所必须的管理员密码设置。
 
-
+![](/assets/2.10-password-metrics.png)
 
 ## SmartSense组件所必须得管理员密码设置
 
+![](/assets/2.10-password-smartsense.png)
 
 
 
