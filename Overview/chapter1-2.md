@@ -16,7 +16,7 @@
 
 > 注意：Postgresql可替换为Oracle、MySql等其他数据库。
 
-![](/assets/import.png)
+![](/assets/1.2-structure.png)
 
 ## 技术实现
 
