@@ -27,5 +27,5 @@
 * 支持安装基于Kerberos的安全Hadoop集群，以此实现了对Hadoop安全的支持。
 * 提供了基于角色的用户认证、授权和审计功能，并为用户管理集成了LDAP和Active Directory。
 
-![](/assets/11.png)
+![](/assets/1.2-technical.png)
 
