@@ -15,9 +15,9 @@
 2. SNameNode和HST等其他服务组件调整到snn主机；
 3. Hive和HBase相关的组件调整到hive主机；
 4. Grafana和Activity等余下的组件则全部调整到gw主机；
-5. ZoopKeeper分布在nn、snn和hive三台主机上。
+5. ZoopKeeper数量为三个，分别分布在nn、snn和hive三台主机上。
 ```
 
 ![](/assets/4.8-adjustment.png)
 
-* 如果要增加
+* 可以通过主机旁边绿色的‘+/-’图标来增加/减少组件的Master个数。
