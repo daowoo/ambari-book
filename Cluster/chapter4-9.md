@@ -1,4 +1,4 @@
-# 调整从服务和客户端
+# 调整服务从组件和客户端
 
 该页面为DataNodes、NodeManagers和RegionServers等组件在集群中分配适当主机来作为Slave
 
