@@ -29,8 +29,8 @@
   * [选择服务](Cluster/chapter4-7.md)
   * [调整主服务](Cluster/chapter4-8.md)
   * [调整从服务和客户端](Cluster/chapter4-9.md)
-  * [调整服务参数](Cluster/chapter4-9.md)
-  * [保存配置报告](Cluster/chapter4-10.md)
-  * [安装过程](Cluster/chapter4-11.md)
-  * [安装完成](Cluster/chapter4-12.md)
+  * [调整服务参数](Cluster/chapter4-10.md)
+  * [保存配置报告](Cluster/chapter4-11.md)
+  * [安装过程](Cluster/chapter4-12.md)
+  * [安装完成](Cluster/chapter4-13.md)
 
