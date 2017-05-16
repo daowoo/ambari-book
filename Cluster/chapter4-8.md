@@ -21,3 +21,6 @@
 ![](/assets/4.8-adjustment.png)
 
 * 可以通过主机旁边绿色的‘+/-’图标来增加/减少组件的Master个数。
+
+![](/assets/4.8-add-del.png)
+
