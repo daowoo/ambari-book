@@ -10,16 +10,14 @@
 
 * 根据之前规划的主机名来调整组件位置。
 
-![](/assets/4.8-adjustment.png)
-
 ```
 1. NameNode和ResourceManager组件调整到nn主机；
 2. SNameNode和HST等其他服务组件调整到snn主机；
 3. Hive和HBase相关的组件调整到hive主机；
 4. Grafana和Activity等余下的组件则全部调整到gw主机
-
-当然，如果剩下的组件也可以将部分组件调整到dn主机上。
 ```
+![](/assets/4.8-adjustment.png)
+
 
 
 
