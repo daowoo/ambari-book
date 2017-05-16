@@ -145,7 +145,7 @@ exit
 
 postgresql数据库的GUI工具有很多，与PG配合比较好用的主要是Navicat Premium和pgAdmin 3/4了。其中pgAdmin 4采用QT开发，支持跨平台，GUI非常赞，还添加了性能实时监视图表，不过目前多语言和流畅性都还有点问题。
 
-![](/assets/2.6-pgadmin4-2.png)![](/assets/2.6-pgadmin4-3.png)
+![](/assets/2.6-pgadmin4-conn.png)![](/assets/2.6-pgadmin4-view.png)
 
 * 配置PG跟随系统自启动
 
