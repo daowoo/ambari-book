@@ -27,24 +27,19 @@ Total download size: 670 M
 Installed size: 755 M
 Is this ok [y/d/N]: y
 Downloading packages:
-(1/4): postgresql-9.2.18-1.el7.x86_64.rpm                                                                     | 3.0 MB  00:00:03     
-(2/4): postgresql-server-9.2.18-1.el7.x86_64.rpm                                                              | 3.8 MB  00:00:05     
-(3/4): postgresql-libs-9.2.18-1.el7.x86_64.rpm                                                                | 232 kB  00:00:00     
-(4/4): ambari-server-2.5.0.3-7.x86_64.rpm                                                                     | 663 MB  00:01:00     
------------------------------------------------------------------------------------------------------------------------------4/4 
-
+(1/4): postgresql-9.2.18-1.el7.x86_64.rpm                                                          | 3.0 MB  00:00:03
+(2/4): postgresql-server-9.2.18-1.el7.x86_64.rpm                                                   | 3.8 MB  00:00:05
+(3/4): postgresql-libs-9.2.18-1.el7.x86_64.rpm                                                     | 232 kB  00:00:00
+(4/4): ambari-server-2.5.0.3-7.x86_64.rpm                                                          | 663 MB  00:01:00
+------------------------------------------------------------------------------------------------------------------4/4
 Installed:
-  ambari-server.x86_64 0:2.5.0.3-7                                                                                                   
+  ambari-server.x86_64 0:2.5.0.3-7                                                                                    
 
 Dependency Installed:
-  postgresql.x86_64 0:9.2.18-1.el7        postgresql-libs.x86_64 0:9.2.18-1.el7        postgresql-server.x86_64 0:9.2.18-1.el7       
-
+  postgresql.x86_64 0:9.2.18-1.el7  postgresql-libs.x86_64 0:9.2.18-1.el7  postgresql-server.x86_64 0:9.2.18-1.el7
+     
 Complete!
 ```
-
-
-
-
 
 
 

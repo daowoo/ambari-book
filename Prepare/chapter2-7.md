@@ -13,7 +13,7 @@
 
 其结构图如下：
 
-![](/assets/2.7.1-proxy.png)
+![](/assets/2.7-proxy-structure.png)
 
 Centos7环境下目前没有开源的工具能够满足以上的解决方案，不过Ubuntu14环境下有一个apt-cacher-ng的工具能满足要求，并且其最新版本增加了对yum所使用的rpm及repodata的支持。接下来描述的就是其实际安装和配置过程。
 
@@ -188,7 +188,7 @@ ufw disable
 
 通过Web浏览器访问apt-cacher-ng主页。
 
-![](/assets/apt-cacher-web.png)
+![](/assets/2.7-apt-cacher-web.png)
 
 apt-cacher-ng的主配置文件路径为/etc/apt-cacher-ng/acng.conf，编辑acng.conf确保以下配置项有效。
 
