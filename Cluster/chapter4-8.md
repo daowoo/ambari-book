@@ -8,7 +8,7 @@
 
 ![](/assets/4.8-default.png)
 
-* 根据之前规划的主机名来调整组件位置。
+* 根据之前规划的主机名来调整主服务位置和个数。
 
 ```
 1. NameNode和ResourceManager组件调整到nn主机；
@@ -20,3 +20,4 @@
 
 ![](/assets/4.8-adjustment.png)
 
+* 如果要增加
