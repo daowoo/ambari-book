@@ -1,6 +1,7 @@
 # 调整服务参数
 
 在初始的安装过程中，建议优先采用默认的参数来完成组件的安装，待平台中所有的组件都正常启动后再根据自己的需求调整各项配置参数来提高性能。
+![](/assets/4.10-top-title.png)
 
 ## Hive组件所必须的数据库连接设置。
 
@@ -57,11 +58,47 @@ hive=> \l
 
 * 观察连接失败日志可知错误原因是Server中还未设置postgres JDBC驱动程序和程序路径。
 
+首先从本地源中下载postgresql-jdbc.jar数据库驱动包。
 
+```
+[root@server ~]# wget http://repo.bigdata.wh.com/resource/postgresql-jdbc.jar
+--2017-05-16 09:00:31--  http://repo.bigdata.wh.com/resource/postgresql-jdbc.jar
+Resolving repo.bigdata.wh.com (repo.bigdata.wh.com)... 192.168.36.247
+Connecting to repo.bigdata.wh.com (repo.bigdata.wh.com)|192.168.36.247|:80... connected.
+HTTP request sent, awaiting response... 200 OK
+Length: 446067 (436K) [application/x-java-archive]
+Saving to: ‘postgresql-jdbc.jar’
+
+100%[=====================================================================>] 446,067     --.-K/s   in 0.1s    
+
+2017-05-16 09:00:32 (3.82 MB/s) - ‘postgresql-jdbc.jar’ saved [446067/446067]
+```
+
+然后在Server中通过ambari-server setup命令来配置postgres驱动包。
+
+```
+[root@server ~]# ambari-server setup --jdbc-db=postgres --jdbc-driver=/root/postgresql-jdbc.jar
+Using python  /usr/bin/python
+Setup ambari-server
+Copying /root/postgresql-jdbc.jar to /var/lib/ambari-server/resources
+If you are updating existing jdbc driver jar for postgres with postgresql-jdbc.jar. 
+Please remove the old driver jar, from all hosts. Restarting services that need the driver, 
+will automatically copy the new jar to the hosts.
+JDBC driver was successfully initialized.
+Ambari Server 'setup' completed successfully.
+```
+
+* 重新测试postgres数据库连接。
+
+![](/assets/4.10-conn-sucessful.png)
 
 ## Ambari Metrics组件所必须的管理员密码设置。
 
+
+
 ## SmartSense组件所必须得管理员密码设置
+
+
 
 
 
