@@ -6,9 +6,9 @@
 
 * 可以通过Status栏中的链接地址来弹出信息窗口产看检查进度，如果检查失败还可以查看到具体的失败原因。
 
-![](/assets/4.5-msg.png)
+![](/assets/4.6-msg.png)
 
 * 排除错误后通过Retry按钮再重新检查失败的目标主机。
 
-![](/assets/4.5-retry.png)
+![](/assets/4.6-retry.png)
 
