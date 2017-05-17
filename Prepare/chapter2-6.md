@@ -60,7 +60,7 @@ copying template1 to postgres ... ok
 
 * 数据库初始化后，在数据库目录data中会生成一系列的文件夹和文件，它们的具体含义如下。
 
-```shell
+```tree
 bash-4.2$ tree -L 1 data/
 data/
 \|-- base \#默认表空间的目录，与每个数据库对应的子目录存储在该目录中
