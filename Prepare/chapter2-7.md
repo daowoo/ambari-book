@@ -292,14 +292,80 @@ root@proxy:/etc/apt-cacher-ng# service apt-cacher-ng restart
 wget -O /etc/yum.repos.d/CentOS7-Base-aliyun.repo http://repo.bigdata.wh.com/resource/CentOS7-Base-aliyun.repo
 ```
 
-需要修改所有主机的yum配置文件/etc/yum.conf，使其http请求通过`proxy.bigdata.wh.com`来进行代理和重定向。
+* 然后修改阿里云的repo文件/etc/yum.repos.d/CentOS7-Base-aliyun.repo，使其http请求通过`proxy.bigdata.wh.com`来进行代理和重定向。
 
 ```
-cat << eof >> /etc/yum.conf
+[root@server yum.repos.d]# cat CentOS7-Base-aliyun.repo 
+
+[base]
+name=CentOS-$releasever - Base - mirrors.aliyun.com
+failovermethod=priority
+baseurl=http://mirrors.aliyun.com/centos/$releasever/os/$basearch/
+        http://mirrors.aliyuncs.com/centos/$releasever/os/$basearch/
+#mirrorlist=http://mirrorlist.centos.org/?release=$releasever&arch=$basearch&repo=os
+gpgcheck=1
+gpgkey=http://mirrors.aliyun.com/centos/RPM-GPG-KEY-CentOS-7
+proxy=http://proxy.bigdata.wh.com:3142/         #为base添加代理
+#proxy_username=username
+#proxy_password=password
+
+
+#released updates 
+[updates]
+name=CentOS-$releasever - Updates - mirrors.aliyun.com
+failovermethod=priority
+baseurl=http://mirrors.aliyun.com/centos/$releasever/updates/$basearch/
+        http://mirrors.aliyuncs.com/centos/$releasever/updates/$basearch/
+#mirrorlist=http://mirrorlist.centos.org/?release=$releasever&arch=$basearch&repo=updates
+gpgcheck=1
+gpgkey=http://mirrors.aliyun.com/centos/RPM-GPG-KEY-CentOS-7
+proxy=http://proxy.bigdata.wh.com:3142/         #为base添加代理
+#proxy_username=username
+#proxy_password=password
+
+
+#additional packages that may be useful
+[extras]
+name=CentOS-$releasever - Extras - mirrors.aliyun.com
+failovermethod=priority
+baseurl=http://mirrors.aliyun.com/centos/$releasever/extras/$basearch/
+        http://mirrors.aliyuncs.com/centos/$releasever/extras/$basearch/
+#mirrorlist=http://mirrorlist.centos.org/?release=$releasever&arch=$basearch&repo=extras
+gpgcheck=1
+gpgkey=http://mirrors.aliyun.com/centos/RPM-GPG-KEY-CentOS-7
+proxy=http://proxy.bigdata.wh.com:3142/          #为base添加代理
+#proxy_username=username
+#proxy_password=password
+
+
+#additional packages that extend functionality of existing packages
+[centosplus]
+name=CentOS-$releasever - Plus - mirrors.aliyun.com
+failovermethod=priority
+baseurl=http://mirrors.aliyun.com/centos/$releasever/centosplus/$basearch/
+        http://mirrors.aliyuncs.com/centos/$releasever/centosplus/$basearch/
+#mirrorlist=http://mirrorlist.centos.org/?release=$releasever&arch=$basearch&repo=centosplus
+gpgcheck=1
+enabled=0
+gpgkey=http://mirrors.aliyun.com/centos/RPM-GPG-KEY-CentOS-7
 proxy=http://proxy.bigdata.wh.com:3142/
 #proxy_username=username
 #proxy_password=password
-eof
+
+
+#contrib - packages by Centos Users
+[contrib]
+name=CentOS-$releasever - Contrib - mirrors.aliyun.com
+failovermethod=priority
+baseurl=http://mirrors.aliyun.com/centos/$releasever/contrib/$basearch/
+        http://mirrors.aliyuncs.com/centos/$releasever/contrib/$basearch/
+#mirrorlist=http://mirrorlist.centos.org/?release=$releasever&arch=$basearch&repo=contrib
+gpgcheck=1
+enabled=0
+gpgkey=http://mirrors.aliyun.com/centos/RPM-GPG-KEY-CentOS-7
+proxy=http://proxy.bigdata.wh.com:3142/
+#proxy_username=username
+#proxy_password=password
 ```
 
 * 更新yum缓存，检测配置是否成功。
