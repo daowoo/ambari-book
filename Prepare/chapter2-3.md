@@ -26,7 +26,7 @@ hostnamectl set-hostname dns.bigdata.wh.com  #设置主机名
 ```
 wget -O /etc/yum.repos.d/ambari.repo http://repo.bigdata.wh.com/resource/ambari.repo
 yum clean all
-yum makecache
+yum repolist
 ```
 
 * 安装bind及相关工具
