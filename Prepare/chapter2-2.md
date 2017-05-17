@@ -242,20 +242,6 @@ baseurl=http://repo.bigdata.wh.com/common/
 gpgcheck=0
 enabled=1
 priority=1
-
-[hdp-2.6.0.3]
-name=hdp local repository
-baseurl=http://repo.bigdata.wh.com/hadoop/HDP/centos7/
-gpgcheck=0
-enabled=1
-priority=1
-
-[hdp_util-1.1.0.21]
-name=hdp_util local repository
-baseurl=http://repo.bigdata.wh.com/hadoop/HDP-UTILS-1.1.0.21/
-gpgcheck=0
-enabled=1
-priority=1
 eof
 ```
 
