@@ -13,7 +13,6 @@
 * [保存配置报告](chapter4-11.md)
 * [安装过程](chapter4-12.md)
 * [安装完成](chapter4-13.md)
-* [Server重置](chapter4-14.md)
 
 
 
