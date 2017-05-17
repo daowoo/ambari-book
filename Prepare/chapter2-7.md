@@ -306,9 +306,6 @@ baseurl=http://mirrors.aliyun.com/centos/$releasever/os/$basearch/
 gpgcheck=1
 gpgkey=http://mirrors.aliyun.com/centos/RPM-GPG-KEY-CentOS-7
 proxy=http://proxy.bigdata.wh.com:3142/         #为base添加代理
-#proxy_username=username
-#proxy_password=password
-
 
 #released updates 
 [updates]
@@ -319,10 +316,7 @@ baseurl=http://mirrors.aliyun.com/centos/$releasever/updates/$basearch/
 #mirrorlist=http://mirrorlist.centos.org/?release=$releasever&arch=$basearch&repo=updates
 gpgcheck=1
 gpgkey=http://mirrors.aliyun.com/centos/RPM-GPG-KEY-CentOS-7
-proxy=http://proxy.bigdata.wh.com:3142/         #为base添加代理
-#proxy_username=username
-#proxy_password=password
-
+proxy=http://proxy.bigdata.wh.com:3142/         #为updates添加代理
 
 #additional packages that may be useful
 [extras]
@@ -333,10 +327,7 @@ baseurl=http://mirrors.aliyun.com/centos/$releasever/extras/$basearch/
 #mirrorlist=http://mirrorlist.centos.org/?release=$releasever&arch=$basearch&repo=extras
 gpgcheck=1
 gpgkey=http://mirrors.aliyun.com/centos/RPM-GPG-KEY-CentOS-7
-proxy=http://proxy.bigdata.wh.com:3142/          #为base添加代理
-#proxy_username=username
-#proxy_password=password
-
+proxy=http://proxy.bigdata.wh.com:3142/          #为extras添加代理
 
 #additional packages that extend functionality of existing packages
 [centosplus]
@@ -348,10 +339,7 @@ baseurl=http://mirrors.aliyun.com/centos/$releasever/centosplus/$basearch/
 gpgcheck=1
 enabled=0
 gpgkey=http://mirrors.aliyun.com/centos/RPM-GPG-KEY-CentOS-7
-proxy=http://proxy.bigdata.wh.com:3142/
-#proxy_username=username
-#proxy_password=password
-
+proxy=http://proxy.bigdata.wh.com:3142/          #为centosplus添加代理
 
 #contrib - packages by Centos Users
 [contrib]
@@ -363,9 +351,7 @@ baseurl=http://mirrors.aliyun.com/centos/$releasever/contrib/$basearch/
 gpgcheck=1
 enabled=0
 gpgkey=http://mirrors.aliyun.com/centos/RPM-GPG-KEY-CentOS-7
-proxy=http://proxy.bigdata.wh.com:3142/
-#proxy_username=username
-#proxy_password=password
+proxy=http://proxy.bigdata.wh.com:3142/          #为contrib添加代理
 ```
 
 * 更新yum缓存，检测配置是否成功。
