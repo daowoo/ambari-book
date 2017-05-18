@@ -218,9 +218,8 @@ Group: name="apache" id=48
 * 启动`httpd.service`服务，并设置跟随系统自启动。
 
 ```
-[root@repo httpd]# systemctl restart httpd.service
-[root@repo httpd]# systemctl enable httpd.service
-ln -s '/usr/lib/systemd/system/httpd.service' '/etc/systemd/system/multi-user.target.wants/httpd.service'
+systemctl restart httpd.service
+systemctl enable httpd.service
 ```
 
 * 关闭防火墙`firewalld.service`。
