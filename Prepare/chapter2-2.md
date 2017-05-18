@@ -2,35 +2,35 @@
 
 最常用的创建和加载自定义yum本地源的方法有以下三种：
 
-* 下载已整理好的自定义源ISO镜像文件，直接挂载到本地文件系统，在本机上通过**file:**的方式访问。
-* 下载已整理好的自定义源tar压缩文件，解压后创建Ftp文件服务器，在局域网通过**ftp:**的方式访问。
-* 下载已整理好的自定义源tar压缩文件，解压后创建Web文件服务器，在局域网通过**http:**的方式访问。
+* 下载已整理好的自定义源ISO镜像文件，直接挂载到本地文件系统，在本机上通过`file:`的方式访问。
+* 下载已整理好的自定义源TAR压缩文件，解压后创建Ftp文件服务器，在局域网通过`ftp:`的方式访问。
+* 下载已整理好的自定义源TAR压缩文件，解压后创建Web文件服务器，在局域网通过`http:`的方式访问。
 
-我们选择安装和配置都比较简单Apache httpd来实现基于http的Web服务器。
+我们选择安装和配置都比较简单`Apache httpd`来实现基于http的Web服务器。
 
 ## 获取自定义源压缩包
 
-我们对大数据平台所包含的Server、Agent、Hadoop组件rpm包，以及所依赖的第三方软件rpm包和其他资源都进行了整理，利用createrepo制作成自定义本地源后重新打包并进行相应的版本维护。
+我们对大数据平台所包含的Server、Agent、Hadoop服务组件，以及所依赖的第三方软件rpm包和其他资源都进行了汇总和整理，制作成了本地的自定义源后重新打包并进行版本更新和维护。
 
 * 下载
 
-从公司内网的Ftp服务器上下载bigdata-2.5.0.3-centos7.tar.gz，其地址为[ftp://192.168.16.100/bigdata-2.5.0.3-centos7.tar.gz](ftp://192.168.16.100/bigdata-2.5.0.3-centos7.tar.gz)。
+从公司内网的Ftp服务器上下载`bigdata-2.5.0.3-centos7.tar.gz`，其地址为[ftp://192.168.16.100/bigdata-2.5.0.3-centos7.tar.gz](ftp://192.168.16.100/bigdata-2.5.0.3-centos7.tar.gz)。
 
 * 解压
 
-将bigdata-2.5.0.3-centos7.tar.gz解压至/home/repo目录，通过tree命令查看其文件系统结构如下：
+将自定义源解压至`/home/repo`目录，通过tree命令查看其文件系统结构如下：
 
 ```
 root@proxy:/home/repo# tree -L 2
 .
-├── ambari #Server相关的rpm包
+├── ambari   #Server相关的rpm包
 │   └── centos7
-├── common #依赖的第三方软件rpm包
+├── common   #依赖的第三方软件rpm包
 │   └── repodata
 ├── hadoop
-│   ├── HDP #Hadoop核心组件rpm包
+│   ├── HDP   #Hadoop核心组件rpm包
 │   └── HDP-UTILS-1.1.0.21 #Hadoop相关工具rpm包
-└── resource #Jdk、jdbc等资源
+└── resource  #Jdk、jdbc等资源
     ├── jce_policy-8.zip
     ├── jdk-8u77-linux-x64.tar.gz
     ├── postgresql-jdbc.jar
