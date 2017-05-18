@@ -243,7 +243,7 @@ sed -i 's/SELINUX=.*/SELINUX=disabled/' /etc/selinux/config
 
 ![](/assets/2.2-repo-web.png)
 
-* 创建自定义源的repo文件，并存放在resource目录下，供集群中的其他主机使用。
+* 创建自定义源的repo文件，并存放在`/home/repo/resource`目录下，供集群中的其他主机使用。
 
 ```
 cat << eof > /home/repo/resource/ambari.repo
