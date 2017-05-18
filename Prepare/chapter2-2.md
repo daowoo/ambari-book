@@ -191,7 +191,7 @@ IncludeOptional conf.d/local_repo.conf  #在文件末尾包含新增的虚拟主
 IncludeOptional conf.d/autoindex.conf   #autoindex.conf中定义了显示文件列表时的系统图标资源
 ```
 
-* 通过httpd自带的命令来检测httpd当前配置是否有错误。
+* 通过httpd自带的命令来检测当前配置是否有错误。
 
 ```
 [root@repo httpd]# httpd -S
@@ -215,7 +215,7 @@ User: name="apache" id=48
 Group: name="apache" id=48
 ```
 
-* 启动httpd.service服务，并设置跟随系统自启动。
+* 启动`httpd.service`服务，并设置跟随系统自启动。
 
 ```
 [root@repo httpd]# systemctl restart httpd.service
@@ -223,18 +223,21 @@ Group: name="apache" id=48
 ln -s '/usr/lib/systemd/system/httpd.service' '/etc/systemd/system/multi-user.target.wants/httpd.service'
 ```
 
-* 关闭防火墙firewalld.service。
+* 关闭防火墙`firewalld.service`。
 
 ```
 systemctl stop firewalld.service
 systemctl disable firewalld.service
 ```
 
-* 关闭Selinux
+* 关闭`Selinux`
 
 ```
-setenforce 0  #临时关闭Selinux
-sed -i 's/SELINUX=.*/SELINUX=disabled/' /etc/selinux/config  #开机不启动Selinux
+#临时关闭Selinux
+setenforce 0
+
+#开机不启动Selinux
+sed -i 's/SELINUX=.*/SELINUX=disabled/' /etc/selinux/config
 ```
 
 * 通过Web浏览器访问自定义源目录。
