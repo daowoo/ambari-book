@@ -1,6 +1,6 @@
 # 初始化集群部署环境
 
-前面几章我们分别完成了yum本地源服务，dns服务以及ntp服务的创建和配置，接下来我们要为集群中的所有主机配置这些基础服务，进一步还要进行安装部署前的环境初始化和检查。
+前面几章我们分别完成了YUM本地源服务，DNS服务以及NTP服务的创建和配置，接下来我们要为集群中的所有主机配置这些基础服务，进一步还要进行安装部署前的环境初始化和检查。
 
 * 设置主机名。
 
@@ -69,13 +69,13 @@ total 12
 -rw-r--r--. 1 root root  408 May 11 08:54 id_rsa.pub   #公钥
 ```
 
-将生成的ssh公钥复制到其他主机的/root/.ssh目录。
+将生成的ssh公钥复制到其他主机的`/root/.ssh`目录。
 
 ```
 scp /root/.ssh/id_rsa.pub root@192.168.70.101:/root/.ssh/
 ```
 
-在目标主机上将ssh公钥添加到authorized\_keys文件中。
+在目标主机上将ssh公钥添加到`authorized_keys`文件中。
 
 ```
 cat id_rsa.pub >> authorized_keys
@@ -90,7 +90,7 @@ Are you sure you want to continue connecting (yes/no)? #第一登录会询问是
 
 * 系统DNS设置。
 
-Centos7新增了NetworkManager来提供默认的网络服务，它是一个动态的网络控制和配置守护进程，在/etc/resolv.conf中修改nameserver后，它会定期的恢复成初始值。所以，我们需要禁止NetworkManager定期恢复dns。
+Centos7新增了NetworkManager来提供默认的网络服务，它是一个动态的网络控制和配置守护进程，在`/etc/resolv.conf`中修改nameserver后，它会定期的恢复成初始值。所以，我们需要禁止NetworkManager定期恢复dns。
 
 ```
 cat << eof > /etc/NetworkManager/NetworkManager.conf
@@ -190,7 +190,7 @@ yum repolist
 
 * NTP时间同步。
 
-安装ntp，在ntp client客户端配置本地ntp服务地址。
+安装Ntp，在Ntp Client客户端中配置本地Ntp Server的地址。
 
 ```
 yum install -y ntp  #安装ntpd服务
@@ -207,7 +207,7 @@ ln -s '/usr/lib/systemd/system/ntpd.service' '/etc/systemd/system/multi-user.tar
 [root@server yum.repos.d]# systemctl restart ntpd.service
 ```
 
-与本地的NTP服务器保持时钟同步。
+与本地的Ntp Server保持时钟同步。
 
 ```
 [root@server yum.repos.d]# ntpdate  -u repo.bigdata.wh.com
