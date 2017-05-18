@@ -1,6 +1,6 @@
 # 创建NTP时钟同步服务
 
-为了保障大数据平台中Server收集到的状态信息、配置信息、任务调度信息以及保存的历史记录信息的有序和一致，集群内所有的节点主机和通过浏览器访问Web管理页面的客户机之间必须彼此时钟同步。因此我们通过在所有主机上安装NTP服务来保证时间同步，即以某台主机作为ntp server，其他主机作为ntp client从server端同步时间，这里我们选择本地源repo主机作为server。
+为了保障大数据平台中Server收集到的状态信息、配置信息、任务调度信息以及保存的历史记录信息的有序和一致，集群内所有的节点主机和通过浏览器访问Web管理页面的客户机之间必须彼此时钟同步。因此我们通过在所有主机上安装Ntp服务来保证时间同步，即以某台主机作为Ntp Server，其他主机作为Ntp Client从Server端同步时间，这里我们选择repo主机作为server。
 
 * 安装并启动ntp服务。
 
@@ -28,7 +28,7 @@ timedatectl set-time 2017-05-11    #无外网条件下，手动设置当前日�
 timedatectl set-time 16:47:00      #设置当前时间
 ```
 
-* 修改ntp服务的配置文件，创建ntp server端，确保如下配置项。
+* 修改Ntp服务的配置文件，创建Ntp Server端，确保如下配置项。
 
 ```
 [root@repo yum.repos.d]# cat /etc/ntp.conf 
@@ -55,7 +55,7 @@ server  127.127.1.0   #将localhost的本地时钟作为时间供给源，这样
 fudge   127.127.1.0 stratum 10
 ```
 
-* 重启ntp服务，并查询ntp服务状态。
+* 重启Ntp服务，并查询同步状态。
 
 ```
 [root@repo yum.repos.d]# systemctl restart ntpd.service
