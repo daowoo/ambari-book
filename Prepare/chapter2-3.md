@@ -155,7 +155,7 @@ systemctl enable named.service
 systemctl start named.service
 ```
 
-* 测试域名解析成IP是否正常，如果遇到错误，可以观察日志文件/var/log/message的内容来分析问题。
+* 测试域名解析成IP是否正常，如果遇到错误，可以观察日志文件`/var/log/message`的内容来分析问题。
 
 ```
 [root@dns named]# host -t NS bigdata.wh.com 192.168.36.149
@@ -238,7 +238,7 @@ Aliases:
 149.36.168.192.in-addr.arpa domain name pointer dns.bigdata.wh.com.
 ```
 
-* 在bigdata.wh.com区域内为集群其他主机添加A记录和PTR记录
+* 在`bigdata.wh.com`区域内为集群其他主机添加A记录和PTR记录
 
 ```
 [root@dns named]# cat bigdata.wh.com.zone 
