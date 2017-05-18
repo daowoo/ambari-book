@@ -1,6 +1,6 @@
 # 创建DNS域名解析服务
 
-大数据平台严重依赖于DNS，在正常的操作期间会执行许多次DNS查找，我们必须为集群内的所有主机配置正向和方向DNS，完成主机名（Fully Qualified Domain Name）到IP地址的映射。要达到这个目的，可以通过编辑集群中所有主机上的/etc/hosts文件或者创建一个DNS服务器来解决，这里我们来详细描述利用bind9来创建DNS服务器，配置集群内的bigdata.wh.com子域，以及结果测试的过程。
+大数据平台严重依赖于DNS，在正常的操作期间会执行许多次DNS查找，我们必须为集群内的所有主机配置正向和方向DNS，完成主机名（Fully Qualified Domain Name）到IP地址的映射。要达到这个目的，可以通过编辑集群中所有主机上的`/etc/hosts`文件或者创建一个DNS服务器来解决，这里我们来详细描述利用bind9来创建DNS服务器，配置集群内的`bigdata.wh.com`子域，以及结果测试的过程。
 
 * 系统安装后配置hostname
 
@@ -8,7 +8,7 @@
 hostnamectl set-hostname dns.bigdata.wh.com  #设置主机名
 ```
 
-* 编辑/etc/hosts文件
+* 编辑`/etc/hosts`文件
 
 首先编辑hosts文件添加本地源的IP地址和主机名之间的映射关系。
 
@@ -32,8 +32,8 @@ yum repolist
 * 安装bind及相关工具
 
 ```
-yum install -y bind                #提供DNS服务,程序名named
-yum install -y bind-utils          #测试域名的周边工具,如dig、host、nslookup
+yum install -y bind         #提供DNS服务,程序名named
+yum install -y bind-utils   #测试域名的周边工具,如dig、host、nslookup
 ```
 
 bind安装完成后，其包含的配置文件和区域文件如下。
@@ -73,7 +73,7 @@ bind安装完成后，其包含的配置文件和区域文件如下。
 /var/named/slaves                  #从文件夹
 ```
 
-* 修改主配置文件/etc/named.conf
+* 修改主配置文件`/etc/named.conf`
 
 ```
 [root@dns named]# cat /etc/named.conf
@@ -109,13 +109,16 @@ include "/etc/named.rfc1912.zones";
 include "/etc/named.root.key";
 ```
 
-* 追加区域bigdata.wh.com的正向解析定义。
+* 追加区域`bigdata.wh.com`的正向解析定义。
 
 ```
 cat << eof >> /etc/named.rfc1912.zones
 zone "bigdata.wh.com" IN {
-    type master; #设置类型为master
-    file "bigdata.wh.com.zone"; #解析库文件名称为bigdata.wh.com.zone,默认的存储目录为/var/named/
+     #设置类型为master
+     type master;
+    
+    #解析库文件名称为bigdata.wh.com.zone,默认的存储目录为/var/named/
+    file "bigdata.wh.com.zone";
     allow-update { none; };
 };
 eof
@@ -143,9 +146,11 @@ eof
 * 检测配置及启动DNS服务。
 
 ```
-named-checkconf  #检查主配置文件语法
-named-checkzone "bigdata.wh.com" /var/named/bigdata.wh.com.zone #检查区域所对应的解析库文件
+#检查主配置文件语法
+named-checkconf
 
+#检查区域所对应的解析库文件
+named-checkzone "bigdata.wh.com" /var/named/bigdata.wh.com.zone
 systemctl enable named.service
 systemctl start named.service
 ```
