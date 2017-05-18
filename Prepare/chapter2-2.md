@@ -1,4 +1,4 @@
-# 创建Yum本地源
+# 创建YUM本地源
 
 最常用的创建和加载自定义yum本地源的方法有以下三种：
 
@@ -39,11 +39,11 @@ root@proxy:/home/repo# tree -L 2
 9 directories, 3 files
 ```
 
-## 配置yum访问源
+## 配置本机的YUM源
 
 * 有永久或临时外网访问权限
 
-为了取得更快的安装速度，将默认的国外源更新为国内的aliyun源。首先备份备份默认源。
+为了取得更快的安装速度，将默认的国外源更新为国内的阿里源。首先备份备份默认源。
 
 ```
 mv /etc/yum.repos.d /etc/yum.repos.d.bak
@@ -77,14 +77,14 @@ priority=1
 eof
 ```
 
-* 运行以下命更新yum缓存的数据。
+* 更新yum缓存的数据。
 
 ```
 yum clean all
 yum makecache
 ```
 
-## 安装yum工具和插件
+## 安装YUM工具和插件
 
 为了方便后期扩充自己所需的软件包，以及在涉及到多个源之后所需要的优先级管理，接下来安装yum周边的工具和插件。
 
@@ -96,9 +96,9 @@ yum install -y yum-utils createrepo
 yum install -y yum-plugin-priorities
 ```
 
-## Apache httpd服务
+## 配置Apache httpd服务
 
-通过配置httpd虚拟主机的方式实现一个简单的web文件服务器，来作为集群局域网内的yum本地源。
+通过配置httpd虚拟主机的方式实现一个简单的Web文件服务器，以此为基础来架设集群内的本地源。
 
 * 首先安装Apache httpd服务。
 
@@ -109,16 +109,19 @@ yum install -y httpd
 安装完成后进入httpd生成的主配置目录/etc/httpd，它的文件结构及意义如下。
 
     [root@repo httpd]# tree 
-    .
-    |-- conf                     #主配置目录，通过修改其中的httpd.conf文件来完成配置
+    #主配置目录，通过修改其中的httpd.conf文件来完成配置
+    |-- conf                     
     |   |-- httpd.conf
     |   `-- magic
-    |-- conf.d                   #扩展配置目录，httpd.conf通过Include conf.d/*的方式来载入该目录中的配置
+    #扩展配置目录，在主配置文件httpd.conf中，
+    #通过Include conf.d/*的方式来载入该目录中的配置
+    |-- conf.d
     |   |-- autoindex.conf
     |   |-- README
     |   |-- userdir.conf
     |   `-- welcome.conf
-    |-- conf.modules.d           #httpd核心模块目录
+    #httpd核心模块目录
+    |-- conf.modules.d
     |   |-- 00-base.conf
     |   |-- 00-dav.conf
     |   |-- 00-lua.conf
@@ -132,13 +135,14 @@ yum install -y httpd
 
     6 directories, 13 files
 
-* 在80端口配置虚拟主机用于通过http方式访问自定义源/home/repo目录，将新建虚拟主机配置文件放在httpd扩展目录conf.d中。
+* 在80端口配置虚拟主机用于通过http方式访问自定义源`/home/repo`目录，将新建虚拟主机配置文件放在httpd扩展目录`/etc/httpd/conf.d`中。
 
 ```
 cat << eof > /etc/httpd/conf.d/local_repo.conf
-<VirtualHost *:80>                  #虚拟主机工作在80端口，监听本机上的所有IP
-  DocumentRoot "/home/repo"         #根目录为上面我们解压的自定义源目录
+<VirtualHost *:80>                  #虚拟主机工作在80端口
+  DocumentRoot "/home/repo"         #我们定义的根目录
   <Directory "/home/repo">          #基于来源地址的访问控制
+  
     Options Indexes FollowSymLinks  #Indexes:在无默认主页面又无欢迎页时，将所有资源以列表形式呈现给用户，
                                     #FollowSymLinks:允许跟踪符号链接文件
 
@@ -152,6 +156,13 @@ cat << eof > /etc/httpd/conf.d/local_repo.conf
 </VirtualHost>
 eof
 ```
+
+Options含义如下：
+> Indexes：在无默认主页面又无欢迎页时，将所有资源以列表形式呈现给用户
+> FollowSymLinks：允许跟踪符号链接文件
+
+AllowOverride含义:
+>表示支持在每个页面目录下创建`.htaccess`文件，来定义对此目录中资源的访问控制，None：时表示忽略.htaccess 文件
 
 * 将新创建虚拟主机local\_repo.conf添加至主配置httpd.conf末尾。
 
