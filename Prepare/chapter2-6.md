@@ -20,7 +20,7 @@ yum install -y postgresql-contrib   #安装第三方包和分布式包（可选�
 /var/lib/pgsql                                      #postgres用户的根目录，.bash_profile文件中定义了PGDATA环境变量
 ```
 
-* 初始化数据库，我们直接使用postgres默认的数据目录/var/lib/pgsql/data
+* 初始化数据库，我们直接使用postgres默认的数据目录`/var/lib/pgsql/data`
 
 ```
 [root@db ~]# su postgres         #切换至安装PG时创建的系统账户postgres
@@ -106,7 +106,7 @@ host    all             all             0.0.0.0/0               md5   #添加行
 host    all             all             ::1/128                 trust
 ```
 
-* 利用PG默认提供的管理工具pg\_ctrl来启动数据库，然后再查看5432端口是否正常开放。
+* 利用PG默认提供的管理工具**pg_ctrl**来启动数据库，然后再查看5432端口是否正常开放。
 
 ```
 bash-4.2$ pg_ctl start -D data/  #利用pg_ctl启动指定数据库实例
@@ -156,7 +156,7 @@ pgAdmin4操作主界面：
 
 * 配置PG跟随系统自启动
 
-二进制安装时会自动把postgresql.service配置文件拷贝到/usr/lib/systemd/system/目录下，如果需要对自启动服务进行自定义配置，建议不要直接修改/usr/lib/systemd/system/postgresql.service文件，而是将该文件拷贝至‘/etc/systemd/system/’目录，然后再修改目标文件，并在目标文件内通过‘.include’指令包含源文件。
+二进制安装时会自动把postgresql.service配置文件拷贝到`/usr/lib/systemd/system/`目录下，如果需要对自启动服务进行自定义配置，建议不要直接修改`/usr/lib/systemd/system/postgresql.service`文件，而是将该文件拷贝至`/etc/systemd/system/`目录，然后再修改目标文件，并在目标文件内通过**.include**指令包含源文件。
 
 ```
 systemctl enable postgresql.service

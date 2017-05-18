@@ -37,7 +37,7 @@ Ambari Server stopped
 
 * 数据库一致性检查。 
 
-Server启动时，会运行数据库一致性检查来查找问题，如果发现任何问题，启动将中止并显示以下消息：DB配置一致性检查失败。 并将有关数据库一致性检查结果的更多详细信息写入/var/log/ambari-server/ambari-server-check-database.log文件。
+Server启动时，会运行数据库一致性检查来查找问题，如果发现任何问题，启动将中止并显示以下消息：DB配置一致性检查失败。 并将有关数据库一致性检查结果的更多详细信息写入`/var/log/ambari-server/ambari-server-check-database.log`文件。
 
 ```
 [root@server resources]# cat /var/log/ambari-server/ambari-server-check-database.log

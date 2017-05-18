@@ -1,6 +1,6 @@
 # 创建PG实例
 
-Server端默认情况下，在其启动过程中会在本机安装并创建postgresql数据库实例，并调用/var/lib/ambari-server/resources/目录的SQL脚本来初始化数据库实例。为了便于集中管理，我们使用了独立的主机来创建postgresql数据库实例，并且hadoop集群的其他组件所需的数据库均在该主机上创建。
+Server端默认情况下，在其启动过程中会在本机安装并创建postgresql数据库实例，并调用`/var/lib/ambari-server/resources/`目录的SQL脚本来初始化数据库实例。为了便于集中管理，我们使用了独立的主机来创建postgresql数据库实例，并且hadoop集群的其他组件所需的数据库均在该主机上创建。
 
 * 利用root用户登录登录db主机。
 
@@ -36,7 +36,7 @@ ALTER ROLE
 ambari=# \q
 ```
 
-* 从server主机的/var/lib/ambari-server/resources/目录拷贝DDL初始化脚本。
+* 从server主机的`/var/lib/ambari-server/resources/`目录拷贝DDL初始化脚本。
 
 ```
 [root@db ~]# scp vagrant@server.bigdata.wh.com:/var/lib/ambari-server/resources/Ambari-DDL-Postgres-CREATE.sql ./
@@ -79,5 +79,5 @@ ambari=> \dt
  --More--
 ```
 
-至此自定义的数据库就成功创建了，当在server主机上启动Server时，我们就使用ambari用户来登录db.bigdata.wh.com主机上的ambari数据库。
+至此自定义的数据库就成功创建了，当在server主机上启动Server时，我们就使用ambari用户来登录`db.bigdata.wh.com`主机上的ambari数据库。
 
