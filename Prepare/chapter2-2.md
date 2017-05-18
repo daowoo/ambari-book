@@ -139,30 +139,32 @@ yum install -y httpd
 
 ```
 cat << eof > /etc/httpd/conf.d/local_repo.conf
-<VirtualHost *:80>                  #虚拟主机工作在80端口
-  DocumentRoot "/home/repo"         #我们定义的根目录
-  <Directory "/home/repo">          #基于来源地址的访问控制
-  
-    Options Indexes FollowSymLinks  #Indexes:在无默认主页面又无欢迎页时，将所有资源以列表形式呈现给用户，
-                                    #FollowSymLinks:允许跟踪符号链接文件
-
-    AllowOverride None              #支持在每个页面目录下创建.htaccess，来定义对此目录中资源的访问控制，
-                                    #设置为 None 时表示忽略.htaccess 文件
-
-    Require all granted             #允许网络上的所有主机访问，
-                                    #all可替换为ip、not ip，表示包含或排除指定IP，
-                                    #granted：表示允许访问，denied：表示拒绝访问
+<VirtualHost *:80>              #虚拟主机工作在80端口
+  DocumentRoot "/home/repo"     #我们定义的根目录
+  <Directory "/home/repo">
+    #访问控制组合指令
+    Options Indexes FollowSymLinks
+    AllowOverride None
+    Require all granted
   </Directory>
 </VirtualHost>
 eof
 ```
 
-Options含义如下：
+Options指令含义如下：
 > Indexes：在无默认主页面又无欢迎页时，将所有资源以列表形式呈现给用户
 > FollowSymLinks：允许跟踪符号链接文件
 
-AllowOverride含义:
->表示支持在每个页面目录下创建`.htaccess`文件，来定义对此目录中资源的访问控制，None：时表示忽略.htaccess 文件
+AllowOverride指令含义:
+> 表示支持在每个页面目录下创建`.htaccess`文件，来定义对此目录中资源的访问控制，设置为None时表示忽略.htaccess 文件
+
+Require指令含义：
+> all：包含所有主机
+> ip：包含指定的地址
+> not ip：排除指定的地址
+> granted：表示允许访问
+> denied：表示拒绝访问
+
 
 * 将新创建虚拟主机local\_repo.conf添加至主配置httpd.conf末尾。
 
