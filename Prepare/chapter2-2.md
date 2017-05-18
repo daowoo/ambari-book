@@ -23,14 +23,14 @@
 ```
 root@proxy:/home/repo# tree -L 2
 .
-├── ambari                         #Server相关的rpm包
+├── ambari #Server相关的rpm包
 │   └── centos7
-├── common                         #依赖的第三方软件rpm包
+├── common #依赖的第三方软件rpm包
 │   └── repodata
 ├── hadoop
-│   ├── HDP                        #Hadoop核心组件rpm包
-│   └── HDP-UTILS-1.1.0.21         #Hadoop相关工具rpm包
-└── resource                       #Jdk、jdbc等资源
+│   ├── HDP #Hadoop核心组件rpm包
+│   └── HDP-UTILS-1.1.0.21 #Hadoop相关工具rpm包
+└── resource #Jdk、jdbc等资源
     ├── jce_policy-8.zip
     ├── jdk-8u77-linux-x64.tar.gz
     ├── postgresql-jdbc.jar
@@ -89,8 +89,11 @@ yum makecache
 为了方便后期扩充自己所需的软件包，以及在涉及到多个源之后所需要的优先级管理，接下来安装yum周边的工具和插件。
 
 ```
-yum install -y yum-utils createrepo      #createrepo命令创建版本库所需要的基础rpm包
-yum install -y yum-plugin-priorities     #yum插件，安装后可根据priority值来设置优先级
+#createrepo命令创建版本库所需要的基础rpm包
+yum install -y yum-utils createrepo
+
+#yum插件，安装后可根据priority值来设置优先级
+yum install -y yum-plugin-priorities
 ```
 
 ## Apache httpd服务
