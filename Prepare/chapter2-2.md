@@ -166,7 +166,7 @@ Require指令含义：
 > denied：表示拒绝访问
 
 
-* 将新创建虚拟主机local\_repo.conf添加至主配置httpd.conf末尾。
+* 将新创建虚拟主机`conf.d/local_repo.conf`添加至主配置`httpd.conf`末尾。
 
 ```
 [root@repo httpd]# vi conf/httpd.conf 
@@ -178,7 +178,7 @@ Require指令含义：
 #
 # If your host doesn't have a registered DNS name, enter its IP address here.
 #
-ServerName repo.bigdata.wh.com                  #设置为当前主机的FQDN
+ServerName repo.bigdata.wh.com          #设置为当前主机的FQDN
 
 #EnableMMAP off
 EnableSendfile on
@@ -186,9 +186,9 @@ EnableSendfile on
 # Supplemental configuration
 #
 # Load config files in the "/etc/httpd/conf.d" directory, if any.
-#IncludeOptional conf.d/*.conf                   #注释掉默认的apache欢迎页面
-IncludeOptional conf.d/local_repo.conf           #在文件末尾包含新增的虚拟主机扩展配置文件
-IncludeOptional conf.d/autoindex.conf            #autoindex.conf中定义了显示文件列表时的系统图标资源
+#IncludeOptional conf.d/*.conf          #注释掉默认的apache欢迎页面
+IncludeOptional conf.d/local_repo.conf  #在文件末尾包含新增的虚拟主机扩展配置文件
+IncludeOptional conf.d/autoindex.conf   #autoindex.conf中定义了显示文件列表时的系统图标资源
 ```
 
 * 通过httpd自带的命令来检测httpd当前配置是否有错误。
