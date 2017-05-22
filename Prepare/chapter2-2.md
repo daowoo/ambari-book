@@ -286,9 +286,7 @@ proxy=_none_
 
 [common]
 name=common local repository
-baseurl=http://repo.bigdata.wh.com/common/centos7/os/x86_64/
-        http://repo.bigdata.wh.com/common/centos7/updates/x86_64/
-        http://repo.bigdata.wh.com/common/centos7/extras/x86_64/
+baseurl=http://repo.bigdata.wh.com/common/centos7/
 gpgcheck=0
 enabled=1
 priority=1
