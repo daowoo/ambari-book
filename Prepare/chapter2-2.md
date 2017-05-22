@@ -20,23 +20,6 @@
 
 将自定义源解压至`/home/repo`目录，通过tree命令查看其文件系统结构如下：
 
-    root@proxy:/home/repo# tree -L 2
-    .
-    ├── ambari   #Server相关的rpm包
-    │   └── centos7
-    ├── common   #依赖的第三方软件rpm包
-    │   └── repodata
-    ├── hadoop
-    │   ├── HDP   #Hadoop核心组件rpm包
-    │   └── HDP-UTILS-1.1.0.21 #Hadoop相关工具rpm包
-    └── resource  #Jdk、jdbc等资源
-        ├── jce_policy-8.zip
-        ├── jdk-8u77-linux-x64.tar.gz
-        ├── postgresql-jdbc.jar
-        └── repodata
-
-    9 directories, 3 files
-
     [root@repo repo]# tree -L 2
     .
     |-- ambari  #Server相关的rpm包
