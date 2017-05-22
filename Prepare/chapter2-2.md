@@ -20,24 +20,43 @@
 
 将自定义源解压至`/home/repo`目录，通过tree命令查看其文件系统结构如下：
 
-```
-root@proxy:/home/repo# tree -L 2
-.
-├── ambari   #Server相关的rpm包
-│   └── centos7
-├── common   #依赖的第三方软件rpm包
-│   └── repodata
-├── hadoop
-│   ├── HDP   #Hadoop核心组件rpm包
-│   └── HDP-UTILS-1.1.0.21 #Hadoop相关工具rpm包
-└── resource  #Jdk、jdbc等资源
-    ├── jce_policy-8.zip
-    ├── jdk-8u77-linux-x64.tar.gz
-    ├── postgresql-jdbc.jar
-    └── repodata
+    root@proxy:/home/repo# tree -L 2
+    .
+    ├── ambari   #Server相关的rpm包
+    │   └── centos7
+    ├── common   #依赖的第三方软件rpm包
+    │   └── repodata
+    ├── hadoop
+    │   ├── HDP   #Hadoop核心组件rpm包
+    │   └── HDP-UTILS-1.1.0.21 #Hadoop相关工具rpm包
+    └── resource  #Jdk、jdbc等资源
+        ├── jce_policy-8.zip
+        ├── jdk-8u77-linux-x64.tar.gz
+        ├── postgresql-jdbc.jar
+        └── repodata
 
-9 directories, 3 files
-```
+    9 directories, 3 files
+
+    [root@repo repo]# tree -L 2
+    .
+    |-- ambari  #Server相关的rpm包
+    |   `-- centos7
+    |-- common  #依赖的第三方软件rpm包
+    |   `-- centos7
+    |-- component  #核心组件rpm包
+    |   |-- HDF
+    |   |-- HDP   #Hadoop组件
+    |   `-- HDP-UTILS-1.1.0.21  #Hadoop组件工具包
+    `-- resource  #Jdk、jdbc等资源
+        |-- ambari.repo
+        |-- CentOS7-Base-aliyun.repo
+        |-- jce_policy-8.zip
+        |-- jdk-8u112-linux-x64.tar.gz
+        |-- jdk-8u77-linux-x64.tar.gz
+        |-- postgresql-jdbc.jar
+        `-- repodata
+
+    10 directories, 6 files
 
 ## 配置本机的YUM源
 
@@ -152,19 +171,21 @@ eof
 ```
 
 Options指令含义如下：
-> Indexes：在无默认主页面又无欢迎页时，将所有资源以列表形式呈现给用户
+
+> Indexes：在无默认主页面又无欢迎页时，将所有资源以列表形式呈现给用户  
 > FollowSymLinks：允许跟踪符号链接文件
 
 AllowOverride指令含义:
+
 > 表示支持在每个页面目录下创建`.htaccess`文件，来定义对此目录中资源的访问控制，设置为None时表示忽略.htaccess 文件
 
 Require指令含义：
-> all：包含所有主机
-> ip：包含指定的地址
-> not ip：排除指定的地址
-> granted：表示允许访问
-> denied：表示拒绝访问
 
+> all：包含所有主机  
+> ip：包含指定的地址  
+> not ip：排除指定的地址  
+> granted：表示允许访问  
+> denied：表示拒绝访问
 
 * 将新创建虚拟主机`conf.d/local_repo.conf`添加至主配置`httpd.conf`末尾。
 
