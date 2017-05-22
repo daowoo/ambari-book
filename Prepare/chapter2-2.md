@@ -260,7 +260,7 @@ setenforce 0
 sed -i 's/SELINUX=.*/SELINUX=disabled/' /etc/selinux/config
 ```
 
-* 通过Web浏览器访问自定义源80端口的自定义目录。
+* 通过Web浏览器访问自定义源80端口的文件目录。
 
 ![](/assets/2.2-repo-web.png)
 
