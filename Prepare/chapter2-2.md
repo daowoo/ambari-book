@@ -250,15 +250,7 @@ sed -i 's/SELINUX=.*/SELINUX=disabled/' /etc/selinux/config
 * 查看`/home/repo/resource`目录下的本地源repo文件，检查其默认的baseurl是否与新建的本地源路径相同。
 
 ```
-[root@repo repo]# cat resource/ambari.repo 
-[ambari-2.4.2.0]
-name=ambari local repository
-baseurl=http://repo.bigdata.wh.com/ambari/centos7/2.x/updates/2.4.2.0/
-gpgcheck=0
-enabled=1
-priority=1
-proxy=_none_
-
+[root@repo repo]# cat resource/ambari-2.5.0.3.repo
 [ambari-2.5.0.3]
 name=ambari local repository
 baseurl=http://repo.bigdata.wh.com/ambari/centos7/2.x/updates/2.5.0.3/

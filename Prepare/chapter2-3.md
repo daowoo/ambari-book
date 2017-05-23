@@ -24,7 +24,7 @@ hostnamectl set-hostname dns.bigdata.wh.com  #设置主机名
 * 下载本地源repo文件，更新yum缓存
 
 ```
-wget -O /etc/yum.repos.d/ambari.repo http://repo.bigdata.wh.com/resource/ambari.repo
+wget -O /etc/yum.repos.d/ambari.repo http://repo.bigdata.wh.com/resource/ambari-2.5.0.3.repo
 yum clean all
 yum repolist
 ```
@@ -116,7 +116,7 @@ cat << eof >> /etc/named.rfc1912.zones
 zone "bigdata.wh.com" IN {
      #设置类型为master
      type master;
-    
+
     #解析库文件名称为bigdata.wh.com.zone,默认的存储目录为/var/named/
     file "bigdata.wh.com.zone";
     allow-update { none; };
