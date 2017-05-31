@@ -14,7 +14,6 @@ hostnamectl set-hostname dns.bigdata.wh.com  #设置主机名
 
 ```
 [root@dns ~]# cat /etc/hosts
-127.0.0.1    dns.bigdata.wh.com    dns
 127.0.0.1   localhost localhost.localdomain localhost4 localhost4.localdomain4
 ::1         localhost localhost.localdomain localhost6 localhost6.localdomain6
 
