@@ -31,7 +31,7 @@ timedatectl set-time 16:47:00      #设置当前时间
 * 修改Ntp服务的配置文件，创建Ntp Server端，确保如下配置项。
 
 ```
-[root@repo yum.repos.d]# cat /etc/ntp.conf 
+[root@repo yum.repos.d]# cat /etc/ntp.conf
 # Permit all access over the loopback interface.  This could
 # be tightened as well, but to do so would effect some of
 # the administrative functions.
@@ -61,7 +61,7 @@ fudge   127.127.1.0 stratum 10
 [root@repo yum.repos.d]# systemctl restart ntpd.service
 
 [root@repo yum.repos.d]# ntpstat       #查询ntp服务同步状态
-synchronised to NTP server (115.28.122.198) at stratum 3 
+synchronised to NTP server (115.28.122.198) at stratum 3
    time correct to within 1804 ms
    polling server every 64 s
 
@@ -78,7 +78,7 @@ synchronised to NTP server (115.28.122.198) at stratum 3
 * 值得注意的是，如果Ntp服务设置为开机启动，但是系统重启之后Ntp并没有启动，一般引起这个问题的最为常见的原因是系统安装了一个与Ntp相冲突的工具**chrony**，并且设置了自启动。解决这个问题的方法就是关闭`chronyd.server`的启动项，或是直接卸载掉工具chrony。
 
 ```
-[root@gw ~]# systemctl status ntpd.service              
+[root@gw ~]# systemctl status ntpd.service
 ● ntpd.service - Network Time Service
    Loaded: loaded (/usr/lib/systemd/system/ntpd.service; enabled; vendor preset: disabled)
    Active: inactive (dead)
@@ -96,6 +96,3 @@ synchronised to NTP server (115.28.122.198) at stratum 3
 [root@gw ~]# systemctl disable chronyd.service
 Removed symlink /etc/systemd/system/multi-user.target.wants/chronyd.service.
 ```
-
-
-
